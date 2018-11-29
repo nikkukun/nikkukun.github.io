@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next gemini" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="矩阵是个很神奇的东西，可惜我涉猎较少，只能浅谈矩阵的应用。">
+<meta name="keywords" content="矩阵,行列式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="矩阵总结">
+<meta property="og:url" content="http://yoursite.com/summary/matrix/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="矩阵是个很神奇的东西，可惜我涉猎较少，只能浅谈矩阵的应用。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-29T13:44:39.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="矩阵总结">
+<meta name="twitter:description" content="矩阵是个很神奇的东西，可惜我涉猎较少，只能浅谈矩阵的应用。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/summary/matrix/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>矩阵总结 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nikkukun's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/summary/matrix/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+      <meta itemprop="image" content="/images/avatar_nikkukun.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">矩阵总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-14T00:00:00+08:00">2017-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-29 21:44:39" itemprop="dateModified" datetime="2018-11-29T21:44:39+08:00">2018-11-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法总结/" itemprop="url" rel="index"><span itemprop="name">算法总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>矩阵是个很神奇的东西，可惜我涉猎较少，只能浅谈矩阵的应用。</p>
+<a id="more"></a>
+<p>我们先定义几个符号：</p>
+<ul>
+<li><span class="math inline">\(A\)</span>：矩阵<span class="math inline">\(A​\)</span></li>
+<li><span class="math inline">\(A_i\)</span>：矩阵<span class="math inline">\(A\)</span>第<span class="math inline">\(i\)</span>行</li>
+<li><span class="math inline">\(A_{i,j}\)</span>：矩阵<span class="math inline">\(A\)</span>第<span class="math inline">\(i\)</span>行第<span class="math inline">\(j\)</span>列的元素</li>
+<li><span class="math inline">\(M_{i,j}\)</span>：矩阵<span class="math inline">\(A\)</span>去掉第<span class="math inline">\(i\)</span>行和第<span class="math inline">\(j\)</span>列的矩阵（余子式）</li>
+<li><span class="math inline">\(A^T\)</span>：矩阵<span class="math inline">\(A\)</span>的转置</li>
+<li><span class="math inline">\(A^n\)</span>：矩阵<span class="math inline">\(A\)</span>的<span class="math inline">\(n\)</span>次幂</li>
+<li><span class="math inline">\(\det(A)\)</span>：矩阵<span class="math inline">\(A\)</span>的行列式</li>
+</ul>
+<p>##矩阵乘法</p>
+<p>定义矩阵乘法<span class="math inline">\(A\times B=C,C_{i,j}=\Sigma_{k=1}^m A_{i,k}B_{k,j}\)</span>，其中<span class="math inline">\(A\)</span>是$n <span class="math inline">\(行\)</span>m<span class="math inline">\(列、\)</span>B<span class="math inline">\(是\)</span>m<span class="math inline">\(行\)</span>p$列的矩阵。矩阵乘法不满足交换率，但满足<strong>结合率</strong>和<strong>分配率</strong>。</p>
+<p>在这种定义下，矩阵乘法满足交换率的情况：</p>
+<ul>
+<li>两矩阵相等</li>
+<li>两矩阵至少有一个为数量矩阵（主对角线为相同的数，其他为<span class="math inline">\(0\)</span>）</li>
+<li>两矩阵的乘积等于两矩阵的和（了解）</li>
+</ul>
+<p>##矩阵的幂</p>
+<p>根据矩阵乘法的定义，只有<span class="math inline">\(n\)</span>行<span class="math inline">\(n\)</span>列的矩阵（方阵）才有幂。</p>
+<p>矩阵满足结合率，因此可以使用快速幂加速，计算大小为<span class="math inline">\(n\)</span>的矩阵<span class="math inline">\(A^k\)</span>时间复杂度<span class="math inline">\(\mathrm{O}(n^3\log{k})\)</span>。如果加速矩阵乘法，可以降低复杂度，但在OI中这个复杂度就足够了。</p>
+<p>利用矩阵的幂可以求线性递推式（如Fibonacci）。</p>
+<p>##邻接矩阵性质</p>
+<p>假设<span class="math inline">\(A\)</span>为<span class="math inline">\(n\)</span>个节点的图<span class="math inline">\(G\)</span>的邻接矩阵，则考虑一个矩阵乘法的过程：</p>
+<p><span class="math display">\[G_{i,j}^2=\Sigma_{k=1}^n G_{i,k}G_{k,j}\]</span></p>
+<p>相当于枚举经过的<span class="math inline">\(k\)</span>点，计算从<span class="math inline">\(i\)</span>到<span class="math inline">\(j\)</span>经过<span class="math inline">\(2\)</span>条边的方案数。这个过程其实就是在模拟Floyd。因此我们猜测：<span class="math inline">\(G_{i,j}^k\)</span>表示经过<span class="math inline">\(k\)</span>条边<span class="math inline">\((k\geq 0)\)</span>，从<span class="math inline">\(i\)</span>到达<span class="math inline">\(j\)</span>的方案数。事实上这是正确的。</p>
+<p>如果我们重新定义矩阵乘法<span class="math inline">\(A\times B=C,C_{i,j}=min_{1\leq k\leq n}\{A_{i,k}+B_{k,j}\}\)</span>，则我们发现<span class="math inline">\(G^2\)</span>就是Floyd，<span class="math inline">\(G^k\)</span>是一张经过<span class="math inline">\(k\)</span>条边的最短路邻接矩阵。</p>
+<p>这提示我们可以根据需要重新定义矩阵乘法，但是仍要保证新的定义满足<strong>结合率</strong>（不用考虑交换率是因为乘数相同已经满足了交换率）。</p>
+<p>##高斯消元</p>
+<p>其实是求解一个线性增广矩阵。</p>
+<p>假定有列数为<span class="math inline">\(n\)</span>的矩阵<span class="math inline">\(A\)</span>和大小为<span class="math inline">\(n\)</span>的向量<span class="math inline">\(B\)</span>，高斯消元可以解得满足<span class="math inline">\(A\times X=B\)</span>的向量<span class="math inline">\(X\)</span>。更一般地说，高斯消元可解<span class="math inline">\(A_i\times X_i=B_i\)</span>的解向量<span class="math inline">\(X\)</span>。</p>
+<p>高斯消元的理论在很多资料和<em>训练指南</em>上都有，因此此处重点分析代码。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GausElim</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> cur=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">fabs</span>(a[j][i])&gt;<span class="built_in">fabs</span>(a[cur][i]))cur=j;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=n;j++)swap(a[i][j],a[cur][j]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=n;k&gt;=i;k--)</span><br><span class="line">                a[j][k]-=a[i][k]*a[j][i]/a[i][i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n;j++)</span><br><span class="line">            a[i][n]-=a[j][n]*a[i][j];</span><br><span class="line">        a[i][n]/=a[i][i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>增广矩阵<span class="math inline">\(A\)</span>的最后一列即为解向量。流程如下：</p>
+<ol type="1">
+<li>对项<span class="math inline">\(i\)</span>找到系数绝对值最大的一行并交换（减小精度误差）</li>
+<li>对<span class="math inline">\(i\)</span>行之后的每一行<span class="math inline">\(j\)</span>的每个元素<span class="math inline">\(A_{j,k}\)</span>都减去<span class="math inline">\(A_{j,k} \times \frac {A_{j,i}}{A_{i,i}}\)</span>。为了不破坏<span class="math inline">\(A_{j,i}\)</span>，需要<strong>逆序</strong>进行；</li>
+<li>对每一行都操作完毕后，<strong>逆序</strong>将已有的解代入当前方程组求解。</li>
+</ol>
+<p>注意上面的求法是只有唯一解时的求法。如果枚举到某行的某一项<span class="math inline">\(i\)</span>发现后面所有项<span class="math inline">\(i\)</span>的系数都为<span class="math inline">\(0\)</span>，则<span class="math inline">\(i\)</span>为<strong>自由元</strong>（取值任意），并在该行考察下一项<span class="math inline">\(i+1\)</span>。如果解完后<span class="math inline">\(i\)</span>行的系数全为<span class="math inline">\(0\)</span>而<span class="math inline">\(A_{i,n}\not=0\)</span>，则原方程组<strong>无解</strong>。</p>
+<p>###模意义下的高斯消元</p>
+<p>边做边模即可。注意因为取模，有可能会出现多解的情况。但是此时若有多解，解的个数是可数的，因此我们往往需要求解的个数。</p>
+<p>给出结论：在模<span class="math inline">\(p\)</span>意义下解方程组若有<span class="math inline">\(n\)</span>个自由元，则方程组的解个数为<span class="math inline">\(p^n\)</span>。</p>
+<p>因此像上述一样统计自由元就好了。但是我们很担心<span class="math inline">\(p\)</span>不是质数，否则我们做除法的时候<strong>逆元不一定存在</strong>。这里就有个神奇小技巧了。</p>
+<p>###辗转相除法求逆</p>
+<p>假设我们要求<span class="math inline">\(A_i\leftarrow A_i-A_j*\frac {A_{i,i}}{A_{j,i}}\)</span>。方便描述，我们令<span class="math inline">\(a=A_{i,i},b=A_{j,i}\)</span>，然后：</p>
+<ol type="1">
+<li>令<span class="math inline">\(c=\lfloor \frac ab\rfloor\)</span>，<span class="math inline">\(A_i\leftarrow A_i-c\cdot A_j\)</span>；</li>
+<li>令<span class="math inline">\(a\leftarrow a\bmod b\)</span>，交换<span class="math inline">\(a,b\)</span>，交换<span class="math inline">\(A_i,A_j\)</span>；</li>
+<li>当<span class="math inline">\(b\)</span>不为<span class="math inline">\(0\)</span>时重复1。</li>
+</ol>
+<p>原理未知。但看起来过程是扩展欧几里得（上面的过程极有可能是<strong>错</strong>的）。</p>
+<p>###异或方程组</p>
+<p>模<span class="math inline">\(2\)</span>意义下的高斯消元，相当于采用异或运算。</p>
+<p>###矩阵求逆</p>
+<p>不会。</p>
+<p>##行列式</p>
+<p>定义函数<span class="math inline">\(sign(p)\)</span>为全排列<span class="math inline">\(p\)</span>中的逆序对数。对于方阵<span class="math inline">\(A\)</span>，其行列式<span class="math inline">\(\det{A}\)</span>定义：</p>
+<p><span class="math display">\[\det(A)=\Sigma_{p\in permutation} [(-1)^{sign(p)}\Pi_{i=1}^n A_{i,p_i}]\]</span></p>
+<p>看起来就不好求。但是我们有性质：</p>
+<ol type="1">
+<li><span class="math inline">\(\det(A)=\det(A^T)\)</span></li>
+<li><span class="math inline">\(\det(A)=-\det(A_{\text{swap(i,j)}})\)</span></li>
+<li><span class="math inline">\(k\det(a)=\det{A_{A_i=kA_i}}\)</span></li>
+<li>若<span class="math inline">\(A_i=kA_j\)</span>，则<span class="math inline">\(\det(A)=0\)</span></li>
+<li>若<span class="math inline">\(A=B+C\)</span>，则<span class="math inline">\(\det(A)=\det(B)+\det(C)\)</span></li>
+<li><span class="math inline">\(\det(A)=\det(A_{A_i=A_i+kA_j})\)</span></li>
+</ol>
+<p>具体的证明和文字说明见<a href="http://www.cnblogs.com/GerynOhenz/p/4450417.html" target="_blank" rel="noopener">这里</a>。利用性质六，我们就可以进行高斯消元了。</p>
+<p>具体步骤和高斯消元一样。根据<strong>性质二</strong>，交换两行需要乘<span class="math inline">\(-1\)</span>。根据<strong>性质六</strong>，我们消元时应该用第<span class="math inline">\(j\)</span>行减去第<span class="math inline">\(i\)</span>行作为第<span class="math inline">\(j\)</span>行的答案，而不能用第<span class="math inline">\(i\)</span>行减去第<span class="math inline">\(j\)</span>行。</p>
+<p>消元完毕后，答案即为主对角线的乘积。因为不选主对角线上的数必定会选中<span class="math inline">\(0\)</span>，对答案没有贡献。而主对角线的排列<span class="math inline">\(p\)</span>逆序对数为<span class="math inline">\(0\)</span>。这样我们就在<span class="math inline">\(\mathrm{O}(n^3)\)</span>的时间内求出矩阵的行列式。</p>
+<p>##矩阵树定理</p>
+<p>求<strong>无向图</strong><span class="math inline">\(G\)</span>的生成树个数。根据矩阵树定理（Matrix-Tree Theorem/Kirchhoff's Theorem），若<span class="math inline">\(G\)</span>的Kirchhoff矩阵为<span class="math inline">\(K\)</span>，则其生成树个数<span class="math inline">\(ST(G)\)</span>为：</p>
+<p><span class="math display">\[ST(G)=\det{K_{i,i}}\]</span></p>
+<p><span class="math inline">\(i\)</span>的值无所谓。具体证明和推导见<a href="http://vfleaking.blog.163.com/blog/static/1748076342013112523651955/" target="_blank" rel="noopener">这里</a>。</p>
+<p>然而什么是Kirchhoff矩阵？令图<span class="math inline">\(G\)</span>的度数矩阵为<span class="math inline">\(D\)</span>，邻接矩阵为<span class="math inline">\(A\)</span>，则<span class="math inline">\(K=D-A\)</span>。更一般地，有：</p>
+<p><span class="math display">\[
+K_{i,j}=
+\begin{cases}
+\deg(i),&amp;i=j\\
+-1,&amp;(i,j)\in E\\
+0,&amp;otherwise
+\end{cases}
+\]</span></p>
+<p>但是这样高斯消元容易有精度误差，解决方法未知，可以考虑分数类。不过一般都是在模意义下的高斯消元，然后就可以采用辗转相除的黑科技保证精度。</p>
+<p>可以扩展到有向图上，求出来的是有向树。</p>
+<p>##特征值及特征多项式</p>
+<p>哈？</p>
+<p>##练习</p>
+<p>###矩阵乘法</p>
+<p>####BZOJ3444 ⑨的故事</p>
+<p>题意：求<span class="math inline">\(A^9\Sigma_{i=1}^n A^i\)</span>。</p>
+<p>由于矩阵乘法满足分配率，因此当<span class="math inline">\(n\)</span>为偶数时有<span class="math inline">\(\Sigma_{i=1}^n A^i=(1+A^{n/2})\Sigma_{i=1}^{n/2} A^i\)</span>，奇数的情况相同考虑。然后就可以分治了。</p>
+<p>时间复杂度<span class="math inline">\(\mathrm{O}(n^3\log{n})\)</span>。</p>
+<p>###矩阵快速幂</p>
+<p>####HNOI2002 公交车路线</p>
+<p>我们能得到递推方程</p>
+<p><span class="math display">\[
+f_{i,j}=
+\begin{cases}
+0,&amp;j=4\text{且}i\not=n   \\
+f_{i-1,j-1}+f_{i-1,j+1},&amp;otherwise
+\end{cases}
+\]</span></p>
+<p>其中<span class="math inline">\(f_{i,j}\)</span>表示坐<span class="math inline">\(i\)</span>次车到达<span class="math inline">\(j\)</span>站的方案数。</p>
+<p>这个式子线性递推且大小只有<span class="math inline">\(8\)</span>，矩阵快速幂。</p>
+<p>####USACO2007NovGold Cow Relays</p>
+<p>经过<span class="math inline">\(k\)</span>条边的最短路径。注意到边数<span class="math inline">\(nE\)</span>不大且每个点度数<span class="math inline">\(\geq 2\)</span>，因此只需要最多<span class="math inline">\(2nE\)</span>个点即可，离散化。</p>
+<p>####ZJOI2004 鳄鱼沼泽</p>
+<p>仍然是求经过<span class="math inline">\(k\)</span>条边的路径方案数，不过路径会变。然而变化周期为<span class="math inline">\(2,3,4\)</span>，因此大周期为<span class="math inline">\((2,3,4)=12\)</span>就能出现循环。假设第<span class="math inline">\(i\)</span>个局面的前缀积矩阵为<span class="math inline">\(G_i\)</span>，则大循环矩阵为<span class="math inline">\(G_{12}\)</span>，答案矩阵为<span class="math inline">\(G_{12}^{\lfloor \frac n{12}\rfloor}G_{n \bmod 12}\)</span>。</p>
+<p>注意修改矩阵的时候，若<span class="math inline">\(u\)</span>不能通过，应该将前一个图到达<span class="math inline">\(u\)</span>的点和该图从<span class="math inline">\(u\)</span>出发的点置<span class="math inline">\(0\)</span>才对。</p>
+<p>####BSOJ3792 做梦</p>
+<p>令<span class="math inline">\(f_i\)</span>为<span class="math inline">\(i\)</span>时间后在家中的方案数，<span class="math inline">\(g_i\)</span>为<span class="math inline">\(i\)</span>时间内从家出发走<span class="math inline">\(i\)</span>步不经过家且最后在家的方案数。则<span class="math inline">\(f_i=\Sigma_{j=2}^m f_{i-j}g_j\)</span>。发现这个形式线性相关（<span class="math inline">\(g_j\)</span>可以看作常数），构造矩阵： <span class="math display">\[
+\begin{bmatrix}
+g_2 &amp;g_4 &amp;\cdots &amp;g_{m-2} &amp;g_m\\
+1 &amp;0 &amp;\cdots &amp;0 &amp;0\\
+0 &amp;1 &amp;\cdots &amp;0 &amp;0\\
+\vdots &amp;\vdots &amp;\ddots &amp;\vdots &amp;\vdots\\
+0 &amp;0 &amp;\cdots &amp;1 &amp;0\\
+\end{bmatrix}
+\begin{bmatrix}
+f_{i-2}\\
+f_{i-4}\\
+f_{i-6}\\
+\vdots\\
+f_{i-m}\\
+\end{bmatrix}=
+\begin{bmatrix}
+f_i\\
+f_{i-2}\\
+f_{i-4}\\
+\vdots\\
+f_{i-m+2}\\
+\end{bmatrix}
+\]</span> 前面的方阵可以快速幂。手推（打表）一下<span class="math inline">\(g\)</span>就发现是Catalan数。</p>
+<p>####Codeforces719E Sasha and Array</p>
+<p>题意：要求支持两种操作：区间Fibonacci和，区间加法。</p>
+<p>好题。明显线段树，然而线段树怎么维护值呢。考虑到Fibonacci可以用矩阵快速幂计算，因此我们可以给线段树每个节点都丢一个Fibonacci变换矩阵<span class="math inline">\(G\)</span>。</p>
+<p>不难发现对Fibonacci数列<span class="math inline">\(f(n)\)</span>有： <span class="math display">\[
+\begin{aligned}
+f(n+\Delta)=&amp;G^{n+\Delta} \\
+=&amp;G^nG^{\Delta} \\
+=&amp;f(n)G^{\Delta}
+\end{aligned}
+\]</span> 因此修改值等价于乘变换矩阵的<span class="math inline">\(\Delta\)</span>次方。又矩阵乘法满足分配率：</p>
+<p><span class="math display">\[\Sigma_i (f(n_i)G^{\Delta})=G^{\Delta}\Sigma_i f(n_i)\]</span></p>
+<p>因此对一个区间乘上<span class="math inline">\(G^{\Delta}\)</span>等于对区间和乘上<span class="math inline">\(G^{\Delta}\)</span>。然后就可以用线段树愉快地维护lazy啦。要注意传<span class="math inline">\(\Delta\)</span>的时候最好计算好矩阵再传引用，否则时间开销很大。</p>
+<p>###高斯消元</p>
+<p>####JSOI2008 球形空间产生器</p>
+<p>假设球心坐标，通过球心到<span class="math inline">\(n+1\)</span>个点的距离相同可以得到<span class="math inline">\(n+1\)</span>个方程，且方程右边的数相同。</p>
+<p>相邻两个方程分别相减得到<span class="math inline">\(n\)</span>个<span class="math inline">\(n\)</span>元一次方程（虽然可以得到更多方程，但是是多余的），用高斯消元即可。</p>
+<p>####BSOJ4544 开关问题</p>
+<p>不难发现一个开关要么被开，要么不被开（开两次即以上相当于模<span class="math inline">\(2\)</span>下的操作），且状态与开关顺序无关。因此我们假设每个开关是否被开，则对灯<span class="math inline">\(i\)</span>有一个线性方程组，方程组左边为影响<span class="math inline">\(i\)</span>的开关，方程组右边为灯的末状态和初状态的差值。解异或方程组求自由元个数即可。</p>
+<p>###矩阵树定理</p>
+<p>####SPOJ104 Highways</p>
+<p>直接运用定理和高斯消元即可。</p>
+<p>####HEOI2015 小Z的房间</p>
+<p>建图求生成树。然而要模<span class="math inline">\(10^9\)</span>，只能用辗转相除的高斯消元。</p>
+<p>####文艺计算姬</p>
+<p>题意：求二分图<span class="math inline">\((n,m)\)</span>的生成树个数。</p>
+<p>矩阵长这样。</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+m&amp;0&amp;\cdots&amp;0&amp;-1&amp;-1&amp;\cdots&amp;-1\\
+0&amp;m&amp;\cdots&amp;0&amp;-1&amp;-1&amp;\cdots&amp;-1\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\cdots&amp;m&amp;-1&amp;-1&amp;\cdots&amp;-1\\
+-1&amp;-1&amp;\cdots&amp;-1&amp;n&amp;0&amp;\cdots&amp;0\\
+-1&amp;-1&amp;\cdots&amp;-1&amp;0&amp;n&amp;\cdots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+-1&amp;-1&amp;\cdots&amp;-1&amp;0&amp;0&amp;\cdots&amp;n\\
+\end{bmatrix}
+\]</span></p>
+<p>我们只要<span class="math inline">\(M_{n+m,n+m}\)</span>，然后消前<span class="math inline">\(n\)</span>行。 <span class="math display">\[
+D=
+\begin{vmatrix}
+m&amp;0&amp;\cdots&amp;0&amp;-1&amp;-1&amp;\cdots&amp;-1\\
+0&amp;m&amp;\cdots&amp;0&amp;-1&amp;-1&amp;\cdots&amp;-1\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\cdots&amp;m&amp;-1&amp;-1&amp;\cdots&amp;-1\\
+0&amp;0&amp;\cdots&amp;0&amp;n-\frac nm&amp;-\frac nm&amp;\cdots&amp;-\frac nm\\
+0&amp;0&amp;\cdots&amp;0&amp;-\frac nm&amp;n-\frac nm&amp;\cdots&amp;-\frac nm\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\cdots&amp;0&amp;-\frac nm&amp;-\frac nm&amp;\cdots&amp;n-\frac nm\\
+\end{vmatrix}
+\]</span> 令<span class="math inline">\(D_1\)</span>和<span class="math inline">\(D_2\)</span>有： <span class="math display">\[
+D_1=
+\begin{vmatrix}
+m&amp;0&amp;\cdots&amp;0\\
+0&amp;m&amp;\cdots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\cdots&amp;m\\
+\end{vmatrix}
+,D_2=
+\begin{vmatrix}
+n-\frac nm&amp;-\frac nm&amp;\cdots&amp;-\frac nm\\
+-\frac nm&amp;n-\frac nm&amp;\cdots&amp;-\frac nm\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+-\frac nm&amp;-\frac nm&amp;\cdots&amp;n-\frac nm\\
+\end{vmatrix}
+\]</span> 由于左下角都为<span class="math inline">\(0\)</span>，因此它们对行列式没有贡献，有贡献的只有左上角和右下角，即<span class="math inline">\(D=D_1D_2\)</span>。显然<span class="math inline">\(D_1=m^n\)</span>。我们观察<span class="math inline">\(D_2\)</span>。</p>
+<p>把除了第一行的行都加到第一行上。 <span class="math display">\[
+D_2=
+\begin{vmatrix}
+\frac nm&amp;\frac nm&amp;\cdots&amp;\frac nm\\
+-\frac nm&amp;n-\frac nm&amp;\cdots&amp;-\frac nm\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+-\frac nm&amp;-\frac nm&amp;\cdots&amp;n-\frac nm\\
+\end{vmatrix}
+\]</span> 提出第一行的常数： <span class="math display">\[
+D_2=\frac nm
+\begin{vmatrix}
+1&amp;1&amp;\cdots&amp;1\\
+-\frac nm&amp;n-\frac nm&amp;\cdots&amp;-\frac nm\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+-\frac nm&amp;-\frac nm&amp;\cdots&amp;n-\frac nm\\
+\end{vmatrix}
+\]</span> 把第一行乘<span class="math inline">\(\frac nm\)</span>加到下面： <span class="math display">\[
+D_2=\frac nm
+\begin{vmatrix}
+1&amp;1&amp;\cdots&amp;1\\
+0&amp;n&amp;\cdots&amp;0 \\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\cdots&amp;n\\
+\end{vmatrix}
+\]</span></p>
+<p>显然<span class="math inline">\(D_2=\frac nm*n^{m-2}=n^{m-1}m^{-1}\)</span>。因此<span class="math inline">\(D=D_1D_2=n^{m-1}m^{n-1}\)</span>。</p>
+<p>另外这道题也可以用prufer序列得到式子：</p>
+<p>//有空再写</p>
+<p>需要快速乘和快速幂。</p>
+<p>##总结</p>
+<p>矩阵是线性代数的基础之一，其拥有很多性质，如快速幂给我们一种计算线性递推式的方法，行列式可以进行生成树计数。（虽然还有很多性质没有学习）</p>
+<ul>
+<li><p><span class="math inline">\(n\)</span>项的线性递推式可以构造一个<span class="math inline">\(n\times n\)</span>的变换矩阵进行快速幂。如果项中有不能<strong>直接</strong>从上一次的元素中得到的项（如<span class="math inline">\(k\)</span>次幂），需要将该项的递推式项也加入矩阵，否则可以直接在变换矩阵里写一个常数转移。</p></li>
+<li><p>邻接矩阵的<span class="math inline">\(k\)</span>次幂是一个经过<span class="math inline">\(k\)</span>条边的方案数矩阵。如果有必要，可以重新定义乘法；</p></li>
+<li><p>高斯消元有多解时，若某项及之后的式子该项系数全为<span class="math inline">\(0\)</span>，则需要<strong>保持在该行</strong>并考察下一项。</p></li>
+<li><p>行列式求值时，交换两行需要乘<span class="math inline">\(-1\)</span>。且消元时应该用第<span class="math inline">\(j\)</span>行减去第<span class="math inline">\(i\)</span>行作为第<span class="math inline">\(j\)</span>行的答案。</p></li>
+<li>行列式的六个性质：
+<ol type="1">
+<li><span class="math inline">\(\det(A)=\det(A^T)\)</span></li>
+<li><span class="math inline">\(\det(A)=-\det(A_{\text{swap(i,j)}})\)</span></li>
+<li><span class="math inline">\(k\det(a)=\det{A_{A_i=kA_i}}\)</span></li>
+<li>若<span class="math inline">\(A_i=kA_j\)</span>，则<span class="math inline">\(\det(A)=0\)</span></li>
+<li>若<span class="math inline">\(A=B+C\)</span>，则<span class="math inline">\(\det(A)=\det(B)+\det(C)\)</span></li>
+<li><span class="math inline">\(\det(A)=\det(A_{A_i=A_i+kA_j})\)</span></li>
+</ol></li>
+<li><p>进行行列式化简时，若每一行都刚好有一个元素相同且互不同列，而其他元素也相同，则可以把所有行都加在一行上得到一行相同的数，提出常数得到<span class="math inline">\(1\)</span>，再依次消元。</p></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/矩阵/" rel="tag"># 矩阵</a>
+          
+            <a href="/tags/行列式/" rel="tag"># 行列式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/summary/tree-algorithm/" rel="next" title="树算法总结">
+                <i class="fa fa-chevron-left"></i> 树算法总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/summary/permutation-group/" rel="prev" title="置换群总结">
+                置换群总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDg5MC8xNzQxNQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_nikkukun.png" alt="nikkukun">
+            
+              <p class="site-author-name" itemprop="name">nikkukun</p>
+              <p class="site-description motion-element" itemprop="description">是个蒟蒻，梦想不是造飞机。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:tyakennikku@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" target="_blank" title="QQ"><i class="fa fa-fw fa-qq"></i>QQ</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/SaltedHXJ/" title="_ConveX" target="_blank">_ConveX</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+    <script type="text/javascript">
+      window.livereOptions = {
+        refer: 'summary/matrix/'
+      };
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.5.0"></script>
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
