@@ -114,7 +114,7 @@
 <meta property="og:site_name" content="Nikkukun&#39;s Blog">
 <meta property="og:description" content="莫比乌斯反演是偏序集上的一个反演，不过在此处我们只讨论整数格上的莫比乌斯反演。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-29T13:44:44.165Z">
+<meta property="og:updated_time" content="2018-11-30T11:48:46.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="莫比乌斯反演总结">
 <meta name="twitter:description" content="莫比乌斯反演是偏序集上的一个反演，不过在此处我们只讨论整数格上的莫比乌斯反演。">
@@ -393,7 +393,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-29 21:44:44" itemprop="dateModified" datetime="2018-11-29T21:44:44+08:00">2018-11-29</time>
+                <time title="修改时间：2018-11-30 19:48:46" itemprop="dateModified" datetime="2018-11-30T19:48:46+08:00">2018-11-30</time>
               
             
           </span>
@@ -453,7 +453,7 @@
       
         <p>莫比乌斯反演是偏序集上的一个反演，不过在此处我们只讨论整数格上的莫比乌斯反演。</p>
 <a id="more"></a>
-<p>###整数格上的莫比乌斯反演</p>
+<h2 id="整数格上的莫比乌斯反演">整数格上的莫比乌斯反演</h2>
 <p>定义<span class="math inline">\(\mu\)</span>函数：</p>
 <p><span class="math display">\[
 \mu(n)=
@@ -466,18 +466,13 @@
 <p>函数有两个性质。</p>
 <ul>
 <li><span class="math inline">\(\mu\)</span>是积性函数。</li>
-<li>$_{i=1}^n(i)=
-<span class="math display">\[\begin{cases}
-1,&amp;n=1 \\
-0,&amp;othewise\\
-\end{cases}\]</span>
-$</li>
+<li><span class="math inline">\(\Sigma_{i=1}^n\mu(i)= \begin{cases} 1,&amp;n=1 \\ 0,&amp;othewise\\ \end{cases}\)</span></li>
 </ul>
 <p>第一条性质说明<span class="math inline">\(\mu\)</span>可以<strong>线性筛</strong>；第二条性质提供了我们一个<strong>当且仅当</strong><span class="math inline">\(n=1\)</span>时计数的函数，因此在遇到求<span class="math inline">\((i,j)=1\)</span>的问题中通常会用到它。</p>
 <p>直接给出代码。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!notPri[i])pri[siz++]=i,mu[i]=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;siz&amp;&amp;i*pri[j]&lt;N;j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> nxt=i*pri[j];notPri[nxt]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pri[j])mu[nxt]=-mu[i];</span><br><span class="line">            <span class="keyword">else</span> &#123;mu[nxt]=<span class="number">0</span>;<span class="keyword">break</span>;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当出现平方因子就退出筛法保证了每个数只会被最小的因子筛去，因此时间复杂度线性。<span class="math inline">\(\mu_i=0\)</span>的情况是由最小因子筛掉的，而其他情况都是由<span class="math inline">\(\mu_i=-\mu_j\)</span>得到的。</p>
-<p>###反演</p>
+<h2 id="反演">反演</h2>
 <p>想学习很多反演，但是太菜了只会这个.jpg</p>
 <p>以后可能会补吧。</p>
 <p>若函数<span class="math inline">\(f(n),g(n)\)</span>为数论函数，且满足<span class="math inline">\(f(n)=\Sigma_{i|n}g(i)\)</span>，则有：</p>
@@ -485,7 +480,7 @@ $</li>
 <p>若函数<span class="math inline">\(f(n),g(n)\)</span>为数论函数，且满足<span class="math inline">\(f(i)=\Sigma_{d=1}^{\lfloor \frac ni \rfloor}g(i*d)\)</span>，则有：</p>
 <p><span class="math display">\[g(i)=\Sigma_{d=1}^{\lfloor \frac ni \rfloor}f(i*d)\mu(d)\]</span></p>
 <p><a href="https://blog.sengxian.com/algorithms/mobius-inversion-formula" target="_blank" rel="noopener">证明</a>略去。事实上两种方法都可以比较方便地运用，一般第一种不需要构造函数，而第二种需要构造函数。</p>
-<p>####常用反演</p>
+<h3 id="常用反演">常用反演</h3>
 定义符号$[exp]=
 <span class="math display">\[\begin{cases}
 1,&amp;exp=true\\
@@ -499,10 +494,10 @@ id=\phi \times 1
 \]</span></p>
 <p>乘法代表狄利克里卷积。因此反演也可以表示为：</p>
 <p><span class="math display">\[f=g \times 1 \Leftrightarrow g=f \times \mu\]</span></p>
-<p>###应用</p>
-<p>####二维GCD计数前缀和</p>
+<h2 id="应用">应用</h2>
+<h3 id="二维gcd计数前缀和">二维GCD计数前缀和</h3>
 <p>求<span class="math inline">\(\Sigma_{i=1}^n \Sigma_{j=1}^m [(i,j)==k]\)</span>且<span class="math inline">\(n\leq m\)</span>。</p>
-<p>#####不使用函数变换的方法</p>
+<h4 id="不使用函数变换的方法">不使用函数变换的方法</h4>
 <p>不难发现：</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -516,7 +511,7 @@ id=\phi \times 1
 \end{aligned}
 \]</span></p>
 <p>而<span class="math inline">\(\lfloor \frac ng\rfloor\)</span>只有不超过<span class="math inline">\(\sqrt{n}\)</span>种取值，<span class="math inline">\(\lfloor \frac ng\rfloor\)</span>和<span class="math inline">\(\lfloor \frac mg\rfloor\)</span>只有不超过<span class="math inline">\(\sqrt{n}+\sqrt{m}\)</span>种取值，因此可以将<span class="math inline">\([1,n]\)</span>分成<span class="math inline">\(\sqrt{n}+\sqrt{m}\)</span>块，每一块的<span class="math inline">\(\lfloor \frac ng\rfloor\)</span>和<span class="math inline">\(\lfloor \frac mg\rfloor\)</span>取值都不变，则我们预处理<span class="math inline">\(\mu\)</span>后可以对一块区间进行<span class="math inline">\(\mathrm{O}(1)\)</span>的统计，总时间复杂度为<span class="math inline">\(\mathrm{O}(\sqrt{n}+\sqrt{m})\)</span>。</p>
-<p>#####使用函数变换的方法</p>
+<h4 id="使用函数变换的方法">使用函数变换的方法</h4>
 <p>令<span class="math inline">\(f(k)=\Sigma\_{i=1}^n \Sigma_{j=1}^m [(i,j)==k]\)</span>，<span class="math inline">\(g(k)=\Sigma_{i=1}^n \Sigma_{j=1}^m [k|(i,j)]\)</span>，则<span class="math inline">\(f(k)\)</span>就是我们要求的答案。很明显<span class="math inline">\(k|(i,j) \Leftrightarrow k|i\text{且}k|j\)</span>，因此<span class="math inline">\(g(k)=\lfloor \frac nk \rfloor \lfloor \frac mk \rfloor\)</span>。</p>
 <p>发现<span class="math inline">\(g(k)=\Sigma_{d=1}^{\lfloor \frac nk\rfloor}f(d*k)\)</span>，因此有：</p>
 <p><span class="math display">\[
@@ -542,7 +537,7 @@ f(k)=&amp;\Sigma_{d=1}^{\lfloor \frac nk \rfloor}\left\lfloor \frac {n&#39;}d \r
 \end{aligned}
 \]</span></p>
 <p>同理可得<span class="math inline">\(m\)</span>。因此<span class="math inline">\(j=min( \left\lfloor \frac {n&#39;}{\lfloor \frac {n&#39;}i \rfloor} \right\rfloor,\left\lfloor \frac {m&#39;}{\lfloor \frac {m&#39;}i \rfloor} \right\rfloor)\)</span>。这个技巧在很多莫比乌斯反演的题目都用得上。</p>
-<p>####求约数个数和</p>
+<h3 id="求约数个数和">求约数个数和</h3>
 <p>直接给出结论：</p>
 <p>若<span class="math inline">\(d(n)\)</span>为<span class="math inline">\(n\)</span>的约数个数，则有：</p>
 <p><span class="math display">\[
@@ -553,23 +548,23 @@ d(nm)=\Sigma_{i|n} \Sigma_{j|m} [(i,j)==1]
 <p>然后还有个推广的神奇大结论：</p>
 <p><span class="math display">\[\sum_{x_1}^{y_1} \sum_{x_2}^{y_2} \cdots \sum_{x_k}^{y_k} d(x_1 x_2 \cdots x_k) = \sum_{x_1}^{y_1} \sum_{x_2}^{y_2} \cdots \sum_{x_k}^{y_k} \prod_{i=1}^{k} \left \lfloor \frac{y_i}{x_i} \right \rfloor \prod_{i &lt; j }  [(x_i, x_j)=1]\]</span></p>
 <p>太神奇，<a href="http://www.cnblogs.com/iwtwiioi/p/4986325.html" target="_blank" rel="noopener">证明</a>需要二重数学归纳，略过。</p>
-<p>##杜教筛</p>
+<h1 id="杜教筛">杜教筛</h1>
 <p>高端，不会。</p>
-<h2 id="min-25筛">min-25筛</h2>
+<h1 id="min-25筛">min-25筛</h1>
 <p>高端，不会。</p>
-<p>##练习</p>
+<h1 id="练习">练习</h1>
 <p>莫比乌斯的题目通常能转化为<span class="math inline">\((i,j)=1\)</span>的计数问题，而转化为计数问题我们就容易通过分块求解了。</p>
-<p>###基础</p>
-<p>####POI2007 Zap</p>
+<h2 id="基础">基础</h2>
+<h3 id="poi2007-zap">POI2007 Zap</h3>
 <p>二维GCD计数前缀和。</p>
-<p>####HAOI2011 Problem b</p>
+<h3 id="haoi2011-problem-b">HAOI2011 Problem b</h3>
 <p><em>POI2007 Zap</em>的加强版，容斥原理加加减减就好了。</p>
-<p>####BZOJ2820 YY的GCD</p>
+<h3 id="bzoj2820-yy的gcd">BZOJ2820 YY的GCD</h3>
 <p>仍然是二维GCD计数前缀和，不过需要<span class="math inline">\((i,j)\)</span>为质数。只要预处理质数的<span class="math inline">\(\mu\)</span>前缀和就好了。</p>
-<p>####SDOI2008 仪仗队</p>
+<h3 id="sdoi2008-仪仗队">SDOI2008 仪仗队</h3>
 <p>不被挡住即行列<span class="math inline">\((i,j)=1\)</span>（从<span class="math inline">\(0\)</span>标号），因此答案为<span class="math inline">\((\Sigma\_{i=1}^n \Sigma\_{i=1}^n [(i,j)==1])+2\)</span>（<span class="math inline">\(2\)</span>个是<span class="math inline">\((0,1),(1,0)\)</span>）。最终化为<span class="math inline">\((\Sigma\_{g=1}^n \mu(g)\lfloor \frac ng\rfloor ^2)+2\)</span>，分块求解。</p>
-<p>##进阶</p>
-<p>####SDOI2015 约数个数和</p>
+<h1 id="进阶">进阶</h1>
+<h3 id="sdoi2015-约数个数和">SDOI2015 约数个数和</h3>
 <p>是道好题，然而需要结论。</p>
 <p>令<span class="math inline">\(n&#39;=\frac ng,m&#39;=\frac mg\)</span>，则</p>
 <p><span class="math display">\[
@@ -584,7 +579,7 @@ d(nm)=\Sigma_{i|n} \Sigma_{j|m} [(i,j)==1]
 \]</span></p>
 <p>然后就可以预处理<span class="math inline">\(f(n)=\Sigma\_{i=1}^n \frac ni​\)</span>的值，每次询问就可以分块解决。之所以要预处理<span class="math inline">\(f(n)​\)</span>，是因为在倒数第二步时如果采用直接计算<span class="math inline">\(\Sigma\_{i=1}^{n&#39;} \Sigma\_{j=1}^{m&#39;} \frac {n&#39;}i \frac{m&#39;}j​\)</span>开销是很大的。但如果我们能预处理，就能做到<span class="math inline">\(\mathrm{O}(1)​\)</span>计算。</p>
 <p>预处理时间复杂度<span class="math inline">\(\mathrm{O}(n\sqrt{n})\)</span>，单次询问时间复杂度<span class="math inline">\(\mathrm{O}(\sqrt{n})\)</span>。</p>
-<p>####HNMTC2015#5 Lucas的数论</p>
+<h3 id="hnmtc20155-lucas的数论">HNMTC2015#5 Lucas的数论</h3>
 <p>发现是<em>SDOI2015 约数个数和</em>的单询问加强版本，上面对<span class="math inline">\(\mu\)</span>前缀和的<span class="math inline">\(\mathrm{O}(n)\)</span>时间复杂度已经不能满足我们了。</p>
 <p>式子最终可以推成这样：</p>
 <p><span class="math display">\[\Sigma_{g=1}^n\mu(g) d(n&#39;)^2 \]</span></p>
@@ -592,9 +587,9 @@ d(nm)=\Sigma_{i|n} \Sigma_{j|m} [(i,j)==1]
 <p><span class="math display">\[sum(n)=1-\Sigma_{i=2}^n sum(\lfloor \frac ni \rfloor)\]</span></p>
 <p>递归求解。注意这也是能分块的，因此一层的时间为<span class="math inline">\(\mathrm{O}(\sqrt{n})\)</span>，据说没有记忆化搜索时计算一次的时间复杂度为<span class="math inline">\(\mathrm{O}(n^{\frac 23})\)</span>。不过事实上我们可以记忆化搜索，或者线筛预处理出<span class="math inline">\(n\leq 5000000\)</span>（测试得到这个效率比较高）的<span class="math inline">\(\mu\)</span>前缀和减少计算。</p>
 <p>总时间复杂度未知，不过测试极限数据还是挺极限的。</p>
-<p>###高级</p>
+<h2 id="高级">高级</h2>
 <p>没做过什么高级的。</p>
-<p>##总结</p>
+<h1 id="总结">总结</h1>
 <p>莫比乌斯反演基本上离不开GCD和两个累和符号，而且重点往往是把式子化成统计GCD=1个数的形式，并反演求解。求解一般通过<strong>分块</strong>和预处理<span class="math inline">\(\mu\)</span>前缀和的方式<span class="math inline">\(\mathrm{O}(\sqrt{n})\)</span>求和。</p>
 <ul>
 <li><p><span class="math inline">\(e=\mu \times 1,id=\phi \times 1\)</span></p></li>
@@ -646,8 +641,8 @@ $</li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/summary/tree-algorithm/" rel="next" title="树算法总结">
-                <i class="fa fa-chevron-left"></i> 树算法总结
+              <a href="/summary/dynamic-programming/" rel="next" title="动态规划总结">
+                <i class="fa fa-chevron-left"></i> 动态规划总结
               </a>
             
           </div>
@@ -656,8 +651,8 @@ $</li>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/summary/number-theory/" rel="prev" title="数论总结">
-                数论总结 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/reference-to-build-hexo/" rel="prev" title="关于hexo的一些参考资料">
+                关于hexo的一些参考资料 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -869,7 +864,7 @@ $</li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#min-25筛"><span class="nav-number">1.</span> <span class="nav-text">min-25筛</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整数格上的莫比乌斯反演"><span class="nav-number">1.</span> <span class="nav-text">整数格上的莫比乌斯反演</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反演"><span class="nav-number">2.</span> <span class="nav-text">反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用反演"><span class="nav-number">2.1.</span> <span class="nav-text">常用反演</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维gcd计数前缀和"><span class="nav-number">3.1.</span> <span class="nav-text">二维GCD计数前缀和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不使用函数变换的方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">不使用函数变换的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用函数变换的方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">使用函数变换的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#求约数个数和"><span class="nav-number">3.2.</span> <span class="nav-text">求约数个数和</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#杜教筛"><span class="nav-number"></span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#min-25筛"><span class="nav-number"></span> <span class="nav-text">min-25筛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#练习"><span class="nav-number"></span> <span class="nav-text">练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#poi2007-zap"><span class="nav-number">1.1.</span> <span class="nav-text">POI2007 Zap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#haoi2011-problem-b"><span class="nav-number">1.2.</span> <span class="nav-text">HAOI2011 Problem b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj2820-yy的gcd"><span class="nav-number">1.3.</span> <span class="nav-text">BZOJ2820 YY的GCD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sdoi2008-仪仗队"><span class="nav-number">1.4.</span> <span class="nav-text">SDOI2008 仪仗队</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶"><span class="nav-number"></span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sdoi2015-约数个数和"><span class="nav-number">0.1.</span> <span class="nav-text">SDOI2015 约数个数和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hnmtc20155-lucas的数论"><span class="nav-number">0.2.</span> <span class="nav-text">HNMTC2015#5 Lucas的数论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级"><span class="nav-number">1.</span> <span class="nav-text">高级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></li></div>
             
 
           </div>
