@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/codeforces/cf-551-div2/</loc>
+    <lastmod>2019-04-15T15:40:44.016Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/summary/tree-algorithm/</loc>
+    <lastmod>2019-03-22T09:09:19.710Z</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/contest/bcpc2018/</loc>
     <lastmod>2019-03-22T08:59:59.752Z</lastmod>
   </url>  <url>
@@ -33,9 +39,6 @@
   </url>  <url>
     <loc>http://yoursite.com/luogu/3750/</loc>
     <lastmod>2018-11-30T11:51:25.333Z</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/summary/tree-algorithm/</loc>
-    <lastmod>2018-11-30T11:51:20.718Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/summary/string-algorithm/</loc>
     <lastmod>2018-11-30T11:51:15.498Z</lastmod>
