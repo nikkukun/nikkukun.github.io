@@ -420,6 +420,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/summary/mobius-inversion/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/summary/mobius-inversion/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -651,8 +661,8 @@ $</li>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/summary/2-sat/" rel="prev" title="2-SAT总结">
-                2-SAT总结 <i class="fa fa-chevron-right"></i>
+              <a href="/summary/number-theory/" rel="prev" title="数论总结">
+                数论总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -675,6 +685,9 @@ $</li>
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -1049,6 +1062,31 @@ $</li>
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'bxzjsxhCFpVGsSrKOBP2vEE7-gzGzoHsz',
+        appKey: 'goslnAPfPvWwGLntvCtR46sp',
+        placeholder: '想说点什么？',
+        avatar:'mp',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 

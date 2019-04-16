@@ -419,6 +419,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/summary/string-algorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/summary/string-algorithm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -640,8 +650,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/summary/tree-algorithm/" rel="next" title="树算法总结">
-                <i class="fa fa-chevron-left"></i> 树算法总结
+              <a href="/summary/dynamic-programming/" rel="next" title="动态规划总结">
+                <i class="fa fa-chevron-left"></i> 动态规划总结
               </a>
             
           </div>
@@ -650,8 +660,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/summary/network-flow/" rel="prev" title="网络流总结">
-                网络流总结 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/reference-to-build-hexo/" rel="prev" title="关于hexo的一些参考资料">
+                关于hexo的一些参考资料 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -674,6 +684,9 @@
           </div>
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -1048,6 +1061,31 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'bxzjsxhCFpVGsSrKOBP2vEE7-gzGzoHsz',
+        appKey: 'goslnAPfPvWwGLntvCtR46sp',
+        placeholder: '想说点什么？',
+        avatar:'mp',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
 
 
 
