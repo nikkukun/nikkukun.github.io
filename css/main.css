@@ -1848,7 +1848,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fa53ff;
+  background: #a836ad;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3129,4 +3129,17 @@ body {
 }
 .main-inner {
   opacity: 0.95;
+}
+.hider_title {
+  font-family: "Microsoft Yahei";
+  cursor: pointer;
+}
+.close:after {
+  content: "展开代码 ▼";
+}
+.open:after {
+  content: "收起代码 ▲";
+}
+.feed-link a {
+  display: inline-block;
 }
