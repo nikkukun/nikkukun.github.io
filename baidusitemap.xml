@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/icpc/icpc-180421-practical-contest/</loc>
+    <lastmod>2019-04-25T08:38:01.151Z</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/codeforces/cf-551-div2/</loc>
     <lastmod>2019-04-22T04:38:36.071Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/codeforces/cf-553-div2/</loc>
     <lastmod>2019-04-22T04:38:29.844Z</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/icpc/icpc-nanchang-internet-2019/</loc>
+    <loc>http://yoursite.com/icpc/icpc-nanchang-onsite2019/</loc>
     <lastmod>2019-04-21T15:51:37.152Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/summary/tree-algorithm/</loc>
