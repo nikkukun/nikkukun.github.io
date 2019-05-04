@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/spring-training/spring-training-190428/</loc>
+    <lastmod>2019-05-04T15:24:53.980Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/spring-training/spring-training-190427/</loc>
+    <lastmod>2019-05-04T14:23:59.876Z</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/icpc/icpc-180421-practical-contest/</loc>
+    <lastmod>2019-05-04T13:55:39.235Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/icpc/icpc-190421-practical-contest/</loc>
     <lastmod>2019-04-25T15:25:35.730Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/codeforces/cf-553-div2/</loc>
