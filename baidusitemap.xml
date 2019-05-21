@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/spring-training/spring-training-190518/</loc>
+    <lastmod>2019-05-21T15:39:20.868Z</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/codeforces/cf-556-div1/</loc>
-    <lastmod>2019-05-10T10:08:04.583Z</lastmod>
+    <lastmod>2019-05-21T15:01:13.835Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/summary/string-algorithm/</loc>
+    <lastmod>2019-05-17T01:23:29.723Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/summary/number-theory/</loc>
+    <lastmod>2019-05-17T01:11:50.188Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/summary/some-conclusion/</loc>
+    <lastmod>2019-05-16T12:22:17.226Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/summary/mobius-inversion/</loc>
     <lastmod>2019-05-05T08:18:23.284Z</lastmod>
@@ -34,9 +46,6 @@
     <loc>http://yoursite.com/contest/cubg-cpc/</loc>
     <lastmod>2018-12-09T02:23:36.521Z</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/summary/some-conclusion/</loc>
-    <lastmod>2018-12-09T00:51:44.115Z</lastmod>
-  </url>  <url>
     <loc>http://yoursite.com/codechef/nov-lunchtime-2018/</loc>
     <lastmod>2018-12-02T07:20:33.991Z</lastmod>
   </url>  <url>
@@ -61,14 +70,8 @@
     <loc>http://yoursite.com/luogu/3750/</loc>
     <lastmod>2018-11-30T11:51:25.333Z</lastmod>
   </url>  <url>
-    <loc>http://yoursite.com/summary/string-algorithm/</loc>
-    <lastmod>2018-11-30T11:51:15.498Z</lastmod>
-  </url>  <url>
     <loc>http://yoursite.com/summary/permutation-group/</loc>
     <lastmod>2018-11-30T11:50:53.065Z</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/summary/number-theory/</loc>
-    <lastmod>2018-11-30T11:50:49.688Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/summary/network-flow/</loc>
     <lastmod>2018-11-30T11:50:45.549Z</lastmod>
