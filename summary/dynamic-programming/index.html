@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Nikkukun&#39;s Blog">
 <meta property="og:description" content="主要说明优化DP的一些方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-30T11:50:33.284Z">
+<meta property="og:updated_time" content="2019-05-22T00:19:02.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划总结">
 <meta name="twitter:description" content="主要说明优化DP的一些方法。">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-30 19:50:33" itemprop="dateModified" datetime="2018-11-30T19:50:33+08:00">2018-11-30</time>
+                <time title="修改时间：2019-05-22 08:19:02" itemprop="dateModified" datetime="2019-05-22T08:19:02+08:00">2019-05-22</time>
               
             
           </span>
@@ -451,12 +451,11 @@
 <p><span class="math display">\[f_i=min\{-a_i*b_j+c_j\}+d_i \quad (0\leq j&lt;i)\]</span></p>
 <p>很明显，这个方程在朴素的情况下需要对每个<span class="math inline">\(i\)</span>枚举<span class="math inline">\(j\)</span>，时间复杂度是<span class="math inline">\(\mathrm{O}(n^2)\)</span>的。但是我们发现这个方程与<span class="math inline">\(i\)</span>和<span class="math inline">\(j\)</span>有关的项只有一项，而其他项要么<strong>只与<span class="math inline">\(i\)</span>有关</strong>，要么<strong>只与<span class="math inline">\(j\)</span>有关</strong>。令<span class="math inline">\(x=b_j,y=c_j,d_i=t\)</span>，则对确定的<span class="math inline">\(j\)</span>，<span class="math inline">\(x\)</span>与<span class="math inline">\(y\)</span>都是确定的。假设此时<span class="math inline">\(j\)</span>为最优转移。代入有：</p>
 <p><span class="math display">\[
-\begin{align}
-f_i&amp;=-a_i*x+y+t \\
-\Rightarrow y&amp;=a_i*x+f_i-t
-\end{align}
+\begin{aligned}
+f_i&amp;=-a_i*x+y+t \\ \Rightarrow y&amp;=a_i*x+f_i-t
+\end{aligned}
 \]</span></p>
-<p>由于<span class="math inline">\(t\)</span>只与<span class="math inline">\(i\)</span>相关，因此我们可以认为<span class="math inline">\(y = a_i x+f_i\)</span>。此时我们相当于在满足<span class="math inline">\((0\leq j&lt;i)\)</span>的<span class="math inline">\(j\)</span>所代表的点集中，找到使得斜率<span class="math inline">\(k=a_i\)</span>的直线在<span class="math inline">\(y\)</span>轴上的截距最小的点。不难看出这个点只能在点集的下凸包上，否则其他点都没有该点优。因此我们需要维护一个<strong>下凸的点集</strong>（相邻边<strong>斜率递增</strong>）。</p>
+<p>由于<span class="math inline">\(t\)</span>只与<span class="math inline">\(i\)</span>相关，因此我们可以认为<span class="math inline">\(y = a_i x+f_i\)</span>。此时我们相当于在满足<span class="math inline">\(0\leq j&lt;i\)</span>的<span class="math inline">\(j\)</span>所代表的点集中，找到使得斜率<span class="math inline">\(k=a_i\)</span>的直线在<span class="math inline">\(y\)</span>轴上的截距最小的点。不难看出这个点只能在点集的下凸包上，否则其他点都没有该点优。因此我们需要维护一个<strong>下凸的点集</strong>（相邻边<strong>斜率递增</strong>）。</p>
 <p>####排除不必要点</p>
 <p>考虑在候选点集里，哪些点是不必要的。方便考虑，我们先假设<span class="math inline">\(a_i\)</span><strong>非降</strong>，<span class="math inline">\(b_j\)</span><strong>严格递增</strong>，则插入点是按横坐标顺序排列的。由于斜率非降，我们通过画图可以知道若点<span class="math inline">\(j\)</span>最优化了<span class="math inline">\(i\)</span>，则对<span class="math inline">\(\forall i&#39;&gt;i\)</span>，其最优转移都不可能在<span class="math inline">\(j\)</span>之前的点<span class="math inline">\(k\)</span>取到（斜率非降<span class="math inline">\(\Leftrightarrow\)</span>极角非降，考虑旋转卡壳的过程对蹱点的单调转移），因此<strong>转移单调</strong>，可以删除<span class="math inline">\(j\)</span>前面的点。</p>
 <p>再考虑插入新点<span class="math inline">\(i\)</span>的情况。如果当前加入了<span class="math inline">\(i\)</span>会使得下凸性质被破坏，则当前点集最后一个点必定在下凸的上方，也就不会再被选中，直接删除。这个判断如果直接比较斜率容易出现<strong>精度误差</strong>甚至斜率不存在，我更喜欢用<strong>叉积</strong>计算。</p>
@@ -474,10 +473,10 @@ f_i&amp;=-a_i*x+y+t \\
 <p>####HDU3507 打印文章</p>
 <p>令<span class="math inline">\(sumC _i = \sum _{j=1}^i c_j\)</span>，则有：</p>
 <p><span class="math display">\[
-\begin{align}
+\begin{aligned}
 f_i&amp;=min/max\{f_j+(sumC_i-sumC_j + M)^2\} \\
 &amp;=min/max\{-2*sumC_i*sumC_j-2*sumC_j*M+f_j+sumC_j^2\} + (sumC_i+M)^2\\
-\end{align}
+\end{aligned}
 \]</span></p>
 <p>同时维护两个凸包。</p>
 <p>####HNOI2008 玩具装箱</p>
@@ -643,7 +642,7 @@ f_i=min\{f_j+|(sumLen_i-sumLenj-1-L)^p|\}
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
