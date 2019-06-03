@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="树是一类特殊的图，一棵树是拥有\(n\)个节点与\(n-1\)条边的无向联通图。树的性质很多，因此关于树的算法也不少。">
+<meta name="keywords" content="树链剖分,点分治">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树算法总结">
+<meta property="og:url" content="http://yoursite.com/summary/tree-algorithm/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="树是一类特殊的图，一棵树是拥有\(n\)个节点与\(n-1\)条边的无向联通图。树的性质很多，因此关于树的算法也不少。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-22T09:09:19.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树算法总结">
+<meta name="twitter:description" content="树是一类特殊的图，一棵树是拥有\(n\)个节点与\(n-1\)条边的无向联通图。树的性质很多，因此关于树的算法也不少。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/summary/tree-algorithm/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>树算法总结 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nikkukun's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/summary/tree-algorithm/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">树算法总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-14T00:00:00+08:00">2017-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-22 17:09:19" itemprop="dateModified" datetime="2019-03-22T17:09:19+08:00">2019-03-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法总结/" itemprop="url" rel="index"><span itemprop="name">算法总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/summary/tree-algorithm/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/summary/tree-algorithm/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>树是一类特殊的图，一棵树是拥有<span class="math inline">\(n\)</span>个节点与<span class="math inline">\(n-1\)</span>条边的无向联通图。树的性质很多，因此关于树的算法也不少。</p>
+<a id="more"></a>
+<p>##树的直径</p>
+<p>即树上最远的点对距离，可以用DFS或动态规划在$<span class="math inline">\(\mathrm{O}(n)\)</span>的时间内处理。NOIP内容，不细讲。</p>
+<p>可以证明，每个点在树上的最远点一定是直径的两端。</p>
+<p>###DFS</p>
+<p>随意从树上一个点DFS找到距离最远的点<span class="math inline">\(u\)</span>，再从<span class="math inline">\(u\)</span>开始DFS找到距离最远的点<span class="math inline">\(v\)</span>，则直径为<span class="math inline">\(u\to v\)</span>。</p>
+<p>###动态规划</p>
+<p>对每个节点记录它能到达最深和次深的距离<span class="math inline">\(dep_{i,0},dep_{i,1}\)</span>。考察节点<span class="math inline">\(u\)</span>的每个子树<span class="math inline">\(v\)</span>：</p>
+<ul>
+<li>若<span class="math inline">\(dep_{v,0}&gt;dep_{u,0}\)</span>，则用<span class="math inline">\(u\)</span>的<strong>最大值</strong>更新<span class="math inline">\(u\)</span>的<strong>次大值</strong>，用<span class="math inline">\(v\)</span>的<strong>最大值</strong>更新<span class="math inline">\(u\)</span>的<strong>最大值</strong>；</li>
+<li>否则若<span class="math inline">\(dep_{v,0}&gt;dep_{u,1}\)</span>，用<span class="math inline">\(v\)</span>的<strong>最大值</strong>更新<span class="math inline">\(u\)</span>的<strong>次大值</strong>；</li>
+<li>否则考察下一个节点</li>
+</ul>
+<p>则直径为<span class="math inline">\(max_{u\in V}\{dep_{u,0}+dep_{u,1}\}\)</span>，初始状态为<span class="math inline">\(dep_{u,0}=dep_{u,1}=0\)</span>。</p>
+<p>##最近公共祖先</p>
+<p>求最近公共祖先（Lowest Common Ancestor）也是有点水。</p>
+<p>###RMQ</p>
+<p>处理出树的欧拉序，则从<span class="math inline">\(u\)</span>到<span class="math inline">\(v\)</span>的欧拉序中必定经过<span class="math inline">\(LCA(u,v)\)</span>，且是唯一一个深度最小的节点。用RMQ可以<span class="math display">\[\mathrm{O}(n\log{n})$预处理，\]</span>(1)$回答。</p>
+<p>###并查集</p>
+<p>这是离线做法，没写过。但是时间复杂度是$<span class="math inline">\(\mathrm{O}(n)\)</span>的。</p>
+<p>###倍增</p>
+<p>通过$<span class="math inline">\(\mathrm{O}(n\log{n})\)</span>预处理每个节点<span class="math inline">\(u\)</span>的<span class="math inline">\(2^k\)</span>倍祖先<span class="math inline">\(anc_{u,k}\)</span>（<span class="math inline">\(0\)</span>倍祖先为父节点）。对于每次询问<span class="math inline">\((u,v)\)</span>且假设<span class="math inline">\(dep_u\leq dep_v\)</span>：</p>
+<ol type="1">
+<li>当<span class="math inline">\(dep_u&lt;dep_v\)</span>时，找到最大的<span class="math inline">\(k\)</span>使得<span class="math inline">\(anc_{u,k}\not= v\)</span>，并将<span class="math inline">\(anc_{u,k}\)</span>赋给<span class="math inline">\(u\)</span>，直到<span class="math inline">\(dep_u=dep_v\)</span>；</li>
+<li>当<span class="math inline">\(anc_{u,0}\not=anc_{v,0}\)</span>时，找到最大的<span class="math inline">\(k\)</span>使得<span class="math inline">\(anc_{u,k}\not=anc_{v,k}\)</span>，并将<span class="math inline">\(anc_{u,k}\)</span>赋给<span class="math inline">\(u\)</span>，<span class="math inline">\(anc_{v,k}\)</span>赋给<span class="math inline">\(v\)</span>，直到<span class="math inline">\(anc_{u,0}=anc_{v,0}\)</span>；</li>
+<li><span class="math inline">\(LCA(u,v)=anc_{u,0}\)</span>。</li>
+</ol>
+<p>单次询问时间复杂度$<span class="math inline">\(\mathrm{O}(\log{n})\)</span>。第二步前需要特判<span class="math inline">\(u\)</span>是否已经等于<span class="math inline">\(v\)</span>。</p>
+<p>###树链剖分</p>
+<p>大概什么时候会写树剖的总结。树剖的预处理复杂度为<span class="math display">\[\mathrm{O}(n)$，单次询问时间复杂度\]</span>()$，常数比倍增小。虽然树剖可以求LCA，但这算是树剖的附属品。</p>
+<p>类似倍增，每次移动所在重链的<span class="math inline">\(top\)</span>深度较大的节点到<span class="math inline">\(top\)</span>的父节点，直到<span class="math inline">\(u=v\)</span>。需要特判<span class="math inline">\(u\)</span>和<span class="math inline">\(v\)</span>在同一重链上的情况。</p>
+<p>##树的重心</p>
+<p>即子树节点数最大值最小的节点。每次都从重心开始进行点分治保证了点分治的层数为$<span class="math inline">\(\mathrm{O}(\log{n})\)</span>。</p>
+<p>两次DFS（可能爆栈）或三次BFS即可解决。</p>
+<p>##树上不相交最长链</p>
+<p>在树上选择两条链，使链和距离最大且没有公共边。</p>
+<p>如果考虑<strong>反悔</strong>思想，则变得很容易。对第一次选择的链（直径）上的边权<strong>取反</strong>，则第二次若取到了相同的边相当于取消选择这条边。两次都取直径保证了距离和最大，而画个图可以发现两次的公共边等价于没有选择，且仍然是两条链。</p>
+<p>感觉可以扩展到<span class="math inline">\(k\)</span>条链的情况，但是看起来不一定有<span class="math inline">\(k\)</span>条链（可以拆链成几段充数）。时间复杂度$<span class="math inline">\(\mathrm{O}(kn)\)</span>。</p>
+<p>##树链剖分</p>
+<p>终于到重点了。树链剖分（Heavy-Light Decomposition）就是将树分成不超过<span class="math inline">\(\log{n}\)</span>条不相交的重链的方法。将树剖分后，就可以愉快地在树上使用线段树维护路径了。</p>
+<p>剖分可以维护点，也可以维护边。但是都需要维护六个信息：子树大小<span class="math inline">\(siz\)</span>、节点深度<span class="math inline">\(dep\)</span>、父节点<span class="math inline">\(pa\)</span>、重儿子编号<span class="math inline">\(son\)</span>、所在重链顶节点<span class="math inline">\(top\)</span>、节点在线段树对应编号<span class="math inline">\(idx\)</span>。前四个可以在第一次DFS内求出，后两个需要在第二次DFS内求出。如果采用BFS需要三次。</p>
+<p>上面这些变量的含义和方法可以在<a href="https://oi.abcdabcd987.com/summary-of-heavy-light-decomposition/" target="_blank" rel="noopener">这里</a>找到，此处不做赘述。</p>
+<p>以下代码是基于点的树剖，基于边的树剖只需要改动<span class="math inline">\(idx\)</span>就可以实现。 ​ <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">HLDcp</span>&#123;</span></span><br><span class="line">    SegTree t;	<span class="comment">//略去线段树定义</span></span><br><span class="line">    <span class="keyword">int</span> dep[N],siz[N],pa[N],son[N],top[N],idx[N];</span><br><span class="line">    <span class="keyword">int</span> nIdx;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Build</span><span class="params">()</span></span>&#123;</span><br><span class="line">        nIdx=dep[<span class="number">0</span>]=siz[<span class="number">0</span>]=son[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        DFS1();DFS2();</span><br><span class="line">        t.Init(idx);t.Build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS1</span><span class="params">(<span class="keyword">int</span> u=<span class="number">1</span>,<span class="keyword">int</span> pa=<span class="number">0</span>)</span></span>&#123;</span><br><span class="line">        dep[u]=dep[HLDcp::pa[u]=pa]+<span class="number">1</span>;</span><br><span class="line">        siz[u]=<span class="number">1</span>;son[u]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a[u].size();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> v=a[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==pa)<span class="keyword">continue</span>;</span><br><span class="line">            DFS1(v,u);</span><br><span class="line">            <span class="keyword">if</span>(siz[v]&gt;siz[son[u]])son[u]=v;</span><br><span class="line">            siz[u]+=siz[v];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">DFS2</span><span class="params">(<span class="keyword">int</span> u=<span class="number">1</span>,<span class="keyword">int</span> pa=<span class="number">0</span>)</span></span>&#123;</span><br><span class="line">        idx[u]=++nIdx;top[u]=u;</span><br><span class="line">        <span class="keyword">if</span>(son[pa]==u)top[u]=top[pa];</span><br><span class="line">        <span class="keyword">if</span>(son[u])DFS2(son[u],u);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a[u].size();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> v=a[u][i];</span><br><span class="line">            <span class="keyword">if</span>(v==pa||v==son[u])<span class="keyword">continue</span>;</span><br><span class="line">            DFS2(v,u);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>树剖相当于将树<strong>映射</strong>到某个线性序列上，使得树能使用<strong>线性序列</strong>的数据结构（如线段树）。树剖的查询过程需要经过不超过<span class="math inline">\(\log{n}\)</span>条边，因此如果写线段树，则单次时间复杂度为<span class="math display">\[\mathrm{O}(\log^2{n})$；如果写树套树则为\]</span>(^3{n})<span class="math inline">\(；如果写带修改区间第\)</span>k<span class="math inline">\(大则为\)</span><span class="math inline">\(\mathrm{O}(\log^4{n})\)</span>。</p>
+<p>##树分治</p>
+<p>树分治可以基于点，也可以基于边。基于点的点分治每次找重心保证了不超过<span class="math inline">\(\log{n}\)</span>层，而边分治十分不稳定。</p>
+<p>参考09年论文<em>《分治算法在树的路径问题中的应用》漆子超</em>。</p>
+<p>（因为只看了点分治，就只谈点分治吧。）</p>
+<p>###点分治</p>
+<del>
+感觉没有题目都不懂怎么往下讲
+</del>
+<p>一般用来解决树上点对或路径有关的题目，且结果具有高效可合并性。</p>
+<p>####树上点对统计</p>
+<p>题意：给定n个节点的带权无向树，统计树上距离不小于<span class="math inline">\(k\)</span>的点对数。<span class="math inline">\((n\leq 10^5)\)</span>。</p>
+<p>最入门的点分治题目。假设我们在某一次分治已经找到重心<span class="math inline">\(u\)</span>，并对其子树完成了分治。现在考虑怎么合并。</p>
+<p>求树上距离我们能想到之前提过的动态规划方法。假设我们已经得到了所有点的深度，那只需要排序后两个指针一前一后扫一次就可以在<span class="math display">\[\mathrm{O}(n)$统计了。要得到所有子树的深度可以一次DFS获得，时间复杂度也是\]</span>(n)$。</p>
+<p>然而我们发现这个方法会把子树中满足条件的点对也计算到经过<span class="math inline">\(u\)</span>节点的满足条件节点对数，那么从结果里减去每个子树满足的点对数就可以了。</p>
+<p>###边分治</p>
+<p>哈？</p>
+<p>###链分治</p>
+<p>哈？</p>
+<p>##题目</p>
+<del>
+怎么还没讲完就到题目了
+</del>
+<p>###树型动态规划</p>
+<p>####APIO2010 巡逻</p>
+<p>添加一条边能让新出现的环总体减少一次经过次数，添加两条边能让两个环不重复的部分减少一次经过次数（重复的部分仍然需要经过两次），并且这个部分恰好是两条链。因此找树上不相交最长链，从总数减去即可。</p>
+<p>####概率充电器</p>
+<p>是个好题。重点有两个：</p>
+<ul>
+<li>化正为反</li>
+<li>化并为交</li>
+</ul>
+<p>具体来说是指对每个节点<span class="math inline">\(u\)</span>，考察被父节点或子节点充电化为考察既不被父节点又不被子节点充电。因为概率中求交要比求并方便多了。虽然我想到了化正为反，但是我陷入了同时考虑节点自己点亮或被相邻节点点亮的复合情况，并且没有处理好节点间的关系。如果处理好了就不难想到树型DP的方程。当然规模太大，需要BFS。</p>
+<p>假设<span class="math inline">\(f_u\)</span>为不被子树和自己充电的概率，<span class="math inline">\(g_u\)</span>为不被父亲充电的概率，<span class="math inline">\(P\)</span>为父亲不被<span class="math inline">\(u\)</span>之外的点充电的概率，则：</p>
+<p><span class="math display">\[
+f_u=(1-p_u)\sum_{v\in son} [f_v+(1-f_v)(1-w_{u,v})] \\
+P=g_{pa_{pa}}\cdot \frac {f_{pa}}{f_u+(1-f_u)(1-w_{u,pa})} \\
+g_u=P+(1-P)(1-w_{u,pa})
+\]</span></p>
+<p>即两种情况：充电但连边不通，不充电。</p>
+<p>###树链剖分</p>
+<p>####CTSC2008 网络管理</p>
+<p>一开始的想法很naive，就是树剖之后再线段树套Treap维护区间第<span class="math inline">\(k\)</span>大。然后复杂度大得要命。估摸着二分答案+树剖+线段树查询+平衡树查询一共$<span class="math inline">\(\mathrm{O}(n\log^4{n})\)</span>，竟然也能过。</p>
+<p>不过正解是只需要主席树。毕竟区间第<span class="math inline">\(k\)</span>大可以很轻松用可持久化线段树维护（需要离散化），然后我们发现这就是一个带修改的可持久化线段树，用树状数组的方式维护<span class="math inline">\(n\)</span>个可持久化线段树并统计就好了。其他做法同上。猜测复杂度二分答案+树剖+可持久化线段树查询+树状数组统计一共<span class="math display">\[\mathrm{O}(n\log^4{n})$。然而并不是。按照DFS序的主席树套树状数组就是\]</span>(n^2{n})$。</p>
+<p>####BZOJ2819 Nim</p>
+<p>Nim游戏先手获胜<span class="math inline">\(\Leftrightarrow\)</span>异或不为<span class="math inline">\(0\)</span>，然后就是树上异或查询了。异或满足交换率（三种位运算符单独考虑都满足结合率、交换率），然后可以线段树，然后可以树剖，然后..就被卡$<span class="math inline">\(\mathrm{O}(q\log^2{n})\)</span>了。</p>
+<p>可以不用树剖。树上的区间查询相当于欧拉序连续区间查询，每次更新<span class="math inline">\(u\)</span>时只会对<span class="math inline">\(u\)</span>的子树产生影响。因此每次查询<span class="math inline">\((u,v)\)</span>时答案为<span class="math inline">\(st_v\ \mathrm{xor}\ ed_u\)</span>，每次更新<span class="math inline">\(u\)</span>时更新<span class="math inline">\([st_u,ed_u+1]\)</span>即可。然后复杂度就降到$<span class="math inline">\(\mathrm{O}(q\log{n})\)</span>了。</p>
+<p>因此我们得到启发：如果修改只影响子树或祖先，则可以考虑在DFS序上用树状数组维护。下一题就是如此。</p>
+<p>####BZOJ4765 普通计算姬</p>
+<p>（其实不是树剖）</p>
+<p>每一次更新节点只会影响祖先节点，而每一次询问却是树上分散点集的和。我们先考虑询问单点的情况，则每一次更新就可以用DFS序+树状数组在<span class="math display">\[\mathrm{O}(\log{n})​$维护前缀和（树剖\]</span>(^2{n})​$）。然而还有区间询问，不如考虑分块。</p>
+<p>维护一个块，统计一个节点及其父节点在块<span class="math inline">\(i\)</span>的总数，则每次更新可以在<span class="math display">\[\mathrm{O}(\sqrt{n})$内完成。而对于不是完整块的查询可以直接用上面的方法单点查询。总时间复杂度\]</span>(q(+))$。</p>
+<p>因此我们再次得到启发：当单点维护代价高时，区间查询可以考虑用分块维护。</p>
+<p>###树分治</p>
+<p>####SPOJ1825 Free Tour II</p>
+<p>论文题。</p>
+<p>点分治，维护到各个子树中不超过<span class="math inline">\(i\)</span>个黑点<span class="math inline">\((i\leq siz_v)\)</span>的最长路径。我们发现<span class="math inline">\(i&gt;siz_v\)</span>的时候答案不会改变，因此我们可以认为这个状态数就是<span class="math inline">\(siz_v\)</span>。</p>
+<p>论文说合并可以用平衡树轻易实现，然而我没想到怎么维护。</p>
+<p>合并的时候对子树大小排序，考察从当前子树<span class="math inline">\(v\)</span>到之前子树经过<span class="math inline">\(min(lim,siz_v)\)</span>个黑色节点的最长路径并合并。合并<span class="math inline">\(k\)</span>个子树的时间复杂度为<span class="math display">\[\mathrm{O}(\sum_{i=1}^k min_{j=1}^i\{siz_j\})=$\mathrm{O}(\sum_{i=1}^k siz_i)=$\mathrm{O}(siz_u)$。因此每层分治时间复杂度为\]</span>(n)<span class="math inline">\(，对不超过\)</span>n<span class="math inline">\(条边的排序时间为\)</span><span class="math inline">\(\mathrm{O}(\log{n})\)</span>，因此总时间复杂度为$<span class="math inline">\(\mathrm{O}(n\log{n})\)</span>。</p>
+<p>##总结</p>
+<p>树具有许多性质，利用这些性质可以在树上进行动态规划、剖分和分治。</p>
+<ul>
+<li><p>若给出了一个序列，序列间的关系只与<span class="math inline">\(a_{i}\)</span>和<span class="math inline">\(a_{\lfloor i/2 \rfloor}相关\)</span>，则这个序列的关系可以构成一棵二叉树。</p></li>
+<li><p>不相交最长链的<strong>反悔</strong>思想：反权边。这在网络流里也有体现。</p></li>
+<li><p>树的遍历通常采用DFS，但数据过大时需要采用BFS。树的特性保证了其在拓扑序下也可以合并结果。</p></li>
+<li><p>在一类合并子树的动态规划/树分治的过程中，如果时间复杂度和当前已合并的子树大小有关，可以按子树大小<strong>顺序</strong>合并。这在一些题目中可以降低、保证复杂度。</p></li>
+<li><p>如果修改只影响子树或祖先，则可以考虑在<strong>DFS序</strong>上用<strong>树状数组</strong>维护而不是树剖。当单点维护代价高时，区间查询可以考虑用<strong>分块</strong>维护。</p></li>
+<li><p>然后我就<strong>喵喵喵</strong>了TAT</p></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/树链剖分/" rel="tag"># 树链剖分</a>
+          
+            <a href="/tags/点分治/" rel="tag"># 点分治</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/summary/treap/" rel="next" title="平衡树总结">
+                <i class="fa fa-chevron-left"></i> 平衡树总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/summary/mobius-inversion/" rel="prev" title="莫比乌斯反演总结">
+                莫比乌斯反演总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_tozuka_kotaro.jpg" alt="nikkukun">
+            
+              <p class="site-author-name" itemprop="name">nikkukun</p>
+              <p class="site-description motion-element" itemprop="description">是个蒟蒻，梦想不是造飞机。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:tyakennikku@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" target="_blank" title="QQ"><i class="fa fa-fw fa-qq"></i>QQ</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/SaltedHXJ/" title="_ConveX" target="_blank">_ConveX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://potassiumwings.github.io/" title="Potassium" target="_blank">Potassium</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'bxzjsxhCFpVGsSrKOBP2vEE7-gzGzoHsz',
+        appKey: 'goslnAPfPvWwGLntvCtR46sp',
+        placeholder: '在这里发表你的观点吧！',
+        avatar:'mp',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.5.0"></script>
+
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>

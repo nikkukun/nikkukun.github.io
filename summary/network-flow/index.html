@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="网络流，就是一张有向图中给每一边分配一个容量，流可以沿着有容量的边移动。对一个给定的网络，其一个可行流为从源点到汇点的一种流量方案。">
+<meta name="keywords" content="网络流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络流总结">
+<meta property="og:url" content="http://yoursite.com/summary/network-flow/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="网络流，就是一张有向图中给每一边分配一个容量，流可以沿着有容量的边移动。对一个给定的网络，其一个可行流为从源点到汇点的一种流量方案。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-27T10:47:15.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络流总结">
+<meta name="twitter:description" content="网络流，就是一张有向图中给每一边分配一个容量，流可以沿着有容量的边移动。对一个给定的网络，其一个可行流为从源点到汇点的一种流量方案。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/summary/network-flow/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>网络流总结 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nikkukun's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/summary/network-flow/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络流总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-14T00:00:00+08:00">2017-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-27 18:47:15" itemprop="dateModified" datetime="2019-05-27T18:47:15+08:00">2019-05-27</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/算法总结/" itemprop="url" rel="index"><span itemprop="name">算法总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/summary/network-flow/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/summary/network-flow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>网络流，就是一张有向图中给每一边分配一个容量，流可以沿着有容量的边移动。对一个给定的网络，其一个可行流为从源点到汇点的一种流量方案。</p>
+<a id="more"></a>
+<p>网络流问题就是解决最大流、可行流、费用流等抽象问题的一种模型。对一个可行流来说，它有如下特性：</p>
+<ul>
+<li>除了源汇点外，每一个点的<strong>入流与出流相等</strong></li>
+<li>经过每条边的流量<strong>不超过该边容量上限</strong></li>
+</ul>
+<p>则最大流就是到达汇点的流量最多的一个可行流，它也满足上述性质。</p>
+<p>##最大流</p>
+<p>求最大流可以采用 Dinic、SAP、ISAP 等算法，但我们主要介绍 Dinic。Dinic 算法分为<strong>寻找分层图</strong>与<strong>增广</strong>两个部分。下面不加解释地放上 Dinic 的代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Dinic</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span><span class="keyword">int</span> v,res;&#125;;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Edge&gt; edg;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a[V];</span><br><span class="line">    <span class="keyword">int</span> st,ed;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> cap)</span></span>&#123;</span><br><span class="line">        edg.push_back((Edge)&#123;v,cap&#125;);</span><br><span class="line">        edg.push_back((Edge)&#123;u,<span class="number">0</span>&#125;);</span><br><span class="line">        <span class="keyword">int</span> siz=edg.size();</span><br><span class="line">        a[u].push_back(siz<span class="number">-2</span>);</span><br><span class="line">        a[v].push_back(siz<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> dep[V];</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">BFS</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dep,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dep));</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        q.push(st);dep[st]=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> u=q.front();q.pop();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a[u].size();i++)&#123;</span><br><span class="line">                Edge e=edg[a[u][i]];</span><br><span class="line">                <span class="keyword">if</span>(dep[e.v]==<span class="number">-1</span>&amp;&amp;e.res&gt;<span class="number">0</span>)</span><br><span class="line">                    q.push(e.v),dep[e.v]=dep[u]+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dep[ed]!=<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cur[V];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> minF)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(u==ed||minF==<span class="number">0</span>)<span class="keyword">return</span> minF;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> tmpF,sumF=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> &amp;i=cur[u];i&lt;a[u].size();i++)&#123;</span><br><span class="line">            Edge &amp;e=edg[a[u][i]];</span><br><span class="line">            <span class="keyword">if</span>(dep[e.v]==dep[u]+<span class="number">1</span>&amp;&amp;(tmpF=DFS(e.v,min(minF,e.res)))&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                e.res-=tmpF,edg[a[u][i]^<span class="number">1</span>].res+=tmpF;</span><br><span class="line">                sumF+=tmpF;minF-=tmpF;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(minF==<span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sumF;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">MaxFlow</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(BFS())&#123;</span><br><span class="line">            <span class="built_in">memset</span>(cur,<span class="number">0</span>,<span class="keyword">sizeof</span>(cur));</span><br><span class="line">            ret+=DFS(st,INF);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上述代码用残量表示边的流量数据。对这份代码的解释很容易在网络上找到，在此不做赘述，而只点出实际写时的易错点：</p>
+<ul>
+<li>寻找分层图时，<strong>不能经过残量为0的边</strong>。</li>
+<li>利用当前弧结构保存时，每一次寻找增广路前要<strong>清零</strong>。并且寻找增广路时要使用<strong>引用</strong>来更新当前弧。</li>
+<li>寻找增广路时要对当前边进行修改，因此要对边使用<strong>引用</strong>而不能单纯复制内容</li>
+<li>对边的四个操作要保证修改的<strong>对象</strong>和<strong>数值</strong>是否正确</li>
+<li>如果流量为double类型，需要DCmp判断是否为0，而不能直接与0比较</li>
+</ul>
+<p>这是一些很naive且很容易忘记的错误。放出以警示自己。</p>
+<p>###带上下界的流</p>
+<p>带上界的流一般都采用拆点的方式建图来保证其上下界功能。考虑好必须经过的流量是哪些，可以经过的流量是哪些。</p>
+<p>####带上下界可行流</p>
+<p>#####无源汇</p>
+<p>对于$E = ( u , v ) <span class="math inline">\(，若其流量限定为\)</span> [ low , upp ]$，则我们可以先考虑特殊情况。</p>
+<ul>
+<li>没有下界：普通的网络流，从<span class="math inline">\(u\)</span>向<span class="math inline">\(v\)</span>连容量为<span class="math inline">\(upp\)</span>的边。</li>
+<li>没有上界：<span class="math inline">\(u\)</span>节点必须输出<span class="math inline">\(low\)</span>流量，<span class="math inline">\(v\)</span>节点必须流入<span class="math inline">\(low\)</span>流量。根据这个条件，可以考虑从<span class="math inline">\(u\)</span>向<span class="math inline">\(t\)</span>连流量为<span class="math inline">\(low\)</span>的边，从<span class="math inline">\(s\)</span>向<span class="math inline">\(v\)</span>连流量为<span class="math inline">\(low\)</span>的边，这样就满足了上述条件。</li>
+</ul>
+<p>我们发现这两个不互相干扰，一起使用即可。明显，整个网络拥有一个可行流的等价条件是，新增的下界边都满流，否则没有可行流。</p>
+<p>由于新网络入流与出流相等，而无源汇的网络满足流量平衡，因此s的出流等于t的入流，也就满足了新增加的边如果从<span class="math inline">\(s\)</span>得到了流量，则一定跑到了<span class="math inline">\(t\)</span>，而不会中途消失。此时t的最大流就是经过这些下界边的总流量。</p>
+<p>#####有源汇</p>
+<p>从<span class="math inline">\(t\)</span>向<span class="math inline">\(s\)</span>连一条容量为<span class="math inline">\(\infty\)</span>的边，这样网络就变成无源汇的上下界，跑可行流即可。之所以需要变成无源汇而不能拆边后直接跑，是因为无源汇的网络做法考虑了流量平衡，而有源汇的网络明显源汇是不平衡的。如果不连$( t , s ) <span class="math inline">\(的边，那么改建后原网络的\)</span>s$根本就没有流量。这很明显不可行。</p>
+<p>####有源汇带上下界最大流</p>
+<p>#####普通做法</p>
+<p>我们的立足点是无源汇上下界可行流的求法，因此考虑把有源汇先转成无源汇。按照无源汇可行流的方法建图并跑最大流，得到的是一个原图的可行流，此时的下界应该是填满的（显然，不填满就连可行流都没有）。在残余网络上从原图的<span class="math inline">\(S\)</span>到<span class="math inline">\(T\)</span>跑最大流就是答案。（当然我不是很理解。）</p>
+<p>#####二分做法</p>
+<p>我们仍转换为无源汇，但是设从<span class="math inline">\(T\)</span>到<span class="math inline">\(S\)</span>的边有下界<span class="math inline">\(x\)</span>，并跑无源汇可行流。明显，如果新图具有可行流，则说明原图能有<span class="math inline">\(x\)</span>的流量从<span class="math inline">\(S\)</span>到达<span class="math inline">\(T\)</span>，否则没有。这个性质可以二分。</p>
+<p>####带上下界最小流</p>
+<p>如果不带上下界，则最小流就是零流，没有什么好求的。</p>
+<p>#####普通做法</p>
+<p>考虑转化为无源汇，但这次我们不连接从<span class="math inline">\(T\)</span>到<span class="math inline">\(S\)</span>的边，直接跑<span class="math inline">\(SuperS\)</span>到<span class="math inline">\(SuperT\)</span>的最大流。再加上从<span class="math inline">\(S\)</span>到<span class="math inline">\(T\)</span>的边，从<span class="math inline">\(SuperS\)</span>到<span class="math inline">\(SuperT\)</span>跑一次最大流。若从<span class="math inline">\(S&#39;\)</span>出发的边满流，则<span class="math inline">\(( T , S )\)</span>的流量为最小流，反之无解。（当然我不是很理解。）</p>
+<p>#####二分做法</p>
+<p>我们仍转换为无源汇，但是设从<span class="math inline">\(T\)</span>到<span class="math inline">\(S\)</span>的边有下界<span class="math inline">\(x\)</span>，并跑无源汇可行流。明显，如果新图具有可行流，则说明原图能有<span class="math inline">\(x\)</span>的流量从<span class="math inline">\(S\)</span>到达<span class="math inline">\(T\)</span>，否则没有。这个性质可以二分。</p>
+<p>####总结</p>
+<p>我们所有上下界流的基础都是建立在上下界无源汇可行流上，因此这个模型的转换是很重要的。另外，上下界最大/最小流的二分解法虽然比普通解法多出一个<span class="math inline">\(\log\)</span>，但是却很容易理解。实际运用上应该是足够的。</p>
+<p>##最小割</p>
+<p>流网络$ G = ( V , E ) <span class="math inline">\(的割（Cut）\)</span> [ S , T ] <span class="math inline">\(将点集\)</span> V <span class="math inline">\(划分为\)</span> S <span class="math inline">\(和\)</span> T ( T = V − S )<span class="math inline">\(两个部分，使得源\)</span> s ∈ S <span class="math inline">\(且汇\)</span>t ∈ T <span class="math inline">\(。符号\)</span> [ S , T ] <span class="math inline">\(代表一个边集合\)</span> { u , v | u , v ∈ E , u ∈ S , v ∈ T } <span class="math inline">\(。割\)</span> [ S , T ] <span class="math inline">\(的容量（Capacity）定义为\)</span> c ( S , T ) <span class="math inline">\(，一般记为\)</span> c [ S , T ] $。一个网络的最小割也就是该网络中容量最小的割。（定义来自<em>《最小割模型在信息学竞赛中的应用》 胡伯涛</em>）</p>
+<p>注意边集中方向为<span class="math inline">\(T\to S\)</span>的边的容量不计算在割集内。即最小割的容量只为<strong>顺着</strong><span class="math inline">\(S\to T\)</span><strong>到达的边</strong>的容量和。</p>
+<p>最小割拥有一些不错的性质：</p>
+<ul>
+<li>最小割将点集分割成两个部分，且最小割只包含了两端点属于不同点集的边的容量</li>
+<li><strong>最大流最小割定理：一个网络中的最大流等于最小割</strong></li>
+</ul>
+<p>第二个性质很重要，它给了我们一个求最小割的方法。而第一个性质给了我们一个转换模型的思路。我们给出如下性质：</p>
+<ul>
+<li>最小割一定是最大流中的满流边，但满流边不一定是最小割中的边</li>
+</ul>
+<p>这个性质的反例可以在论文中找到。因此寻找最小割边时，需要<strong>从源点DFS顺着有残量的边遍历</strong>，则两端点只被遍历一个的边为最小割边。注意这个有残量的边包括网络中的反边，有些点可能能从反边被到达，因此需要DFS而不能单独认为满流边就是最小割边。</p>
+<p>###平面图最小割</p>
+<p>可以参考论文<em>《两极相通——浅析最大—最小定理在信息学竞赛中的应用》周冬</em>。</p>
+<p>平面图的对偶图：把平面图的面当点，连接两个面的边当两个点的边的图。平面图有不错的性质：</p>
+<ul>
+<li><strong>欧拉公式：顶点数$ + <span class="math inline">\(面数\)</span> - <span class="math inline">\(边数\)</span> = 2$</strong></li>
+<li>平面图的对偶图也是一个平面图</li>
+</ul>
+<p>对一个源汇点都在无界面的边界的网络，如何根据平面图求它的最小割？我们从 <span class="math inline">\(S\)</span> 到 <span class="math inline">\(T\)</span> 连接新边创建出附加面，并对这个图创建对偶图，其中<span class="math inline">\(S&#39;\)</span>和<span class="math inline">\(T&#39;\)</span>为对偶图在附加面与无界面的点。则我们画个图就能发现，<strong>$S' <span class="math inline">\(到\)</span> T'$的一条路径就是原图的一个割</strong>。因此原图的最小割相当于新图的最短路径。</p>
+<p>我们得到一个感受：当原问题不好入手时，考虑它的对偶问题。</p>
+<p>###最大权闭合图</p>
+<p>这类题目是求具有依赖关系的最大权子图：选择A会有一定权值，但同时要选择B和C，它们也会产生权值，这样的关系构成一张有向图。选择有向图的一个子图，使得若<span class="math inline">\(v\)</span>在点集，则<span class="math inline">\(v\)</span>的出边指向的点也在点集。</p>
+<p>对这类题目的详解在论文有。此处只阐明算法：</p>
+<ol type="1">
+<li>对原图的所有边容量赋为<span class="math inline">\(\infty\)</span></li>
+<li>从<span class="math inline">\(S\)</span>向正权点连权值为<span class="math inline">\(w\)</span>的边</li>
+<li>从负权点向<span class="math inline">\(T\)</span>链权值为<span class="math inline">\(-w\)</span>的边</li>
+<li>最大权闭合子图 = 正权点权和 - 新图最小割</li>
+</ol>
+<p>##二分图最大匹配</p>
+<p>二分图本身就有一个两端属于不同点集的边集，因此二分图常常被询问最大匹配。最大匹配即，选定一个边集，使得边集中的所有点不相交。二分图的最大匹配有<span class="math inline">\(\mathrm{O}(nm)\)</span>的匈牙利算法（Hungarian Algorithm），非二分图的最大匹配需要带花树算法（Blossom Algorithm）。</p>
+<p>不加注释地给出匈牙利算法代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> vst[N];<span class="keyword">int</span> lnk[N];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">DFS</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v=<span class="number">1</span>;v&lt;=nV;v++)</span><br><span class="line">        <span class="keyword">if</span>(g[u][v]&amp;&amp;!vst[v])&#123;</span><br><span class="line">            vst[v]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(!lnk[v]||DFS(lnk[v]))&#123;</span><br><span class="line">                lnk[v]=u;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=nV;i++)&#123;</span><br><span class="line">    <span class="built_in">memset</span>(vst,<span class="number">0</span>,<span class="keyword">sizeof</span>(vst));</span><br><span class="line">    <span class="keyword">if</span>(DFS(i))ans++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个算法给出的是邻接矩阵做法，我们可以很轻易地改为邻接表。需要注意的点：</p>
+<ul>
+<li>每次开始搜索前，<strong>清空访问数组</strong></li>
+<li>只有<strong>没有访问</strong>的节点可以操作</li>
+</ul>
+<p>##图的性质</p>
+<p>明确以下概念：</p>
+<ul>
+<li>点相关
+<ul>
+<li>最小点覆盖</li>
+<li>最大独立集</li>
+<li>最小点权覆盖</li>
+<li>最大点权独立集</li>
+</ul></li>
+<li>边相关
+<ul>
+<li>最小边覆盖</li>
+<li>最大匹配</li>
+</ul></li>
+</ul>
+<p>这些概念都可以在论文中找到具体定义，但我们重点讨论它们的性质：</p>
+<ul>
+<li>最大匹配数<span class="math inline">\(+\)</span>最小边覆盖数<span class="math inline">\(=\)</span>顶点数（条件：联通图）</li>
+<li>最大独立集<span class="math inline">\(+\)</span>最小点覆盖数<span class="math inline">\(=\)</span>顶点数</li>
+<li>König定理：最大匹配数<span class="math inline">\(=\)</span>最小点覆盖（条件：二分图）</li>
+<li>最大流<span class="math inline">\(=\)</span>最小割</li>
+<li>最小割<span class="math inline">\(=\)</span>最小点权覆盖集（条件：二分图）</li>
+<li>最小点权覆盖集数<span class="math inline">\(+\)</span>最大点权独立集数<span class="math inline">\(=\)</span>顶点数（条件：二分图）</li>
+</ul>
+<p>大部分性质都可以概括为：最值$ = <span class="math inline">\(最值，最小\)</span> + <span class="math inline">\(最大\)</span> = ​$顶点数。后三条可以得到一个计算最大点权独立集的有效算法。具体的讨论和证明可以参考<em>《两极相通——浅析最大—最小定理在信息学竞赛中的应用》周冬</em>。</p>
+<p>##最小费用最大流</p>
+<p>给网络中的每一个边一条边权，求使得最大流的情况下的最小费用。下面不加注释地给出代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Dinic</span>&#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span><span class="keyword">int</span> v,w,res;&#125;;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Edge&gt; edg;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a[V];</span><br><span class="line">    <span class="keyword">int</span> st,ed;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddEdge</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> v,<span class="keyword">int</span> w,<span class="keyword">int</span> cap)</span></span>&#123;</span><br><span class="line">    edg.push_back((Edge)&#123;v,w,cap&#125;);</span><br><span class="line">    edg.push_back((Edge)&#123;u,-w,<span class="number">0</span>&#125;);</span><br><span class="line">    <span class="keyword">int</span> siz=edg.size();</span><br><span class="line">    a[u].push_back(siz<span class="number">-2</span>);</span><br><span class="line">    a[v].push_back(siz<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dis[V],pa[V],det[V];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">SPFA</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> inQ[V];</span><br><span class="line">    <span class="built_in">memset</span>(inQ,<span class="number">0</span>,<span class="keyword">sizeof</span>(inQ));</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">    <span class="built_in">deque</span>&lt;<span class="keyword">int</span>&gt; q;q.push_back(st);</span><br><span class="line">    dis[st]=<span class="number">0</span>,inQ[st]=<span class="number">1</span>,det[st]=INF,pa[st]=<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> u=q.front();q.pop_front();inQ[u]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a[u].size();i++)&#123;</span><br><span class="line">            Edge &amp;e=edg[a[u][i]];</span><br><span class="line">            <span class="keyword">if</span>(e.res&gt;<span class="number">0</span>&amp;&amp;dis[e.v]&gt;dis[u]+e.w)&#123;</span><br><span class="line">                dis[e.v]=dis[u]+e.w;</span><br><span class="line">                det[e.v]=min(det[u],e.res);</span><br><span class="line">                pa[e.v]=a[u][i];</span><br><span class="line">                <span class="keyword">if</span>(!inQ[e.v])&#123;</span><br><span class="line">                    <span class="keyword">if</span>(!q.empty()&amp;&amp;dis[q.front()]&gt;=dis[e.v])q.push_front(e.v);</span><br><span class="line">                    <span class="keyword">else</span> q.push_back(e.v);</span><br><span class="line">                    inQ[e.v]=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dis[ed]!=INF;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Augment</span><span class="params">(<span class="keyword">int</span> &amp;w)</span></span>&#123;</span><br><span class="line">    w+=dis[ed]*det[ed];</span><br><span class="line">    <span class="keyword">int</span> u=ed;</span><br><span class="line">    <span class="keyword">while</span>(u!=st)&#123;</span><br><span class="line">        edg[pa[u]].res-=det[ed];</span><br><span class="line">        edg[pa[u]^<span class="number">1</span>].res+=det[ed];</span><br><span class="line">        u=edg[pa[u]^<span class="number">1</span>].v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxFlowMinCost</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(SPFA())Augment(ret);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要点：</p>
+<ul>
+<li>增广过程与SPFA相似，但仍要注意<strong>只有有残量的边可以通过</strong>。</li>
+<li>SPFA过程注意是否出队入队，是否取消标记，是否入对位置正确。</li>
+</ul>
+<p>###费用流拆边</p>
+<p>一条边所花费的费用是随流量线性增长。如果呈二次增长，甚至三次增长呢？需要拆边。</p>
+<p>假设$f <span class="math inline">\(为流量，\)</span>cap <span class="math inline">\(为边容量，\)</span>w = f ^ 2 <span class="math inline">\(为费用，则当\)</span> f = 1 <span class="math inline">\(时\)</span> w = 1 <span class="math inline">\(，\)</span> f = 2 <span class="math inline">\(时\)</span> w = 4<span class="math inline">\(，\)</span> f = 3 <span class="math inline">\(时\)</span> w = 9 <span class="math inline">\(。我们把边拆为\)</span> cap $条，每条容量是<span class="math inline">\(1\)</span>，费用分别是<span class="math inline">\(1,3,5,\dots\)</span>则不难发现在流量相同时，费用会选择最小的$ f <span class="math inline">\(条，而这\)</span> f <span class="math inline">\(条的费用加起来刚好为\)</span> w= f ^ 2$。当流量呈更复杂的多项式时，可以利用导数将边拆分。但很明显拆边有前提：流量必须是<strong>整数</strong>，多项式导数必须<strong>递增</strong>。</p>
+<p>###带权二分图匹配</p>
+<p>如果有权，则可以给边赋权用费用流求解匹配。从<span class="math inline">\(S\)</span>向<span class="math inline">\(X\)</span>集合、从<span class="math inline">\(Y\)</span>集合向<span class="math inline">\(T\)</span>连权值为点权、容量为<span class="math inline">\(1\)</span>的边，跑最大流最小费用即可。</p>
+<p>##练习</p>
+<p>###最大流</p>
+<p>####USACO4.2.1 草地排水</p>
+<p>最大流模板题目。</p>
+<p>####BSOJ1721 上下界可行流 &amp; BSOJ1723 上下界最大流 &amp; BSOJ1725 上下界最小流</p>
+<p>上下界网络流的练习题。</p>
+<p>####BSOJ2547 网络流24题-6 最长递增子序列</p>
+<p>第二问可以考虑每个点只能被选一次，并且假设当前节点结尾的LIS为$ d <span class="math inline">\(，则当前节点只能向后面 LIS 为\)</span> d + 1 $的节点（否则不是LIS）连容量为<span class="math inline">\(1\)</span>的边。最后$ S <span class="math inline">\(连\)</span> d $为<span class="math inline">\(1\)</span>的点，$ d <span class="math inline">\(为全局LIS的点向\)</span>T<span class="math inline">\(连，跑最大流即可。第三问只需要修改部分点流量为\)</span>$。</p>
+<p>####SDOI2015 星际战争</p>
+<p>二分答案判断最大流是否足够。注意精度。</p>
+<p>###二分图最大匹配</p>
+<p>####SCOI2015 小凸玩矩阵</p>
+<p>二分答案<span class="math inline">\(ans\)</span>，<span class="math inline">\(X\)</span>集合为行，<span class="math inline">\(Y\)</span>集合为列，选中一个元素等于匹配两个点，每次只能选择小于等于<span class="math inline">\(ans\)</span>的元素。判断这些元素（匹配）是否有$ ( n - k + 1 ) <span class="math inline">\(个。注意第\)</span>k<span class="math inline">\(大而不是第\)</span>k$小。</p>
+<p>####USACO2005NovGold Asteroids</p>
+<p>有行星的位置连接一条边，求最小点覆盖。可转化为最大匹配。</p>
+<p>####USACO2005JanGold 泥泞的牧场</p>
+<p>注意到每个点只能被横行或纵列覆盖（可以同时覆盖）。对于连续的泥泞，我们一块木板盖上是最好的。因此我们可以把图分块。横向的分块与纵向的分块编号后，一个泥泞就只能对应一条横向与一条纵向分块的交点了。</p>
+<p>题目相当于转化为选择尽量少的分块，使得每个交点都被覆盖。如果把分块变成左右两端的点，交点变为它们之间的边，则原题目化为最小点覆盖。为什么可以转化？我们发现两个块要么有交点，要么没交点，并且只有横向块与纵向块相交，这完全符合二分图性质。</p>
+<p>####BSOJ1775 xinyue的约会</p>
+<p>同上，但需要考虑有些边不需要添加。</p>
+<p>####BSOJ2569 网络流24题-3最小路径覆盖</p>
+<p>把每个点拆成入点和出点，这样一个匹配就是一个边。在匹配中，每一个点的前驱和后继是唯一的，而只有起点不存在前驱，终点不存在后继。有多少个点没有前驱或后继，就有多少条路径。因此对于一个匹配，其路径数 = 点数 - 匹配数。</p>
+<p>因此，最少路径 = 点数 - 最大匹配。</p>
+<p>有关<strong>路径</strong>的问题可以将其拆成二分图，再观察路径的性质。</p>
+<p>###最小割</p>
+<p>最小割的题目算是比较有价值，也是比较难转换的模型题目。</p>
+<p>####POJ2125 Destroying the Graph</p>
+<p>每条边可以被入点破坏也可以被出点破坏。因此构造二分图求最小割。</p>
+<p>####POJ3469 Dual Core CPU</p>
+<p>考虑没有额外代价的情况，则一个任务只能在两个 CPU 的其中一台运行。这个就是最小割模型，$S <span class="math inline">\(向任务\)</span> i <span class="math inline">\(连边权为\)</span> a_i<span class="math inline">\(的边，\)</span>i <span class="math inline">\(向\)</span> T <span class="math inline">\(连边权为\)</span> b_i<span class="math inline">\(的边，则最小割就把所有点集分成两个部分（要么属于\)</span> S <span class="math inline">\(，要么属于\)</span> T $），且使得所有割边代价最小。</p>
+<p>考虑加上代价。我们希望当$ a <span class="math inline">\(与\)</span> b <span class="math inline">\(不在同一个点集时能有额外的权\)</span> w _i<span class="math inline">\(，这很像最小割的定义，因此我们考虑把\)</span>w_i<span class="math inline">\(也加入到最小割。具体做法是在\)</span> a <span class="math inline">\(与\)</span> b <span class="math inline">\(之间连边权为\)</span> w_i<span class="math inline">\(的无向边，这样当\)</span> a <span class="math inline">\(与\)</span> b $在同一个集合时此边不会是割边，而不在同一个集合时，会把额外代价计算。这就解决了问题。</p>
+<p>往往要从定义出发：割边是连接两个属于<strong>不同集合的点</strong>的边集。下面的题目也显示出这个特点。</p>
+<p>####SPOJ839 Optimal Marks</p>
+<p>我们发现因为存在位运算，所有边权的总和最小等价于边权的每一位总和最小。因此单独考虑每一位，且每一位都只有$ 0$和$1 $可以取。注意到xor的定义是<strong>两个数不同则为<span class="math inline">\(1\)</span>，相同为<span class="math inline">\(0\)</span></strong>，边权只有端点的两个数不同时才被计算，这和最小割的定义同样很像。</p>
+<p>因此最小割模型显然。把两个集合当成选择的值，向每个点连接容量为<span class="math inline">\(\infty\)</span>的边，有边相连的两个点连容量为$ 1 <span class="math inline">\(的边。这么做的目的是：割边只能在**特定的边**取到，而不能在**容量为**\)</span>$的边取到。对每一位跑一次最小割即可。</p>
+<p>我们得到一个直观的感受：如果一条边不想成为割边，只需要把容量设为<span class="math inline">\(\infty\)</span> 。</p>
+<p>####ZJU2676 Network Wars</p>
+<p>见论文。此处重点讨论细节。</p>
+<p>对给定网络，我们需要选出一个最小割集。由于分数规划使得边权可能为负，而负边权相当于反边，是不会被计算在最小割的容量的，因此需要手动叠加，而只对边权$ &gt; 0 $的边求割。</p>
+<p>####BSOJ2550 网络流24题-9 方格取数问题</p>
+<p>对棋盘黑白染色后发现相邻的不同颜色点之间只能选择其中一个。因此把有冲突的点连边，求最大独立集（权为<span class="math inline">\(1\)</span>的最大点权独立集）即可。注意是二分图，转化求最小点权覆盖集<span class="math inline">\(\to\)</span>最小割<span class="math inline">\(\to\)</span>最大流。</p>
+<p>####CQOI2017 老C的方块</p>
+<p>题目描述很复杂，大致就是在一个特殊的网格上不能有特定图形出现，而去除一个网格需要一定费用。</p>
+<p>然后我们观察四个图，发现特殊边两侧刚好连接两个格子。“某些状态不能共存，而去掉某个状态需要一定代价”的想法让我们想到最小割（虽然数据范围上不是这样的）。因此有这些形状的格子要连接起来，并且至少有一个连接源点或汇点。经过一番构图，我们构造出下面这种网络：</p>
+<p><span class="math display">\[
+\begin{matrix}
+\vdots &amp; &amp;\vdots &amp; &amp;\vdots &amp; &amp;\vdots &amp; &amp;\vdots  &amp; &amp;\vdots\\
+\downarrow &amp;\Leftarrow &amp;\leftarrow &amp;\leftarrow &amp;S &amp; &amp;T &amp;\leftarrow &amp;\leftarrow &amp;\Leftarrow &amp;\leftarrow &amp;\cdots\\
+\downarrow &amp; &amp;\uparrow &amp;  &amp;\downarrow &amp; &amp;\uparrow &amp; &amp;\downarrow  &amp; &amp;\uparrow &amp;\\
+T &amp; &amp;S &amp;\rightarrow &amp;\rightarrow &amp;\Rightarrow &amp;\rightarrow &amp;\rightarrow &amp;T &amp; &amp;S &amp;\cdots\\
+\uparrow &amp;  &amp;\downarrow &amp; &amp;\uparrow &amp; &amp;\downarrow &amp; &amp;\uparrow &amp; &amp;\downarrow  &amp;\\
+\uparrow &amp;\Leftarrow &amp;\leftarrow &amp;\leftarrow &amp;S &amp; &amp;T &amp;\leftarrow &amp;\leftarrow &amp;\Leftarrow &amp;\leftarrow &amp;\cdots\\
+\downarrow &amp; &amp;\uparrow &amp;  &amp;\downarrow &amp; &amp;\uparrow &amp; &amp;\downarrow  &amp; &amp;\uparrow &amp;\\
+T &amp; &amp;S &amp;\rightarrow &amp;\rightarrow &amp;\Rightarrow &amp;\rightarrow &amp;\rightarrow &amp;T &amp; &amp;S &amp;\cdots\\
+\uparrow &amp;  &amp;\downarrow &amp; &amp;\uparrow &amp; &amp;\downarrow &amp; &amp;\uparrow &amp; &amp;\downarrow  &amp;\\
+\uparrow &amp;\Leftarrow &amp;\leftarrow &amp;\leftarrow &amp;S &amp; &amp;T &amp;\leftarrow &amp;\leftarrow &amp;\Leftarrow &amp;\leftarrow &amp;\cdots
+\end{matrix}
+\\
+\text{（有没有想到洋流图）}
+\]</span></p>
+<p>每个交点是原图中的一个方块，双线箭头代表图中的特殊边。我们在这张网络图上能发现原图中的四种方块都对应一条从<span class="math inline">\(S\)</span>到<span class="math inline">\(T\)</span>的边，我们只需要求最小割就是最小花费。问题是怎么设置边权。</p>
+<p>明显处于<span class="math inline">\(S\)</span>和<span class="math inline">\(T\)</span>上的点应该各自连<span class="math inline">\(w\)</span>到<span class="math inline">\(S\)</span>或<span class="math inline">\(T\)</span>，那特殊边两侧的两个方块呢？如果要删掉一个方块，则只需要删掉一个就好了，两个同时删是不划算的。因此我们只需要给特殊边设两个方块的较小<span class="math inline">\(w\)</span>即可。</p>
+<p>虽然本题点的规模达到了<span class="math inline">\(10^5\)</span>，但棋盘很大，连边只在相邻的方块出现，因此边数不大。跑跑最大流就过了。</p>
+<p>是道建图好题。我们可以得到一个直观感受：最小割可以解决不共存的最小代价问题。这跟上面利用割的定义最小化分点代价不同，其出发点是<strong>源汇点的联通性</strong>。</p>
+<p>###最大权闭合图</p>
+<p>####BSOJ2543 网络流24题-2 太空飞行计划</p>
+<p>很明显的最大权闭合图模型，直接转化。</p>
+<p>####NOI2006 最大获利</p>
+<p>见论文。选定一个边同时要选定两个点，转化模型。</p>
+<p>####TJOI2015 线性代数</p>
+<p>转化题目后发现相当于有许多物品，要得到物品$ i <span class="math inline">\(和\)</span> j <span class="math inline">\(需要先选定\)</span> i <span class="math inline">\(和\)</span> j<span class="math inline">\(，而选定\)</span> i <span class="math inline">\(和\)</span> j$都需要代价。接着就可以做了。</p>
+<p>有个神奇的做法是暴力寻找不要什么物品，时间复杂度$ ( n ^ 3 n )$，跑起来还挺快。</p>
+<p>###费用流</p>
+<p>####BSOJ4914 疯狂的方格取数</p>
+<p>拆点。由于网络流与边有关，因此和点有关的题目往往需要把点拆掉来建立边。</p>
+<p>####ZJOI2010 网络扩容</p>
+<p>第一个最大流很简单。</p>
+<p>第二个我一开始估计是在残余网络上操作，然后跑个DP计算每条路径扩展k所需要的费用，再统计和即可。不过这不好实现还容易TLE。发现所需费用是费用流的表达式，但是如果直接跑费用流，我们希望有容量的边不计算权值，没流量的边计算权值，怎么办？</p>
+<p>残余网络中，原图都加一条边权为<span class="math inline">\(w\)</span>，容量为<span class="math inline">\(\infty\)</span>的边。再从超级源点<span class="math inline">\(s\)</span>向<span class="math inline">\(1\)</span>建边权为<span class="math inline">\(0\)</span>，容量为<span class="math inline">\(det\)</span>的边。这样，在跑费用流的时候，如果一个边有流量就会优先选择这条没有花费的边，否则只能选择有花费的新边。</p>
+<p>这个思路挺巧妙的，虽然我觉得对<span class="math inline">\(n=1000,m=5000\)</span>的数据跑<span class="math inline">\(\mathrm{O}(n^2m)\)</span>有点夸张。不过据说Dinic的复杂度和SPFA一样是个迷，因此还是可以跑的。</p>
+<p>####SCOI2007 修车</p>
+<p>本质上是一个打水问题，不过在不同的维修队列里花费时间也不一样。</p>
+<p>费用流模型不难想到，可是具有后效性。然而我们发现把每个维修人员的</p>
+<p>【未完成】</p>
+<p>####NOI2008 志愿者招募</p>
+<p>题目太神，不会做。但是还是放上<a href="https://www.byvoid.com/zhs/blog/noi-2008-employee" target="_blank" rel="noopener">BYV 的题解</a>。</p>
+<p>具体的思路是把不等式添加变量修改为等式，这样容易思考。其次发现每个人都从某段时间开始，某段时间结束，可以考虑到差分。两者结合就得到了新的等式，并且由于差分的特性，每个有关变量都刚好出现两次且符号相反。</p>
+<p>啧啧称奇。（虽然我不知道为什么推出来之后，需要求最大流。）</p>
+<p>##总结</p>
+<p>网络流通常用来求一类有限制（选择次数、不可同选）的题目。建模相比起算法往往更重要，因此如何构造网络是网络流题目的一个重点。</p>
+<ul>
+<li>需要掌握图的<strong>点与边集</strong>关系，尤其是二分图
+<ul>
+<li>最大匹配数<span class="math inline">\(+\)</span>最小边覆盖数<span class="math inline">\(=\)</span>顶点数（条件：联通图）</li>
+<li>最大独立集<span class="math inline">\(+\)</span>最小点覆盖数<span class="math inline">\(=\)</span>顶点数</li>
+<li>König定理：最大匹配数<span class="math inline">\(=\)</span>最小点覆盖（条件：二分图）</li>
+<li>最大流<span class="math inline">\(=\)</span>最小割</li>
+<li>最小割<span class="math inline">\(=\)</span>最小点权覆盖集（条件：二分图）</li>
+<li>最小点权覆盖集数<span class="math inline">\(+\)</span>最大点权独立集数<span class="math inline">\(=\)</span>顶点数（条件：二分图）</li>
+</ul></li>
+<li>网络流的建模入手点
+<ul>
+<li>有关选择的<strong>依赖关系</strong>的问题，可以考虑最大权闭合图</li>
+<li>有关<strong>路径</strong>的问题可以按照出边入边将其拆成二分图，再观察路径的性质</li>
+<li>有关<strong>等式</strong>或<strong>不等式</strong>，考虑流量平衡（如上下界网络流、志愿者招募）</li>
+<li>有关<strong>不共存的最小代价</strong>，考虑最小割使源汇不联通的性质，在不共存状态间连边，再与源汇连边求最小割</li>
+</ul></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/网络流/" rel="tag"># 网络流</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/summary/permutation-group/" rel="next" title="置换群总结">
+                <i class="fa fa-chevron-left"></i> 置换群总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/summary/string-algorithm/" rel="prev" title="字符串算法总结">
+                字符串算法总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar_tozuka_kotaro.jpg" alt="nikkukun">
+            
+              <p class="site-author-name" itemprop="name">nikkukun</p>
+              <p class="site-description motion-element" itemprop="description">是个蒟蒻，梦想不是造飞机。</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:tyakennikku@163.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" target="_blank" title="QQ"><i class="fa fa-fw fa-qq"></i>QQ</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cnblogs.com/SaltedHXJ/" title="_ConveX" target="_blank">_ConveX</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://potassiumwings.github.io/" title="Potassium" target="_blank">Potassium</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; 2018 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a></div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'bxzjsxhCFpVGsSrKOBP2vEE7-gzGzoHsz',
+        appKey: 'goslnAPfPvWwGLntvCtR46sp',
+        placeholder: '在这里发表你的观点吧！',
+        avatar:'mp',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">pangu.spacingPage();</script>
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.5.0"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.5.0"></script>
+
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>
