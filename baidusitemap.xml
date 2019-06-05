@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://yoursite.com/spring-training/spring-training-190602/</loc>
-    <lastmod>2019-06-05T03:19:05.235Z</lastmod>
+    <lastmod>2019-06-05T09:03:23.802Z</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/icpc/icpc-190421-practical-contest/</loc>
+    <lastmod>2019-06-05T09:00:27.965Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/spring-training/spring-training-190518/</loc>
     <lastmod>2019-06-04T12:08:55.047Z</lastmod>
@@ -48,9 +51,6 @@
   </url>  <url>
     <loc>http://yoursite.com/summary/mobius-inversion/</loc>
     <lastmod>2019-05-05T08:18:23.284Z</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/icpc/icpc-190421-practical-contest/</loc>
-    <lastmod>2019-04-25T15:25:35.730Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/codeforces/cf-553-div2/</loc>
     <lastmod>2019-04-25T15:25:34.888Z</lastmod>
