@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Nikkukun&#39;s Blog">
 <meta property="og:description" content="记录一些零散的小结论与技巧。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-10T06:10:09.042Z">
+<meta property="og:updated_time" content="2019-07-30T14:17:51.707Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用小结论与技巧总结">
 <meta name="twitter:description" content="记录一些零散的小结论与技巧。">
@@ -348,12 +348,24 @@
                 
               
 
-              <time title="创建时间：2019-07-10 12:43:00 / 修改时间：14:10:09" itemprop="dateCreated datePublished" datetime="2019-07-10T12:43:00+08:00">2019-07-10</time>
+              <time title="创建时间：2019-07-10 12:43:00" itemprop="dateCreated datePublished" datetime="2019-07-10T12:43:00+08:00">2019-07-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-30 22:17:51" itemprop="dateModified" datetime="2019-07-30T22:17:51+08:00">2019-07-30</time>
               
             
           </span>
@@ -432,11 +444,12 @@
 <li>断掉环上的一条边<span class="math inline">\(u\rightarrow v\)</span>，将会形成一颗以<span class="math inline">\(v\)</span>为根节点的有向树，这个性质得以让我们把基环树转换为树形DP。</li>
 <li>随便沿着基环树上的一个节点沿着有向边走，最后总能走到环上，这个性质得以让我们找到环上的一条边。</li>
 </ul></li>
+<li><p>如果线段树递归是按照<span class="math inline">\(M=\lfloor (L+R)/2 \rfloor\)</span>进行的，则<span class="math inline">\([1,n]\)</span>的线段只有<span class="math inline">\(2n-1\)</span>个节点。</p></li>
 </ol>
 <h2 id="技巧">技巧</h2>
 <ol type="1">
 <li><p>跟操作顺序有关的DFS一般都可以改成<code>next_permutation()</code>然后<code>Check()</code>一下，小常数且好写，比如手机锁屏密码个数统计问题。</p></li>
-<li><p><span class="math inline">\(|a|=\max (a,-a)\)</span>，因此求<span class="math inline">\(\max |a-b|\)</span>可以维护<span class="math inline">\(\pm a, \mp b\)</span>。</p></li>
+<li><p><span class="math inline">\(|a|=\max (a,-a)\)</span>，因此求<span class="math inline">\(|a-b|\)</span>可以维护<span class="math inline">\(\pm a, \mp b\)</span>。</p></li>
 <li><p><span class="math inline">\((-1)^{n-i}=(-1)^{n-i}(-1)^{2i}=(-1)^{n+i}\)</span>，可以用于FFT过程的变形。</p></li>
 <li><code>&lt;bitset&gt;</code>的使用：<a href="https://www.cnblogs.com/RabbitHu/p/bitset.html" target="_blank" rel="noopener">胡小兔的OI博客</a>
 <ul>
@@ -463,6 +476,11 @@
 <li>跑了<span class="math inline">\(10^7\)</span>组数据，<code>__gcd()</code>为2569ms，手写<code>GCD()</code>为2670ms，效率似乎很接近。</li>
 </ul>
 <p>在头文件<code>&lt;algorithm&gt;</code>中。</p></li>
+<li><code>__lg(x)</code>：求满足<span class="math inline">\(2^n\leq x\)</span>的最大<span class="math inline">\(n\)</span>。
+<ul>
+<li>可以用于快速求ST表的值</li>
+<li><code>__lg(0)</code>会返回0</li>
+</ul></li>
 </ol>
 <hr>
 <p>这部分是还没有整理过的。</p>
@@ -530,6 +548,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/spring-training/spring-training-190707/" rel="prev" title="190707 Spring Training 16 (Group 4)">
+                190707 Spring Training 16 (Group 4) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -604,7 +626,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
