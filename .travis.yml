@@ -5,15 +5,22 @@ install:
   - npm install
   - npm install hexo-cli -g
 
-before_script:
+script:
+  - hexo g
+
+after_script:
+  - cd ./public
+  - git init
   - git config user.name "nikkukun"
   - git config user.email "tyakennikku@163.com"
-
-script:
-  - hexo clean
-  - hexo g
-  - hexo d
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${travis}@${GH_REF}" master:master
 
 branches:
   only:
     - source
+
+env:
+  global:
+    - GH_REF: github.com/nikkukun/nikkukun.github.io.git
