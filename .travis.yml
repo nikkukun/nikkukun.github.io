@@ -3,7 +3,6 @@ node_js: stable
 
 install:
   - npm install
-  - npm install hexo-cli -g
 
 script:
   - hexo g
@@ -14,7 +13,7 @@ after_script:
   - git config user.name "nikkukun"
   - git config user.email "tyakennikku@163.com"
   - git add .
-  - git commit -m "Update docs"
+  - git commit -m "Update docs by travis."
   - git push --force --quiet "https://${travis}@${GH_REF}" master:master
 
 branches:
