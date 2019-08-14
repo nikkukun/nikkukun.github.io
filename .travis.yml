@@ -1,0 +1,19 @@
+language: node_js
+node_js: stable
+
+install:
+  - npm install
+  - npm install hexo-cli -g
+
+before_script:
+  - git config user.name "nikkukun"
+  - git config user.email "tyakennikku@163.com"
+
+script:
+  - hexo clean
+  - hexo g
+  - hexo d
+
+branches:
+  only:
+    - source
