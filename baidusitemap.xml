@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/conclusion/some-conclusion/</loc>
+    <lastmod>2019-08-12T09:58:08.250Z</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/nowcoder-multi-university-2019/nowcoder-7/</loc>
     <lastmod>2019-08-12T05:08:07.476Z</lastmod>
   </url>  <url>
@@ -9,9 +12,6 @@
   </url>  <url>
     <loc>http://yoursite.com/conclusion/notes/</loc>
     <lastmod>2019-08-12T03:39:52.775Z</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/conclusion/some-conclusion/</loc>
-    <lastmod>2019-08-12T03:19:30.816Z</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/nowcoder-multi-university-2019/nowcoder-5/</loc>
     <lastmod>2019-08-02T17:59:19.946Z</lastmod>
