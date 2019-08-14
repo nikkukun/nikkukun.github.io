@@ -2,7 +2,8 @@ language: node_js
 node_js: stable
 
 before_script:
-  - sudo apt-get install pandoc
+  - wget https://github.com/jgm/pandoc/releases/download/2.7/pandoc-2.7-1-amd64.deb
+  - dpkg -i ./pandoc-2.7-1-amd64.deb
 
 install:
   - npm install
