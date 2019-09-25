@@ -121,8 +121,8 @@ categories:
 
 1. ~~min-max容斥~~
 2. ~~反演~~
-	1. 二项式反演
-	2. Stirling反演
+	1. ~~二项式反演~~
+	2. ~~Stirling反演~~
 3. ~~Stirling数~~
 4. ~~树上启发式合并~~
 5. ~~分治FFT~~
@@ -132,7 +132,7 @@ categories:
 9. ~~带权二分~~
 10. zkw线段树
 11. LCT
-12. Pollard-Rho
+12. ~~Pollard-Rho~~
 
 炫酷反演魔术 - VFleaKing
 http://vfleaking.blog.uoj.ac/blog/87
