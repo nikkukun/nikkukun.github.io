@@ -12,7 +12,7 @@ categories:
 在算法竞赛中偶尔会遇到复杂度与约数个数和相关的问题。
 
 令$d(n)$表示$n$的约数个数，一个约数个数和的显然上界是$2\sqrt n$，但实际的$d(n)$往往远小于$2\sqrt n$，并不是一个合理的估计范围。
-\
+
 <!--more-->
 
 [OEIS - A066150](http://oeis.org/search?q=1344+maximal+divisors)上给出了长度为$n$的数的最大$d(n)$。可以看到，`int`范围内$d(n)\leq 1344$，而`long long`范围内$d(n)\leq 103680$。
