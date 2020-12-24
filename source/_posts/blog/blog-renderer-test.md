@@ -68,6 +68,11 @@ $$\mathrm{maximize} \prod _{i=1}^n b_i$$
 
 插入一段快速幂板子：
 
+{% fold 点击显/隐内容 %}
+something you want to fold, include code block.
+{% endfold %}
+
+{% fold %}
 ```c++
 typedef long long ll;
 const ll MOD=998244353;
@@ -78,6 +83,7 @@ ll QPow(ll bas,ll t){
    	return ret;
 }
 ```
+{% endfold %}
 
 插入一段引用。
 

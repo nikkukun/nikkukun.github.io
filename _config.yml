@@ -82,7 +82,7 @@ time_format: HH:mm:ss
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next-reloaded
+theme: next
 
 # Search
 search:
