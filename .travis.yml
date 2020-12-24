@@ -11,6 +11,7 @@ before_script:
 
 install:
   - npm install -g hexo-cli
+  - npm install hexo-renderer-swig
   - npm install
 
 script:
