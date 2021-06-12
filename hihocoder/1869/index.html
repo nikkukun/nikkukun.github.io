@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="hihocoder 一句话题面：集合 \(S&#x3D;\{a_i\}\)（\(|S| \leq 3 \times 10^5\)），\(q\) 次询问求是否存在一个子集 \(S_0\subseteq S\)，使得 \(\sum_{a_i\in S_0} a_i &#x3D; r \pmod M\)（\(M \leq 3\times 10^5​\)）。  题解 具体请参考官方题解。 不得不说实在是很妙…… 在原有 DP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hihocoder1869 Items">
+<meta property="og:url" content="http://yoursite.com/hihocoder/1869/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="hihocoder 一句话题面：集合 \(S&#x3D;\{a_i\}\)（\(|S| \leq 3 \times 10^5\)），\(q\) 次询问求是否存在一个子集 \(S_0\subseteq S\)，使得 \(\sum_{a_i\in S_0} a_i &#x3D; r \pmod M\)（\(M \leq 3\times 10^5​\)）。  题解 具体请参考官方题解。 不得不说实在是很妙…… 在原有 DP">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-11-10T14:08:18.000Z">
+<meta property="article:modified_time" content="2021-06-12T14:16:05.940Z">
+<meta property="article:author" content="nikkukun">
+<meta property="article:tag" content="哈希">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="LCP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/hihocoder/1869/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>hihocoder1869 Items | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Nikkukun's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/hihocoder/1869/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hihocoder1869 Items
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-10 14:08:18" itemprop="dateCreated datePublished" datetime="2018-11-10T14:08:18+00:00">2018-11-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-12 14:16:05" itemprop="dateModified" datetime="2021-06-12T14:16:05+00:00">2021-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="url" rel="index"><span itemprop="name">动态规划</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="http://hihocoder.com/problemset/problem/1869">hihocoder</a></p>
+<p>一句话题面：集合<span class="math inline"> \(S=\{a_i\}\)</span>（<span class="math inline">\(|S| \leq 3 \times 10^5\)</span>），<span class="math inline">\(q\)</span> 次询问求是否存在一个子集<span class="math inline"> \(S_0\subseteq S\)</span>，使得<span class="math inline"> \(\sum_{a_i\in S_0} a_i = r \pmod M\)</span>（<span class="math inline">\(M \leq 3\times 10^5​\)</span>）。</p>
+<!---more--->
+<h1 id="题解">题解</h1>
+<p>具体请参考<a target="_blank" rel="noopener" href="https://media.hihocoder.com/contests/challenge37/sol.pdf">官方题解</a>。</p>
+<p>不得不说实在是很妙…… 在原有 DP 基础上为了加速转移，每次只更新可以更新的部分，跳过不能更新的部分。</p>
+<p>每次加入元素<span class="math inline"> \(a_i\)</span> 时，在一个可能是转移状态的位置之前，DP 数组的前缀是相同的，因此把 DP 数组当成字符串二分 LCP 长度就可以找到这个位置。不能转移的情况是，更新之前这一位就是<span class="math inline"> \(1\)</span>，也就是没加入<span class="math inline"> \(a_i\)</span> 时就可以取到了。</p>
+<p>判断 LCP 用 Hash 即可，树状数组维护。这里学习到一个小技巧：普通 Hash 的 MOD 最好选择它的一个原根作做幂。记得提前算好原根的<span class="math inline"> \(n\)</span> 次幂和对应的逆，不然就会像我一样疯狂 TLE。</p>
+<p>复杂度证明十分地巧妙，通过等价代换分析出了总更新次数。另外，这套题的 B 题用了排序不等式证明复杂度。</p>
+<h1 id="代码">代码</h1>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">300000</span>+<span class="number">5</span>,MOD=<span class="number">998244353</span>,G=<span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BITree</span>{</span></span><br><span class="line">    ll t[N];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">Lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>{</span><br><span class="line">        <span class="keyword">return</span> x&amp;-x;</span><br><span class="line">    }</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(<span class="keyword">int</span> p,ll v)</span></span>{</span><br><span class="line">        <span class="keyword">for</span>(;p&lt;N;p+=Lowbit(p))</span><br><span class="line">            t[p]=(t[p]+v)%MOD;</span><br><span class="line">    }</span><br><span class="line">    <span class="function">ll <span class="title">Query</span><span class="params">(<span class="keyword">int</span> p)</span></span>{</span><br><span class="line">        ll ret=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(;p;p-=Lowbit(p))</span><br><span class="line">            ret=(ret+t[p])%MOD;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">QPow</span><span class="params">(ll bas,ll t)</span></span>{</span><br><span class="line">    ll ret=<span class="number">1</span>;bas%=MOD;</span><br><span class="line">    <span class="keyword">for</span>(;t;t&gt;&gt;=<span class="number">1</span>,bas=bas*bas%MOD)</span><br><span class="line">        <span class="keyword">if</span>(t&amp;<span class="number">1LL</span>)ret=ret*bas%MOD;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">Inv</span><span class="params">(ll x)</span></span>{</span><br><span class="line">    <span class="keyword">return</span> QPow(x,MOD<span class="number">-2</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">BITree t;</span><br><span class="line">ll pow3[N],inv3[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitHash</span><span class="params">()</span></span>{</span><br><span class="line">    pow3[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++)</span><br><span class="line">        pow3[i]=pow3[i<span class="number">-1</span>]*G%MOD;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">        inv3[i]=Inv(pow3[i]);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">Hash</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>{</span><br><span class="line">    ll ret=(t.Query(r)-t.Query(l<span class="number">-1</span>))%MOD;</span><br><span class="line">    ret=ret*inv3[l<span class="number">-1</span>]%MOD;</span><br><span class="line">    <span class="keyword">return</span> (ret+MOD)%MOD;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line">ll det;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">Check</span><span class="params">(<span class="keyword">int</span> st1,<span class="keyword">int</span> st2,<span class="keyword">int</span> M)</span></span>{</span><br><span class="line">    ll h1=(Hash(st1,st1+M<span class="number">-1</span>)+det)%MOD;</span><br><span class="line">    ll h2=Hash(st2,st2+M<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">return</span> h1==h2;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BSearch</span><span class="params">(<span class="keyword">int</span> L,<span class="keyword">int</span> R,<span class="keyword">int</span> st1,<span class="keyword">int</span> st2)</span></span>{</span><br><span class="line">    <span class="keyword">while</span>(L&lt;R){</span><br><span class="line">        <span class="keyword">int</span> M=(L+R)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(Check(st1,st2,M))L=M+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> R=M;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>{</span><br><span class="line">    InitHash();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</span><br><span class="line"></span><br><span class="line">    f[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    t.Add(<span class="number">1</span>,pow3[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,a,len;i&lt;=n;i++){</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a);</span><br><span class="line">        q[<span class="number">0</span>]=<span class="number">0</span>;		<span class="comment">//q: update</span></span><br><span class="line"></span><br><span class="line">        det=<span class="number">0</span>;len=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(Check(<span class="number">1</span>,<span class="number">1</span>+a,m-a)==<span class="number">0</span>){</span><br><span class="line">            len=BSearch(len,m-a,<span class="number">1</span>,<span class="number">1</span>+a);</span><br><span class="line">            <span class="keyword">if</span>(f[len]==<span class="number">0</span>&amp;&amp;f[a+len]==<span class="number">1</span>)</span><br><span class="line">                det=(det+pow3[len])%MOD;</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                det=(det+MOD-pow3[len])%MOD;</span><br><span class="line">                q[++q[<span class="number">0</span>]]=a+len;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        det=<span class="number">0</span>;len=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(Check(m-a+<span class="number">1</span>,<span class="number">1</span>,a)==<span class="number">0</span>){</span><br><span class="line">            len=BSearch(len,a,m-a+<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(f[m-a+len]==<span class="number">0</span>&amp;&amp;f[len]==<span class="number">1</span>)</span><br><span class="line">                det=(det+pow3[len])%MOD;</span><br><span class="line">            <span class="keyword">else</span>{</span><br><span class="line">                det=(det+MOD-pow3[len])%MOD;</span><br><span class="line">                q[++q[<span class="number">0</span>]]=len;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=q[<span class="number">0</span>];j++){</span><br><span class="line">            t.Add(q[j],pow3[q[j]]);</span><br><span class="line">            f[q[j]]=<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> nQ;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;nQ);</span><br><span class="line">    <span class="keyword">while</span>(nQ--){</span><br><span class="line">        <span class="keyword">int</span> r;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;r);</span><br><span class="line">        <span class="built_in">printf</span>(f[r+<span class="number">1</span>]?<span class="string">"YES\n"</span>:<span class="string">"NO\n"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%93%88%E5%B8%8C/" rel="tag"># 哈希</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/LCP/" rel="tag"># LCP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/blog/blog-renderer-test/" rel="prev" title="blog 渲染测试">
+      <i class="fa fa-chevron-left"></i> blog 渲染测试
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/luogu/3750/" rel="next" title="六省联考 2017 分手是祝愿">
+      六省联考 2017 分手是祝愿 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nikkukun"
+      src="/images/avatar_tozuka_kotaro.jpg">
+  <p class="site-author-name" itemprop="name">nikkukun</p>
+  <div class="site-description" itemprop="description">是个蒟蒻，梦想不是造飞机。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:tyakennikku@163.com" title="E-Mail → mailto:tyakennikku@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" title="QQ → tencent:&#x2F;&#x2F;AddContact&#x2F;?fromId&#x3D;45&amp;fromSubId&#x3D;1&amp;subcmd&#x3D;all&amp;uin&#x3D;1113119882&amp;website&#x3D;www.oicqzone.com" rel="noopener" target="_blank"><i class="fa fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/SaltedHXJ/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;SaltedHXJ&#x2F;" rel="noopener" target="_blank">_ConveX</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://potassiumwings.github.io/" title="https:&#x2F;&#x2F;potassiumwings.github.io&#x2F;" rel="noopener" target="_blank">Potassium</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+</body>
+</html>

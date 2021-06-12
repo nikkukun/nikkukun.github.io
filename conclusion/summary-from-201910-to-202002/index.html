@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="花些时间整理最近做题时写的笔记，还是很有必要的一件事。 之前的内容索引：  常用小结论与技巧总结 神秘犯蠢备忘录 2019 年 8-9 月做题总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 年 10 月 - 2020 年 2 月做题总结">
+<meta property="og:url" content="http://yoursite.com/conclusion/summary-from-201910-to-202002/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="花些时间整理最近做题时写的笔记，还是很有必要的一件事。 之前的内容索引：  常用小结论与技巧总结 神秘犯蠢备忘录 2019 年 8-9 月做题总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-12T01:08:00.000Z">
+<meta property="article:modified_time" content="2021-06-12T14:16:05.940Z">
+<meta property="article:author" content="nikkukun">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/conclusion/summary-from-201910-to-202002/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2019 年 10 月 - 2020 年 2 月做题总结 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Nikkukun's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/conclusion/summary-from-201910-to-202002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2019 年 10 月 - 2020 年 2 月做题总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-12 01:08:00" itemprop="dateCreated datePublished" datetime="2020-02-12T01:08:00+00:00">2020-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-12 14:16:05" itemprop="dateModified" datetime="2021-06-12T14:16:05+00:00">2021-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>花些时间整理最近做题时写的笔记，还是很有必要的一件事。</p>
+<p>之前的内容索引：</p>
+<ol type="1">
+<li><a href="conclusion/some-conclusion/#more">常用小结论与技巧总结</a></li>
+<li><a href="conclusion/notes/#more">神秘犯蠢备忘录</a></li>
+<li><a href="conclusion/summary-from-201908-to-201909/#more">2019 年 8-9 月做题总结</a></li>
+</ol>
+<a id="more"></a>
+<h1 id="图论">图论</h1>
+<h2 id="dag-上的路径覆盖">DAG 上的路径覆盖</h2>
+<p>DAG 最小不相交路径覆盖：拆成出边入边，跑最大匹配，路径个数 $= n - $ 最大匹配。可以假装成一开始由 <span class="math inline">\(n\)</span> 条路径覆盖，每增加一个匹配就合并了一对路径。</p>
+<p>DAG 最小可相交路径覆盖：先传递闭包，再跑上述内容。</p>
+<h2 id="bfs-与最短路">BFS 与最短路</h2>
+<p>如果所有路径长度都一样，那用 BFS 是最好的，但是 BFS 不能处理路径长度不一样的情况。</p>
+<h2 id="欧拉回路的优化">欧拉回路的优化</h2>
+<p>欧拉回路是不是可以把已经进入栈的边删了？比如记录一个 cur 之类的，这样就是严格的 <span class="math inline">\(\mathcal{O}(V + E)\)</span> 了。</p>
+<p>用了 cur 相当于动态删边，这样保证不会枚举到多余的边，保证复杂度正确。</p>
+<h2 id="sat">2-SAT</h2>
+<p>LRJ 书上给的 2-SAT 代码并不是严格 <span class="math inline">\(\mathcal{O}(n)\)</span> 的，服了。真的 2-SAT 要用 Tarjan 的。</p>
+<h2 id="团">团</h2>
+<p>图是若干个团之并的充要条件是不存在某个三元组中有两条边（实际上就是要满足传递性）</p>
+<h1 id="网络流">网络流</h1>
+<p>流量上限很小的时候跑点数多的网络流复杂度是正确的，比如 2019 秦皇岛 E 的流量最大是 <span class="math inline">\(1\)</span>，点数是 <span class="math inline">\(10^5\)</span>。此处没有证明，需要研究。</p>
+<hr>
+<p>神秘的 Dinic 优化：</p>
+<ol type="1">
+<li>根据容量二进制下 <span class="math inline">\(1\)</span> 的个数分组，每次只加入一段在同一组的跑最大流，跑 <span class="math inline">\(\log W\)</span> 次结束，据说复杂度是 <span class="math inline">\(\mathcal{O}(VElogW)\)</span> 的。</li>
+<li>先不加反向边跑最大流，再加反向边跑最大流。</li>
+</ol>
+<p>参考资料：https://www.luogu.org/problemnew/solution/P4722</p>
+<h2 id="特殊图上的-dinic">特殊图上的 Dinic</h2>
+<p>Dinic 的容量全是 <span class="math inline">\(1\)</span> 的时候，在二分图上的复杂度为 <span class="math inline">\(\mathcal{O}(V \sqrt{E})\)</span>。在没有任何性质的一般图上最坏为 <span class="math inline">\(\mathcal{O}(V^2E)\)</span>。</p>
+<p>匈牙利算法在二分图上采用邻接表的复杂度为 <span class="math inline">\(\mathcal{O}(VE)\)</span>，某些题目给 <span class="math inline">\(n \leq 10^3\)</span> 也可以过，是因为边数一般也是这个级别。实际上是能卡成 <span class="math inline">\(\mathcal{O}(n^3)\)</span>，但是不好卡（和卡 SPFA 的感觉差不多）。</p>
+<h1 id="字符串">字符串</h1>
+<p>SAM 上的 parent 树就是反串的后缀树</p>
+<p>SAM 是个 DAG</p>
+<p>要给 SAM 的 fail 树建出图时，注意用的是 <code>f[]</code> 数组而不是 <code>ch[]</code> 数组。</p>
+<p>广义 SAM 貌似也可以不用特判已有的存在。如果现在在创建一个之前有过的节点，那么这个节点的 fail 会跳到之前那个节点上，并且无论从两个节点中的哪个开始往上跳，最后都会跳到早一点创建的那个节点。因此这样在统计贡献的时候，其实理论上没有问题。</p>
+<p>只看 SAM 的 fail 树，则两个节点的 LCA 代表的是两个前缀（或子串）的 LCS，因此对于反串，它可以代表两个后缀的 LCP。</p>
+<h1 id="fft-与多项式">FFT 与多项式</h1>
+<h2 id="fft-的本质">FFT 的本质</h2>
+<p>我并没有搞懂 FFT 之后加一个常数是不是等于在原来的式子加一个常数？根据点值意义是这样的。但是如果加的不是一个常数是不是就莫得了？我对 FFT 的理解还不够深。</p>
+<h2 id="卷积套路">卷积套路</h2>
+<p>常见套路：将 <span class="math inline">\(2^{ij}\)</span> 的 <span class="math inline">\(ij\)</span> 拆成 <span class="math inline">\(ij = \frac 12 [(i+j)^2 - (i^2 + j^2)]\)</span>，有 <span class="math inline">\(2^{ij} = (\sqrt 2)^{(i+j)^2} \times (\sqrt 2)^{-i^2} \times (\sqrt 2)^{-j^2}\)</span>，这个形式可以卷积。</p>
+<h2 id="多项式-ln">多项式 <span class="math inline">\(\ln\)</span></h2>
+<p><span class="math display">\[
+[\ln f(x)]' \equiv \frac {f'(x)}{f(x)}      \pmod {x^n}
+\]</span></p>
+<p><span class="math display">\[
+\ln f(x) \equiv \int \frac {f'(x)}{f(x)}    \pmod {x^n}
+\]</span></p>
+<p>只需要多项式求逆，复杂度 <span class="math inline">\(\mathcal{O}(n \log n)\)</span>。</p>
+<p>注意因为有积分，所以左右都是对 <span class="math inline">\(x\)</span> 求导（和牛顿迭代区分）。</p>
+<h2 id="多项式牛顿迭代">多项式牛顿迭代</h2>
+<p>设 <span class="math inline">\(g[f(x)] \equiv 0 \pmod{x^n}\)</span>，且在模 <span class="math inline">\(x^{\lceil n/2 \rceil}\)</span> 下的解为 <span class="math inline">\(f_0(x)\)</span>，现在要求 <span class="math inline">\(f(x)\)</span>，有：</p>
+<p><span class="math display">\[
+f(x) \equiv f_0(x) - \frac {g[f_0(x)]}{g'[f_0(x)]}  \pmod {x^n}
+\]</span></p>
+<p>注意对于给定多项式 <span class="math inline">\(h(x)\)</span>，它在 <span class="math inline">\(g[f(x)]\)</span> 中最好是个常数项（或者好计算），比如计算多项式 <span class="math inline">\(\exp\)</span> 时令 <span class="math inline">\(g[f(x)] = e^{h(x)} - f(x)\)</span> 并不可做，但是 <span class="math inline">\(g[f(x)] = \ln f(x) - h(x)\)</span> 就很可做了。</p>
+<p>以及 <span class="math inline">\(g(x)\)</span> 求导的时候，是对 <span class="math inline">\(f(x)\)</span> 求导而不是对 <span class="math inline">\(x\)</span>，比如 <span class="math inline">\(g[f(x)] = \ln f(x) - h(x)\)</span>，<span class="math inline">\(g'[f(x)] = \frac 1{f(x)}\)</span>。注意因为是在 <span class="math inline">\(f(x)\)</span> 处展开，所以 <span class="math inline">\(g(f(x))\)</span> 是对 <span class="math inline">\(f(x)\)</span> 求导（和其他积分方法区分）。</p>
+<h2 id="多项式-exp">多项式 <span class="math inline">\(\exp\)</span></h2>
+<p>用牛顿迭代过程会出现 <span class="math inline">\(\ln\)</span>，时间复杂度 <span class="math inline">\(T(n) = T(\frac n2) + \mathcal{O}(n \log n) = \mathcal{O}(n \log n)\)</span>。</p>
+<h2 id="其他多项式">其他多项式</h2>
+<p>设当前函数为 <span class="math inline">\(f(x)\)</span>，要求 <span class="math inline">\(g[f(x)] \pmod{x^n}\)</span>。若 <span class="math inline">\(g'(x)\)</span> 是个好算的多项式，那就可以如下操作：</p>
+<p><span class="math display">\[
+g'[f(x)] \equiv f'(x) \cdot g'[f(x)]        \pmod {x^n}
+\]</span></p>
+<p><span class="math display">\[
+g[f(x)] \equiv \int f'(x) \cdot g'[f(x)]        \pmod {x^n}
+\]</span></p>
+<p>注意因为有积分，所以左右都是对 <span class="math inline">\(x\)</span> 求导（和牛顿迭代区分）。</p>
+<p>因为求导和积分都很好算，乘法直接 FFT，其中 <span class="math inline">\(g(x)\)</span> 可以是反三角函数等。</p>
+<h1 id="数据结构">数据结构</h1>
+<h1 id="树">树</h1>
+<h2 id="prufer-序列">Prufer 序列</h2>
+<p>Prufer 序列性质：</p>
+<ol type="1">
+<li><p><span class="math inline">\(n\)</span> 个节点的无根树的 Prufer 序列长度为 <span class="math inline">\(n-2\)</span>。</p></li>
+<li><p>Prufer 序列与无根树一一对应。</p></li>
+<li><p>度为 <span class="math inline">\(d\)</span> 的点会出现 <span class="math inline">\(d-1\)</span> 次</p></li>
+<li><p> Cayley 定理：<span class="math inline">\(n\)</span> 个点的完全图的生成树个数为 <span class="math inline">\(n^{n-2}\)</span> 个（考虑 Prufer 序列长度为 <span class="math inline">\(n-2\)</span>，每个位置可以随便放点）。</p></li>
+<li><p>设已知节点的度数组 <span class="math inline">\(\{d_i\}\)</span>，则其无根树的数量共 <span class="math inline">\((n-2)! / \prod (d_i - 1)!\)</span> 种（每个点出现 <span class="math inline">\(d_i-1\)</span> 次，考虑 Prufer 的全排列）</p></li>
+</ol>
+<h2 id="虚树">虚树</h2>
+<p>一般来说，我们建立虚树是只要树形结构的，因此加边的时候只加从父节点到子节点的边就好了，这样还可以省空间。</p>
+<h2 id="欧拉序与树上路径">欧拉序与树上路径</h2>
+<p>对于欧拉序与树上路径的关系：</p>
+<p>令 first (u) &lt; first (v)，则</p>
+<ol type="1">
+<li>u, v 在一条链上，则路径为 first (u) -&gt; first (v)</li>
+<li> 否则，路径为 last (u) -&gt; first (v)，同时还要额外加上一个 LCA 处的信息，因为 LCA 并不会出现在序列中。</li>
+</ol>
+<p>路径上的点只有出现奇数次的才能被统计。</p>
+<h2 id="子树问题">子树问题</h2>
+<p>树上对子树的操作 <span class="math inline">\(\rightarrow\)</span> DFS 序列对区间的操作，只要能搞后者，那前者就是可搞的。</p>
+<h2 id="树分治">树分治</h2>
+<p>树分治中，每次找了 root 之后要再重新求一下 siz，否则记录的 siz 并不是以 rt 为根节点的时候的。</p>
+<p>树分治为了保证复杂度，常用做法是把所有子树信息整合之后求一遍，再减去每个子树中重复的部分（而不是像背包一样，每次合并一个子树）。</p>
+<p>但是后者用一些方法也可以保证复杂度。比如统计是否存在长度为 <span class="math inline">\(K\)</span> 的路径，则每次递归一个子树，就把路径信息丢到一个 set 里，对下一个子树的路径，查询这个 set 是否存在一个数与它加起来是 <span class="math inline">\(K\)</span>，这样是稳定 <span class="math inline">\(\mathcal{O}(n\log n)\)</span> 的。</p>
+<p>反之却不一定：如果 set 记录的是一个新子树的路径，每次用以前合并的子树查询，那时间可能会变成 <span class="math inline">\(\mathcal{O}(n^2)\)</span>。总而言之就是，最好不要枚举以前合并的子树，要枚举也应该枚举新的子树，才是 <span class="math inline">\(\mathcal{O}(n)\)</span> 级别的。</p>
+<h1 id="数论">数论</h1>
+<p>根据辗转相除法，可以认为 <span class="math inline">\((0, p) = p\)</span>。</p>
+<hr>
+<p><span class="math inline">\(n! \cdot 2^n = (2n)!!\)</span></p>
+<hr>
+<p>计算</p>
+<p><span class="math display">\[
+\sum _{i=0}^n \sum _{j=0}^n (-1)^{i+j} \binom ni \binom nj (k-1)^{(i+j)n - ij} k^{(n-i)(n-j)}
+\]</span></p>
+<p>其中 <span class="math inline">\(n \leq 10^5\)</span>，模 <span class="math inline">\(10^9+7\)</span>。</p>
+<p>比较暴力的做法：</p>
+<p>发现最后可以变成关于 <span class="math inline">\(ij\)</span> 的卷积，且最后会有 <span class="math inline">\(a^{ij}\)</span> 之类的项，拆成 <span class="math inline">\((i+j)^2, i^2, j^2\)</span> 关系，即可用 MTT + 二次剩余，但是常数非常神秘。</p>
+<p>比较正常的做法：</p>
+<p>对于固定的 <span class="math inline">\(i\)</span>，最后那一堆东西可以化成某个常数 <span class="math inline">\(a\)</span> 的幂 <span class="math inline">\(a^j\)</span> 和一个二项式系数 <span class="math inline">\(\binom nj\)</span> 的乘积的前缀和，这东西实际是个二项式展开 <span class="math inline">\((a+b)^j\)</span>，就可以做了。</p>
+<p>主要就是看，如果固定了某个系数，那后面的部分是不是可以快速处理。以及，前缀和 + 组合数的前缀和形式，很有可能是某个二项式展开的形式。</p>
+<hr>
+<p>另一个例题：</p>
+<p>计算</p>
+<p><span class="math display">\[
+\sum _{i=0}^{\lfloor n/2 \rfloor} a^i b^{n-2i} \binom n{2i}
+\]</span></p>
+<p>模 <span class="math inline">\(p\)</span> 的值，其中 <span class="math inline">\(n, a, b, p \leq 10^{18}\)</span>。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum _{i=0}^{\lfloor n/2 \rfloor} a^i b^{n-2i} \binom n{2i}
+&amp;= \sum _{i=0}^n (\sqrt a)^i b^{n-i} \binom n{i} [i \bmod 2 = 0]    \\
+&amp;= \sum _{i=0}^n (\sqrt a)^i b^{n-i} \binom n{i} \cdot \frac {1^i + (-1)^i}2    \\
+&amp;= \frac 12 \sum _{i=0}^n (\sqrt a)^i b^{n-i} \binom n{i}   +    \sum _{i=0}^n (-\sqrt a)^i b^{n-i} \binom n{i}     \\
+&amp;= \frac 12 [(b + \sqrt a)^n + (b - \sqrt a)^n]     \\
+\end{aligned}
+\]</span></p>
+<p>这个东西是两项递推的通式，特征根 <span class="math inline">\(x_1 = b + \sqrt a,\ x_2 = b - \sqrt a\)</span>，可以据此得到递推的两个系数，矩阵快速幂。</p>
+<p>要点：一些 <span class="math inline">\([expr]\)</span> 也可以显式地构造出来。其他地方需要注意的转化和上述所说是一样的。</p>
+<hr>
+<p><span class="math display">\[
+\begin{aligned}
+\sum _{0 \leq i+j \leq n} \binom ai \binom bj 
+&amp;= \sum _{i=0}^n \sum _{j=0} ^{n-i} \binom ai \binom bj     \\
+&amp;= \sum _{i+j=0}^n \sum _{j=0} ^{n-(i-j)} \binom a{(i+j)-j} \binom bj       \\
+&amp;= \sum _{i=0}^n \sum _{j=0} ^{n-i} \binom a{i-j} \binom bj     \\
+&amp;= \sum _{i=0}^n \binom {a+b}i      \\
+\end{aligned}
+\]</span></p>
+<p>主要是利用了 <span class="math inline">\(\sum _{i=0}^n \binom ai \binom b{n-i} = \binom {a+b}i\)</span>，想想组合数从前 <span class="math inline">\(a\)</span> 个东西和后 <span class="math inline">\(b\)</span> 个东西里共取 <span class="math inline">\(n\)</span> 个东西的组合意义就明白了。</p>
+<h2 id="威尔逊定理">威尔逊定理</h2>
+<p>威尔逊定理</p>
+<p><span class="math inline">\(n\)</span> 是素数，当且仅当 <span class="math inline">\((n-1)! \equiv -1 \pmod n\)</span>。容易发现这个东西对 <span class="math inline">\(1\)</span> 甚至也是合法的，但是写成 <span class="math inline">\(n \mid (n-1)! + 1\)</span> 的话就不合法了。</p>
+<h2 id="二项式展开">二项式展开</h2>
+<p>令 <span class="math inline">\(f(x,\ y) = \binom {x+y}x a^x b^y\)</span>，则有 <span class="math inline">\(f(x, y) = a \times f(x-1,\ y) + b \times f(x,\ y-1)\)</span>。</p>
+<p>要点是注意杨辉三角中，系数的关系与二项式所带系数的关系，可以比较容易得到上式。利用这个东西可以维护一块连续的 <span class="math inline">\(n\)</span> 下，<span class="math inline">\(\sum_{i = l}^r \binom ni a^i b^{n-i}\)</span> 之类的式子。</p>
+<h1 id="动态规划">动态规划</h1>
+<h2 id="四边形不等式">四边形不等式</h2>
+<p>四边形不等式小节：</p>
+<ul>
+<li><p>区间包含单调性：若 <span class="math inline">\(Y \subseteq X\)</span>，价值函数 <span class="math inline">\(w\)</span> 满足 <span class="math inline">\(w(X) \geq w(Y)\)</span>，则 <span class="math inline">\(w\)</span> 满足区间包含单调性。</p></li>
+<li><p>四边形不等式：价值函数 <span class="math inline">\(w\)</span> 满足 <span class="math inline">\(w(X \cap Y) + w(X \cup Y) \geq w(X) + w(Y)\)</span>，则 <span class="math inline">\(w\)</span> 满足四边形不等式。</p></li>
+</ul>
+<p>当 <span class="math inline">\(f\)</span> 过程取 <span class="math inline">\(\min\)</span>，且价值函数 <span class="math inline">\(w\)</span> 满足上述两条，则 <span class="math inline">\(f\)</span> 满足四边形不等式。此时有：</p>
+<ul>
+<li>2D1D 决策点：<span class="math inline">\(h(l,\ r-1) \leq h(l,\ r) \leq h(l+1,\ r)\)</span></li>
+<li>1D1D 决策点：<span class="math inline">\(h(i) \leq h(i+1)\)</span></li>
+</ul>
+<h3 id="满足四边形不等式的函数类">满足四边形不等式的函数类</h3>
+<ol type="1">
+<li><p><span class="math inline">\(w_1, w_2\)</span> 满足四边形不等式（或区间包含单调性），则其非负系数 <span class="math inline">\(c_1, c_2 \geq 0\)</span> 的线性组合 <span class="math inline">\(c_1w_1 + c_2w_2\)</span> 满足四边形不等式（或区间包含单调性）。</p></li>
+<li><p>若存在函数 <span class="math inline">\(f(x), g(x)\)</span> 使得 <span class="math inline">\(w(l,\ r) = f(r) - g(l)\)</span>，则函数 <span class="math inline">\(w\)</span> 满足四边形<strong>恒等式</strong>。当函数 <span class="math inline">\(f(x), g(x)\)</span> 单调增加时，函数 <span class="math inline">\(w\)</span> 还满足区间包含单调性。</p></li>
+<li><p>若 <span class="math inline">\(g(x)\)</span> 是零阶导和一阶导都单增的函数，<span class="math inline">\(w\)</span> 满足上述两条，则 <span class="math inline">\(g(w)\)</span> 也满足上述两条。比如 <span class="math inline">\(g(x) = x ^ 2\)</span> 之类的情况，就可以用单调性解决（而避开斜率优化）了。</p></li>
+<li><p>若 <span class="math inline">\(g(x)\)</span> 是仅有一阶导单增的函数，<span class="math inline">\(w\)</span> 满足上述两条，则 <span class="math inline">\(g(w)\)</span> 只满足四边形不等式。</p></li>
+</ol>
+<h2 id="转移单调性">转移单调性</h2>
+<p>一个转移单调性的代码分析：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Cal</span><span class="params">(<span class="keyword">int</span> n, ll x)</span></span>{</span><br><span class="line">    <span class="keyword">static</span> pint q[N];</span><br><span class="line">    <span class="keyword">int</span> top = <span class="number">0</span>, now = <span class="number">0</span>;</span><br><span class="line">    q[++top] = ..</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++){</span><br><span class="line">        <span class="comment">// 注意这里的写法，好好思考一下移动方式</span></span><br><span class="line">        <span class="comment">// 由于每次 i 能更新的区间都是 i 后面的，而 now 一定不在被更新的位置中</span></span><br><span class="line">        <span class="comment">// 因此每次 pop 掉一堆东西并不会影响 now 的位置	</span></span><br><span class="line">        <span class="keyword">if</span>(now &lt; top &amp;&amp; q[now+<span class="number">1</span>].fi == i) now++;</span><br><span class="line">        f[i] = F(i, q[now].se, x);</span><br><span class="line">        g[i] = g[q[now].se] + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(top){</span><br><span class="line">            ll f1 = F(q[top].fi, q[top].se, x);		<span class="comment">// top</span></span><br><span class="line">            ll f2 = F(q[top].fi, i, x);			<span class="comment">// now</span></span><br><span class="line">            <span class="keyword">if</span>(f2 &lt; f1 || f2 == f1 &amp;&amp; g[i] &lt; g[q[top].se]) top--;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// BSearch()</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="筛法">筛法</h1>
+<p>杜教筛和 min25 筛是 <span class="math inline">\(\mathcal{O}(n)\)</span> 的，但是实际上需要开 <span class="math inline">\(2\sqrt n\)</span> 的空间。</p>
+<hr>
+<p><span class="math display">\[\sum _{i=1}^{\sqrt n} \sqrt {\frac n{i^2}}\sim \mathcal{O}(\sqrt n \log n)\]</span></p>
+<p>非常神秘，第一眼以为这个东西计算量会很大的。</p>
+<hr>
+<p><span class="math display">\[
+\mu^2(n) = \sum _{d^2|n} \mu(d)
+\]</span></p>
+<p>神奇结论，不会证。</p>
+<p>证法：https://www.cnblogs.com/hua-dong/p/9923022.html</p>
+<h1 id="离散数学">离散数学</h1>
+<h2 id="离散虚数">离散虚数</h2>
+<p>在 <span class="math inline">\(\mathbb{Z}_p\)</span> 下的虚数：<span class="math inline">\(i \equiv \sqrt {-1} \equiv \sqrt {p-1} \pmod p\)</span>，需要二次剩余。</p>
+<h1 id="线性代数">线性代数</h1>
+<h2 id="高斯消元">高斯消元</h2>
+<p>写高斯消元的时候看清楚：</p>
+<ul>
+<li>交换哪两行，不要看错</li>
+<li>目前处理的是哪个变量，在加到另一行的时候不要写错</li>
+</ul>
+<hr>
+<p>高斯消元模数不是质数时，采用辗转相除法进行消元。消元的目的其实是将该列的其他非零元素，通过线性运算变成 <span class="math inline">\(0\)</span>。</p>
+<p>假如当前准备用 <span class="math inline">\(a_{i, i}\)</span> 消 <span class="math inline">\(a_{i, j}\)</span>，则每次辗转相除后有 <span class="math inline">\((a_{i, i},\ a_{i, j}) \rightarrow (a_{i, j},\  a_{i, i} \bmod {a_{i, j}})\)</span>，经过有限次计算必然能够让其中一个变为 <span class="math inline">\(0\)</span>，就完成了对该行的消元。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/y752742355/article/details/85106270">这篇文章</a>说得很好：这里直接把辗转相除看成一种把一个元素变成 <span class="math inline">\(0\)</span> 的过程即可。</p>
+<h2 id="环空间">环空间</h2>
+<p>如果两个环可以异或相消，则一个图中的所有简单环，可以由某个钦定的点 <span class="math inline">\(u\)</span> 为始末点的所有简单环组合得到。实现可以用 DFS，记录第一次访问到某个点时的路径异或值 <span class="math inline">\(dis_u\)</span>，则每次访问到已经经过的点时，只需要把当前的异或值和 <span class="math inline">\(dis_u\)</span> 异或一下就成了一个环。显然，这样找到的环的个数是 <span class="math inline">\(\mathcal{O}(V + E)\)</span> 的。</p>
+<p>仔细想想，上面的过程实际就是随便找了一棵生成树（DFS 树），然后把所有非树边和两点最短路径相连，就构成了一个基本环。如果相连的是一个树边也无所谓，反正绕成一圈之后就完全没贡献了。</p>
+<p>这个是 WC2011 最大 XOR 和路径的结论，除此之外还有另一个结论：如果路径也可以异或，那么一条从 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 的路径异或上很多环，得到的仍然是一条从 <span class="math inline">\(u\)</span> 到 <span class="math inline">\(v\)</span> 的合法路径。</p>
+<p>注意因为有重边，所以可以走回父亲的边…… 这个地方很容易出问题，因为不走回父亲的边会 continue，少计算一个可能有代价的环。</p>
+<p>在上文所述的情况下，如果要你走一个以 <span class="math inline">\(u\)</span> 为始末点的环，那其实就是唬人的：如果环不经过 <span class="math inline">\(u\)</span>，则从 <span class="math inline">\(u\)</span> 走到环上再走回 <span class="math inline">\(u\)</span> 后就满足条件了，且异或和相等。</p>
+<h2 id="关于-cycle-space">关于 Cycle Space</h2>
+<p>具体来说，上文其实说明了这么一件事：一个图 <span class="math inline">\(G\)</span> 的满生成森林（Full Spaning Forest）加上任意一条不在森林中的边构成的环，形成了 F 的一个基础环（Fundamental Cycle of G）。其中，图 <span class="math inline">\(G\)</span> 的满生成森林是每个连通分量的任意一棵生成树构成的集合。</p>
+<p>我们把图 <span class="math inline">\(G\)</span> 中与满生成森林 <span class="math inline">\(F\)</span> 关联的所有基础环的集合称为基础环系。设 <span class="math inline">\(T\)</span> 是连通图 <span class="math inline">\(G\)</span> 的一个最小生成树，则与 <span class="math inline">\(T\)</span> 关联的基础环系是圈空间 <span class="math inline">\(W_c(G)\)</span> 的一组基，且基的大小恰为 <span class="math inline">\(m − n + c\)</span>，其中每个参数含义见下文。</p>
+<blockquote>
+<p>This number is called the <strong>circuit rank</strong> of the graph, and it equals <span class="math inline">\(m − n + c\)</span>, where <span class="math inline">\(m\)</span> is the number of edges in the graph, <span class="math inline">\(n\)</span> is the number of vertices, and <span class="math inline">\(c\)</span> is the number of connected components.</p>
+</blockquote>
+<p>也就是说，一个连通分量中非树边构成的所有环，可以通过异或组合得到该连通分量的所有环，并且这些环恰好相互独立。我们把所有连通分量中基础环系的大小之和称为环秩（Circuit Rank）或环空间的维度（Dimension of Cycle Space）。显然，基础环系中构成的都是简单环，而通过基础环系组合出来的环可以不是简单环。</p>
+<p>利用基础环可以化简回路方程。只要把回路中相互独立的方程组列出来，就是秩最小的方程组，这个只需要列出所有的基础环即可。</p>
+<p>（以上部分内容由 @roife 翻译，部分来自 Wikipedia）</p>
+<h1 id="计算几何">计算几何</h1>
+<h1 id="杂项">杂项</h1>
+<h2 id="三分">三分</h2>
+<p>三分搞不清左右怎么移动时，就假设选出来的两个点 <span class="math inline">\(x_1, x_2\)</span> 都在 <span class="math inline">\(x_0\)</span> 的同一侧模拟一下。</p>
+<h2 id="带权二分">带权二分</h2>
+<p><a target="_blank" rel="noopener" href="https://www.luogu.org/problem/P4383">林克卡特树</a>：删掉 <span class="math inline">\(k\)</span> 条边，再随便加 <span class="math inline">\(k\)</span> 条边权为 <span class="math inline">\(0\)</span> 的边，最大化直径。这东西应该能想到是最大化 <span class="math inline">\(k+1\)</span> 条不相交长链的和的…… 而不是贪心地选取 <span class="math inline">\(k\)</span> 个最小的边删掉，再在剩余边里求直径。</p>
+<hr>
+<p>带权二分的往大取 or 往小取？需要想清楚。</p>
+<h2 id="括号序列">括号序列</h2>
+<p>括号序列不能在有负边权的树上使用，因为不满足 LCA 的深度最小了。</p>
+<hr>
+<p>一个左右括号个数相等的括号序列（不一定合法），写成前缀和形式后，对所有能取到最小值的位置经过轮换都是一个合法括号序列。</p>
+<h2 id="质数-gap-估计">质数 gap 估计</h2>
+<p>质数 gap 的一些估计：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">范围</th>
+<th style="text-align: left;"><span class="math inline"> \(10^9\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(2^{32}\)</span></th>
+<th style="text-align: left;"><span class="math inline">\(10^{18}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">gap</td>
+<td style="text-align: left;"><span class="math inline">\(\leq 300\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\leq 360\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\leq 1500\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="lvg-lemma">LVG Lemma</h2>
+<p>下面内容并没有经过整理。</p>
+<pre><code>LVG Lemma 求 DAG 不相交方案数
+这句话指出了啥时候能用来求不相交路径数
+只有一颗的栗子 2019/9/30 14:24:47
+卧槽
+只有一颗的栗子 2019/9/30 14:24:54
+要求可行排列唯一
+原来如此，因为网格图上可行排列本来就是唯一的。。。
+UESTC__DEFAULT hexisyztem 2019/9/30 14:25:46
+我是个大瞎子
+那要是可行排列不唯一求出来的是啥
+UESTC__DEFAULT hexisyztem 2019/9/30 14:26:47
+昨天在下面的证明里看了半天，看得脑壳疼
+quailty 2019/9/30 14:26:54
+求出来的就是那个 sum
+quailty 2019/9/30 14:27:22
+那个 signed sum
+只有一颗的栗子 2019/9/30 14:28:07
+哦LGV引理其实是说那个行列式可以用那个signed sum做计算是吧
+quailty 2019/9/30 14:28:16
+反了
+只有一颗的栗子 2019/9/30 14:28:28
+
+14:28:30
+只有一颗的栗子 2019/9/30 14:28:30
+哦
+quailty 2019/9/30 14:28:36
+是那个 signed sum 可以用行列式算
+UESTC__DEFAULT hexisyztem 2019/9/30 14:28:36
+那个signed sum计算复杂度太高了
+quailty 2019/9/30 14:28:49
+
+只有一颗的栗子 2019/9/30 14:28:52
+所以说只有排列唯一的时候，signed sum有了组合意义
+只有一颗的栗子 2019/9/30 14:28:59
+soga
+只有一颗的栗子 2019/9/30 14:30:07
+哦signed sum是指数的，行列式是多项式的</code></pre>
+<h2 id="位运算">位运算</h2>
+<p>对于 <span class="math inline">\(x, y &gt; 0\)</span>，<span class="math inline">\(x \oplus y &gt; x\)</span> 当且仅当 <span class="math inline">\(y\)</span> 的 第 <span class="math inline">\(\mathrm{highbit}(x)\)</span> 位为 <span class="math inline">\(1\)</span>。</p>
+<hr>
+<p>如果 A 是均匀分布，B 不是均匀分布的话，A xor B 的结果是依然是均匀分布。</p>
+<p>好像可以用来求一个 [1, n] xor 不规律数列的结果。</p>
+<hr>
+<p><span class="math inline">\([0, n] \oplus x\)</span> 得到的所有数可以分成 <span class="math inline">\(\mathcal{O}(\log n)\)</span> 段连续的区间：从高到低按位考虑分解 <span class="math inline">\(n\)</span>，则某一位 xor 后只影响了该位的 <span class="math inline">\(01\)</span>，且它右边的数虽然也 xor 了一个值，但是这部分的取值恰好是连续的，可以据此分段。</p>
+<p>参考 <a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/4137/H">异或询问</a>。</p>
+<h2 id="小技巧">小技巧</h2>
+<p>有时候题面没有想法，可以看看数据范围，数据范围或许提供了特殊的提示。比如：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/1111/C">Hamiltonian Path</a>：<span class="math inline">\((u, v)\)</span> 保证 <span class="math inline">\(u &lt; v\)</span> 使得哈密顿回路只有 <span class="math inline">\(1 \rightarrow 2 \rightarrow \ldots \rightarrow n\)</span></li>
+<li><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/41404">Ghh Matin</a>：数据范围表明至少有一个置换的阶大于 <span class="math inline">\(\frac n2\)</span>，因此才可以不重不漏地计算。</li>
+</ul>
+<hr>
+<p>https://ac.nowcoder.com/acm/contest/1111/B https://www.zhihu.com/question/47247118</p>
+<p>对于 “先抽完某个东西”，可以转化成 “后面还有其他东西” 之类的。可以假设最后抽到了 A，接着去掉所有的 A，再考虑剩余部分最后抽到的是 B，去掉 B…… 以此类推。</p>
+<hr>
+<p><code>bitset</code> 用来匹配字符串有意想不到的效果！其实就是依次检验模板串 <span class="math inline">\(s\)</span> 的某一位是否和当前串 <span class="math inline">\(t\)</span> 的一样，只有每一位都一样，才认为匹配上了。<code>bitset</code> 优化的就是 “批量检查是否匹配上” 的这个过程。</p>
+<hr>
+<p>如果要统计以每个 <span class="math inline">\(i\)</span> 为左端点区间的信息，且这个信息只和 <span class="math inline">\(i\)</span> 之后的东西相关，那就考虑倒序插入 <span class="math inline">\(i\)</span>，动态维护。</p>
+<p>比如给两个序列 <span class="math inline">\(\{a_n\}, \{b_n\}\)</span>，对每个位置 <span class="math inline">\(i\)</span> 求 <span class="math inline">\(\sum _{j=i}^{b_i} \max \{a_j, a_{j+1}, \ldots, a_{b_i}\}\)</span>，就可以倒序插入位置，每次给 <span class="math inline">\(a_i\)</span> 作为最大值能更新到区间进行整体置值，查询的时候求 <span class="math inline">\([i, b_i]\)</span> 区间和即可。</p>
+<hr>
+<p>平面内互不相交的两个矩形，一定存在一个横向或纵向分割线，将它们恰好分在两侧。这个性质可以用来 DP。</p>
+<hr>
+<p>生成一个括号序列：</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rebuild [l, r) and make it still balanced</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Rebuild</span><span class="params">(<span class="keyword">int</span> s[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span>{</span><br><span class="line">    srand(time(<span class="number">0</span>));</span><br><span class="line">    <span class="built_in">std</span>::random_shuffle(s + l, s + r);</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=l; i&lt;r; i++){</span><br><span class="line">        sum += s[i];</span><br><span class="line">        <span class="keyword">if</span>(sum &lt; <span class="number">0</span> || sum == <span class="number">0</span> &amp;&amp; s[i] == <span class="number">1</span>) s[i] *= <span class="number">-1</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>只要往里传入一个合法括号序列，出来的东西就可以替换掉原来的序列。</p>
+<h2 id="代码上的问题与可能的犯蠢">代码上的问题与可能的犯蠢</h2>
+<p>递归里面用 <code>vector</code> 好像因为要恢复现场而常数巨大…… 即使 reserve 了也没有太大优化。</p>
+<hr>
+<p>推式子的时候认真一点，尤其是把类似 <span class="math inline">\(\lfloor m/g \rfloor \rightarrow m\)</span> 这种操作的东西直接写在草稿纸上的时候，注意是不是会影响其他参数。比如这样子改了 <span class="math inline">\(i\)</span> 的枚举范围后，用到原来 <span class="math inline">\(i\)</span> 的值实际应该是 <span class="math inline">\(ig\)</span>，这里很容易疏忽。</p>
+<hr>
+<p>2019 ICPC 南京总结：</p>
+<p>抄板子的时候复制粘贴一行，里面的变量要改</p>
+<p>区分好 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(m\)</span>、<span class="math inline">\(i\)</span> 和 <span class="math inline">\(j\)</span> 等变量，不要写混。抄板子的时候也是。</p>
+<p>DFS 在直接 return 之后要记得恢复更新过的状态（比如 vst 或 dis）</p>
+<hr>
+<p>NO YES 注意大小写。</p>
+<hr>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MOD = <span class="number">0x3f3f3f3f</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p>我杀我自己</p>
+<hr>
+<p>const int SQRT2 = 116195171; const int INV_SQRT2 = 557219762;</p>
+<hr>
+<p>有些编译器自动加 <code>-O2</code>，需要开 <code>-O0</code> 使 gdb 可以正常调试。</p>
+<hr>
+<p>二分写成 <code>M = L + (R-L) / 2</code> 可以处理负数的情况</p>
+<hr>
+<p><code>set</code> 要用 <code>.lower_bound</code> 才是正确的，但是 <code>lower_bound()</code> 貌似就是 <span class="math inline">\(\mathcal{O}(n)\)</span>，且在 C++14 之后才相同。</p>
+<hr>
+<p>快速幂其实都有点 bug，比如求 <span class="math inline">\(1^0 \bmod 1\)</span>，大部分返回的都是 <span class="math inline">\(1\)</span> 而不是 <span class="math inline">\(0\)</span>，需要注意。</p>
+<p>写成 <code>return ret % MOD;</code> 就行。</p>
+<p>快速幂应当特殊处理底数模模数 <span class="math inline">\(bas \equiv 0 \pmod p\)</span> 的情况，模意义下我们最好认为 <span class="math inline">\(0 ^ 0 \equiv 0 \pmod {p}\)</span>，并且需要特殊处理，不然快速幂过程可能出现 <span class="math inline">\((10^9+7) ^ {10^9 + 6} \equiv 1 \pmod {10^9 + 7}\)</span> 这种神秘错误结果……</p>
+<hr>
+<p>一个坑点：<code>x % 2 == 1</code>，当 <span class="math inline">\(x &lt; 0\)</span> 时得到的是 <span class="math inline">\(-1\)</span> 而不是 <span class="math inline">\(1\)</span>。</p>
+<hr>
+<p><code>map</code> 中不存在的元素 <span class="math inline">\(x\)</span> 虽然默认第二维是 <span class="math inline">\(0\)</span>，但是每次查询的时候貌似就会真的创建一个 <span class="math inline">\((x, 0)\)</span> 的 pair，进而可能发生 MLE。所以还是不要偷懒，写下 <code>.count()</code> 的比较好……</p>
+<hr>
+<p><code>if(i &amp; 1 == 0)</code> 的作用可能和我想的不一样。注意位运算优先级。</p>
+<hr>
+<p>C 里面的 <code>ull</code> 输出格式是 <code>llu</code>——<code>d</code> 和 <code>u</code> 对应。</p>
+<hr>
+<p>写线段树还是特判一下 L &gt; R 的情况好了，不然你永远不知道你在什么位置丢入了错误的参数而导致 RE……</p>
+<hr>
+<p>写凸包之类的题，维护的时候一定要 <code>while(..) q.pop()</code>，而不是用 <code>if(..)</code>。用一个小时的垃圾时间找到了这个 bug，下次要记住了。</p>
+<hr>
+<p><code>multiset</code> 的 <code>count</code> 操作复杂度是和查询的元素个数相关的，所以全都是一个元素的时候，<code>count</code> 可能会爆炸……</p>
+<p>按照虎哥哥的话来说，用 <code>.find() != .end()</code> 是个好习惯。</p>
+<h1 id="好题收集">好题收集</h1>
+<p>折半枚举妙妙题：2016 CCPC Hangzhou Onsite D</p>
+<hr>
+<p>一个有必要记录一下的题目：https://codeforces.com/contest/1237/problem/F</p>
+<p>可以假设选了 <span class="math inline">\(i\)</span> 个横的，<span class="math inline">\(j\)</span> 个纵的，那总占用的行列数就确定了，并且还有性质：对于横着放的多米诺骨牌来说，如果其占用的 <span class="math inline">\(1\)</span> 行 <span class="math inline">\(2\)</span> 列的位置都确定了，那么它的所有位置也确定了。如果我们选好了这样的 <span class="math inline">\(1\)</span> 行 <span class="math inline">\(2\)</span> 列，只要把 <span class="math inline">\(2\)</span> 列进行全排列，就能不重不漏地得到所有可能的放置交点。列也同理。</p>
+<p>这个性质使得我们可以按行列分开 DP，很妙。</p>
+<hr>
+<p>一个有点意思的题目：给一个序列 <span class="math inline">\({a_n}\)</span>，划分为 <span class="math inline">\(p\)</span> 段，每一段 <span class="math inline">\([l, r]\)</span> 的价值定义为</p>
+<p><span class="math display">\[
+(\sum _{i=l}^r a_i) \bmod p
+\]</span></p>
+<p>最大化序列价值。</p>
+<p>考虑 <span class="math inline">\(f(n, k)\)</span> 表示前 <span class="math inline">\(n\)</span> 个划分 <span class="math inline">\(k\)</span> 段的方法，有</p>
+<p><span class="math display">\[
+\tag{1}
+f(i, k) = \max _{j &lt; i} \{f(j, k-1) + (s_i - s_{j-1}) \bmod p\}
+\]</span></p>
+<p>其中 <span class="math inline">\(s_i\)</span> 是 <span class="math inline">\(a_i\)</span> 的前缀和。拆开后面一项，对 <span class="math inline">\(s_i \geq s_{j-1} \pmod p\)</span> 有</p>
+<p><span class="math display">\[
+\tag{2}
+f(i, k) = \max _{j &lt; i} \{f(j, k-1) - s_{j-1} \bmod p \} + s_i \bmod p
+\]</span></p>
+<p>显然 <span class="math inline">\(f(j, k-1) - s_{j-1} \bmod p\)</span> 只和 <span class="math inline">\(j, k\)</span> 相关，因此可以用一个数据结构维护一下所有 <span class="math inline">\(s_i \geq s_{j-1} \pmod p\)</span> 的这个最大值，每次转移 <span class="math inline">\((1)\)</span> 式的时候查询一下就行。</p>
+<p>对于 <span class="math inline">\(s_i &lt; s_{j-1} \pmod p\)</span> 的部分只比 <span class="math inline">\((2)\)</span> 式需要多添加一项 <span class="math inline">\(p\)</span>，也很好维护。</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/42385">2019 银川 ICPC - E</a>：一个有点东西的转化题，主要把异或平方按位拆开，接着考虑贡献。</p>
+<hr>
+<p>一道比较有意思的 DP 题目：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1264/problem/D1">Beautiful Bracket Sequence</a>。DP 中有一定容斥和讨论，但是还是很妙。</p>
+<hr>
+<p>一个很神秘的三元环定向问题：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P4249">[WC2007] 剪刀石头布</a>。主要思路是统计不合法的三元环，并将其对应上一个点的两条出边。通过这样转换，可以得到一个随着出度 <span class="math inline">\(x\)</span> 增加的函数 <span class="math inline">\(f(x)\)</span>，且 <span class="math inline">\(f(x)' &gt; 0\)</span>，这给费用流提供了条件。</p>
+<p>另外，本题的建模值得再多看几次。</p>
+<hr>
+<p>二进制分组构造好题：<a target="_blank" rel="noopener" href="https://vjudge.net/contest/347896#problem/M">SmartGarden</a>。只要发现连边的东西，是除了最后一位，其他位至少有一位不同的，就可以按位批量连边了。一个可能的题解：https://www.cnblogs.com/sjkmost/p/11953476.html</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1292/problem/C">CF 1292C</a></p>
+<p>关于一个树上 mex 的推论：</p>
+<p><span class="math display">\[
+\begin{aligned}
+S &amp;= \sum_{1 \leq u &lt; v \leq n} \mathrm{mex}(u, v)  \\
+&amp;= \sum_{1 \leq x \leq n} \left( \sum_{\mathrm{mex}(u, v) = x} x \right)        \\
+&amp;= \sum_{1 \leq x \leq n} \left( \sum_{\mathrm{mex}(u, v) \geq x} 1 \right)         \\
+&amp;= \sum_{1 \leq x \leq n} f(x)      \\
+\end{aligned}
+\]</span></p>
+<p>其中 <span class="math inline">\(f(x)\)</span> 是满足 <span class="math inline">\(\mathrm{mex}(u, v) \geq x\)</span> 的二元组个数。</p>
+<hr>
+<p>记录一个奇怪的 SAM 题目：<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/4010/D">卡拉巴什的字符串</a>。</p>
+<p>给一个串，求对于每个前缀 <span class="math inline">\(\mathrm{pre}(n)\)</span>，<span class="math inline">\(\mathrm{mex} \{ \mathrm{LCP}(\mathrm{suf}(i),\ \mathrm{suf}(j)) \mid 1\leq i &lt; j \leq n \}\)</span> 的值。</p>
+<p>考虑 SAM 的插入过程。假设当前串插入到了 np，则 np 在 fail 树的父亲 pa，一定与 np 存在一个共同的 right 位置 <span class="math inline">\(e_1\)</span>，与一个不同的 right 位置 <span class="math inline">\(e_2\)</span>，此时 <span class="math inline">\(\mathrm{LCP} (\mathrm{suf}(e_1 - \mathrm{len}(pa) + 1),\ \mathrm{suf}(e2 - {len}(pa) + 1)) = \mathrm{len}(pa)\)</span> 是显然的：它们有一个长为 <span class="math inline">\(\mathrm{len}(pa)\)</span> 的公共前缀，且 <span class="math inline">\(e2\)</span> 是字符串末尾，不可能有更长的公共部分。并且注意到，如果同时将这两个对应后缀的起始位置往后移一位，可以得到所有其他更小的 LCP。</p>
+<p>据此，我们得到重要结论：</p>
+<blockquote>
+<p><strong>引理 1</strong>：新插入节点 np 在 fail 树上的父亲 pa 加入了 LCP 在 <span class="math inline">\([0, \mathrm{len}(pa)]\)</span> 的值。</p>
+</blockquote>
+<p>现在的问题是：如果继续往后增加节点，之前加入的值还能保持吗？考虑串 <span class="math inline">\(a_1a_2\)</span> 加入 <span class="math inline">\(b\)</span> 变成 <span class="math inline">\(a_1a_2b\)</span> 的情况，显然之前可以选择 <span class="math inline">\(a_1a_2\)</span> 与 <span class="math inline">\(a_2\)</span> 作为选定后缀，并且在加入 <span class="math inline">\(b\)</span> 后，它们的 LCP 没有改变。如果加入的是 <span class="math inline">\(a_3\)</span>，则 LCP 值会发生改变，这个改变会在本次插入新节点 np 的时候统计出来。因此我们有：</p>
+<blockquote>
+<p><strong>引理 2</strong>：若新插入字符 <span class="math inline">\(c\)</span> 改变了已有的 LCP，则改变量会在新插入节点 np 处计算出来，否则不改变原有的 LCP。</p>
+</blockquote>
+<p>考虑 SAM 在插入 np 节点时，不满足 <span class="math inline">\(\mathrm{len}(q) = \mathrm{len}(p) + 1\)</span> 的处理方法。此时相对于 pre 的祖先链来说，原有的 p 及其之上的节点都会变成 nq 及其之上的节点，而 <span class="math inline">\(\mathrm{len}(nq) = \mathrm{len}(p) + 1\)</span>，也就是说加入新节点不会让 mex 值下降，这与 mex 的性质是相符的。</p>
+<p>综上，我们只需要在每次插入新节点后，记录其父亲的最大长度即可。需要特殊处理根节点：根节点要有两个儿子节点才能有 <span class="math inline">\(\mathrm{LCP} = 0\)</span>。</p>
+<p>这个题目说明了后缀的前缀和前缀的后缀确实是可以在一定程度相互转化的……</p>
+<hr>
+<p>记录一个很妙的题</p>
+<p>https://ac.nowcoder.com/acm/contest/4120/C</p>
+<p>通过反向添加负权值，使得区间的后效性变得可撤销和可计算，因此让区间彼此独立了。如果你看到这里，我建议你再重新复习一遍本题以加深印象。</p>
+<hr>
+<p>https://codeforces.com/contest/1290/problem/C</p>
+<p>记录一个带权并查集的题目。</p>
+<p>注意到每个点只会出现在两个集合，且有一些 “某个集合必选”“某个集合必不选”“某两个集合都选或都不选”“某两个集合必一个选一个不选” 的条件，那就可以变成并查集维护选或不选的状态了，并且设选中集合的点权值为 <span class="math inline">\(1\)</span>，不选集合的点权值为 <span class="math inline">\(0\)</span>，在每个联通块里选总权和较小的那个即可。</p>
+<p>如何处理 “某个集合必选” 这类条件呢？可以令不选集合的点权值为 <span class="math inline">\(\infty\)</span>，就相当于强制选择了那个集合。这个想法还是很妙的。</p>
+<hr>
+<p>CF GYM - 102302I</p>
+<p>动态随机插入维护上凸包。维护的时候需要注意的事情：</p>
+<ul>
+<li>按 <span class="math inline">\(x\)</span> 递增，<span class="math inline">\(y\)</span> 递减的方式排序。</li>
+<li>先不插入点，考虑将插入点左右的位置，用叉积判断是不是需要删除。注意删除之后迭代器可能会发生变化，要重新找一次插入点。</li>
+<li>判断在凸包内外时，比较插入位置前后的连线与插入点的关系，再决定要不要插入。</li>
+<li>（只适用于本题）需要额外考察凸包两端点的斜率。</li>
+</ul>
+<p>写起来需要注意很多细节的题目，练一练能够提升对维护过程的理解。</p>
+<hr>
+<p>记录一个好题：ARC 084 D</p>
+<p>给定 <span class="math inline">\(n \leq 10^5\)</span>，求它的倍数 <span class="math inline">\(kn\)</span> 的最小数位和。</p>
+<p>这个题目竟然可以用最短路解。考虑限制条件即为 <span class="math inline">\(kn \equiv 0 \pmod n\)</span>，因此我们只需要找到一个模 <span class="math inline">\(n\)</span> 为 <span class="math inline">\(0\)</span> 的数 <span class="math inline">\(x\)</span>，且 <span class="math inline">\(x\)</span> 的数位和最小即可。</p>
+<p>假如我们知道了 <span class="math inline">\(x\)</span> 的数位和，则从 <span class="math inline">\(x \rightarrow x+1\)</span> 会让数位和增加 <span class="math inline">\(1\)</span>（暂时忽略进位的情况），从 <span class="math inline">\(x \rightarrow 10x\)</span> 不会增加数位和。因此我们可以在模意义下给 <span class="math inline">\(0, 1, \ldots, k-1\)</span> 分别增加边 <span class="math inline">\((x,\ x+1)\)</span> 与 <span class="math inline">\((x,\ 10x)\)</span>，并设边权分别为 <span class="math inline">\(1\)</span> 和 <span class="math inline">\(0\)</span>，跑一个到 <span class="math inline">\(0\)</span> 的最短路即可。这个时候重新考虑进位的情况：虽然过程中增加了一些冗余的边，但是进位会在乘 <span class="math inline">\(10\)</span> 的边上计算，因此实际不会有问题。</p>
+<p>初始条件是 <span class="math inline">\(\mathrm{dis}(1) = 1\)</span>。</p>
+<hr>
+<p>DP 计算一个不含 <span class="math inline">\(k\)</span> 的一个排列作为子串的、长度为 <span class="math inline">\(n\)</span> 的序列，则状态可以设置为 <span class="math inline">\(f(i, j)\)</span>，表示当前长度为 <span class="math inline">\(i\)</span>，且后 <span class="math inline">\(j\)</span> 个字符两两不同，但后 <span class="math inline">\(j+1\)</span> 有恰好一个相同的。用这个状态来表示就可以忽略掉其中每个字符具体是什么了。</p>
+<p>原题是 ARC 100 F。</p>
+<hr>
+<p>CF 1299D</p>
+<p>https://codeforces.com/blog/entry/73664?#comment-579444</p>
+<p>评论区给了一个很好的思路，在这里记录一下。</p>
+<p>先说一下我们要做什么：我们有一些连接向 <span class="math inline">\(1\)</span> 的边，可以选择保留或者删除，想知道在不同保留或删除的情况下，形成每种环空间的方案数分别是多少（这题里最多只有 <span class="math inline">\(374\)</span> 种环空间的子空间）。</p>
+<p>现在的做法是，我们钦定一条连向 <span class="math inline">\(1\)</span> 的边是树边，其他没钦定的、连向 <span class="math inline">\(1\)</span> 的边都是非树边，每次转移可以选择加入或者不加入某条非树边。显然，加入一条非树边时，需要知道它在树上构成的环的大小，并加入集合。但是如果我们多用一维记录当前作为树边的是哪个点，复杂度就会大大上升。</p>
+<p>一个很厉害的 idea 出现了：不考虑加入树边的具体的是哪个点，而是在树里再钦定一个点 <span class="math inline">\(x\)</span>，则通过树边到达 <span class="math inline">\(x\)</span> 和通过当前的非树边到达 <span class="math inline">\(x\)</span> 的两个路径形成的闭环，必然不属于当前的环空间（因为它带来了一条非树边，且画图可知通过树边到达 <span class="math inline">\(x\)</span> 的有效异或路径上，是不会偶数次经过那个非树边的），等价于加入了上文提到的环。</p>
+<p>也就是说，我们维护环空间的时候，插入的可以不一定是树与非树边 <span class="math inline">\(e\)</span> 构成的环。只要插入的环中经过奇数次我们即将插入的边 <span class="math inline">\(e\)</span>，也就是保证这个环之前并不在环空间中，就可以了，而这个过程可以用钦定一个点实现。很妙。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/conclusion/summary-from-201908-to-201909/" rel="prev" title="2019 年 8-9 月做题总结">
+      <i class="fa fa-chevron-left"></i> 2019 年 8-9 月做题总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">图论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dag-%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%84%E8%A6%86%E7%9B%96"><span class="nav-number">1.1.</span> <span class="nav-text">DAG 上的路径覆盖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bfs-%E4%B8%8E%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="nav-number">1.2.</span> <span class="nav-text">BFS 与最短路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%E7%9A%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.3.</span> <span class="nav-text">欧拉回路的优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sat"><span class="nav-number">1.4.</span> <span class="nav-text">2-SAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%A2"><span class="nav-number">1.5.</span> <span class="nav-text">团</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%B5%81"><span class="nav-number">2.</span> <span class="nav-text">网络流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%9B%BE%E4%B8%8A%E7%9A%84-dinic"><span class="nav-number">2.1.</span> <span class="nav-text">特殊图上的 Dinic</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">3.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#fft-%E4%B8%8E%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">FFT 与多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fft-%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">4.1.</span> <span class="nav-text">FFT 的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%B7%E7%A7%AF%E5%A5%97%E8%B7%AF"><span class="nav-number">4.2.</span> <span class="nav-text">卷积套路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F-ln"><span class="nav-number">4.3.</span> <span class="nav-text">多项式 \(\ln\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3"><span class="nav-number">4.4.</span> <span class="nav-text">多项式牛顿迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E9%A1%B9%E5%BC%8F-exp"><span class="nav-number">4.5.</span> <span class="nav-text">多项式 \(\exp\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="nav-number">4.6.</span> <span class="nav-text">其他多项式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">5.</span> <span class="nav-text">数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">6.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#prufer-%E5%BA%8F%E5%88%97"><span class="nav-number">6.1.</span> <span class="nav-text">Prufer 序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E6%A0%91"><span class="nav-number">6.2.</span> <span class="nav-text">虚树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%BA%8F%E4%B8%8E%E6%A0%91%E4%B8%8A%E8%B7%AF%E5%BE%84"><span class="nav-number">6.3.</span> <span class="nav-text">欧拉序与树上路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E6%A0%91%E9%97%AE%E9%A2%98"><span class="nav-number">6.4.</span> <span class="nav-text">子树问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E5%88%86%E6%B2%BB"><span class="nav-number">6.5.</span> <span class="nav-text">树分治</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E8%AE%BA"><span class="nav-number">7.</span> <span class="nav-text">数论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A8%81%E5%B0%94%E9%80%8A%E5%AE%9A%E7%90%86"><span class="nav-number">7.1.</span> <span class="nav-text">威尔逊定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%A1%B9%E5%BC%8F%E5%B1%95%E5%BC%80"><span class="nav-number">7.2.</span> <span class="nav-text">二项式展开</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">8.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F"><span class="nav-number">8.1.</span> <span class="nav-text">四边形不等式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BB%A1%E8%B6%B3%E5%9B%9B%E8%BE%B9%E5%BD%A2%E4%B8%8D%E7%AD%89%E5%BC%8F%E7%9A%84%E5%87%BD%E6%95%B0%E7%B1%BB"><span class="nav-number">8.1.1.</span> <span class="nav-text">满足四边形不等式的函数类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AC%E7%A7%BB%E5%8D%95%E8%B0%83%E6%80%A7"><span class="nav-number">8.2.</span> <span class="nav-text">转移单调性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%9B%E6%B3%95"><span class="nav-number">9.</span> <span class="nav-text">筛法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6"><span class="nav-number">10.</span> <span class="nav-text">离散数学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E8%99%9A%E6%95%B0"><span class="nav-number">10.1.</span> <span class="nav-text">离散虚数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">11.</span> <span class="nav-text">线性代数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83"><span class="nav-number">11.1.</span> <span class="nav-text">高斯消元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E7%A9%BA%E9%97%B4"><span class="nav-number">11.2.</span> <span class="nav-text">环空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-cycle-space"><span class="nav-number">11.3.</span> <span class="nav-text">关于 Cycle Space</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95"><span class="nav-number">12.</span> <span class="nav-text">计算几何</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="nav-number">13.</span> <span class="nav-text">杂项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E5%88%86"><span class="nav-number">13.1.</span> <span class="nav-text">三分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%A6%E6%9D%83%E4%BA%8C%E5%88%86"><span class="nav-number">13.2.</span> <span class="nav-text">带权二分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%AC%E5%8F%B7%E5%BA%8F%E5%88%97"><span class="nav-number">13.3.</span> <span class="nav-text">括号序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0-gap-%E4%BC%B0%E8%AE%A1"><span class="nav-number">13.4.</span> <span class="nav-text">质数 gap 估计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lvg-lemma"><span class="nav-number">13.5.</span> <span class="nav-text">LVG Lemma</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">13.6.</span> <span class="nav-text">位运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="nav-number">13.7.</span> <span class="nav-text">小技巧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%B8%8A%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8E%E5%8F%AF%E8%83%BD%E7%9A%84%E7%8A%AF%E8%A0%A2"><span class="nav-number">13.8.</span> <span class="nav-text">代码上的问题与可能的犯蠢</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A5%BD%E9%A2%98%E6%94%B6%E9%9B%86"><span class="nav-number">14.</span> <span class="nav-text">好题收集</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nikkukun"
+      src="/images/avatar_tozuka_kotaro.jpg">
+  <p class="site-author-name" itemprop="name">nikkukun</p>
+  <div class="site-description" itemprop="description">是个蒟蒻，梦想不是造飞机。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:tyakennikku@163.com" title="E-Mail → mailto:tyakennikku@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" title="QQ → tencent:&#x2F;&#x2F;AddContact&#x2F;?fromId&#x3D;45&amp;fromSubId&#x3D;1&amp;subcmd&#x3D;all&amp;uin&#x3D;1113119882&amp;website&#x3D;www.oicqzone.com" rel="noopener" target="_blank"><i class="fa fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/SaltedHXJ/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;SaltedHXJ&#x2F;" rel="noopener" target="_blank">_ConveX</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://potassiumwings.github.io/" title="https:&#x2F;&#x2F;potassiumwings.github.io&#x2F;" rel="noopener" target="_blank">Potassium</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+</body>
+</html>

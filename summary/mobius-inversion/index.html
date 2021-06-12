@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="莫比乌斯反演是偏序集上的一个反演，不过在此处我们只讨论整数格上的莫比乌斯反演。  莫比乌斯反演 整数格上的莫比乌斯反演 定义 \(\mu\) 函数： \[ \mu(n)&#x3D; \begin{cases} 1,&amp;n&#x3D;1 \\ (-1)^m,&amp;n&#x3D;\prod_{i&#x3D;1}^m p_i^{k_i},\prod_{i&#x3D;1}^m k_i&#x3D;1 \\ 0,&amp;otherwise\\ \end{c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演总结">
+<meta property="og:url" content="http://yoursite.com/summary/mobius-inversion/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="莫比乌斯反演是偏序集上的一个反演，不过在此处我们只讨论整数格上的莫比乌斯反演。  莫比乌斯反演 整数格上的莫比乌斯反演 定义 \(\mu\) 函数： \[ \mu(n)&#x3D; \begin{cases} 1,&amp;n&#x3D;1 \\ (-1)^m,&amp;n&#x3D;\prod_{i&#x3D;1}^m p_i^{k_i},\prod_{i&#x3D;1}^m k_i&#x3D;1 \\ 0,&amp;otherwise\\ \end{c">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-04-14T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-12T14:16:05.944Z">
+<meta property="article:author" content="nikkukun">
+<meta property="article:tag" content="莫比乌斯反演">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/summary/mobius-inversion/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>莫比乌斯反演总结 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Nikkukun's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/summary/mobius-inversion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          莫比乌斯反演总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2017-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2017-04-14T00:00:00+00:00">2017-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-12 14:16:05" itemprop="dateModified" datetime="2021-06-12T14:16:05+00:00">2021-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">算法总结</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>莫比乌斯反演是偏序集上的一个反演，不过在此处我们只讨论整数格上的莫比乌斯反演。</p>
+<!---more--->
+<h1 id="莫比乌斯反演">莫比乌斯反演</h1>
+<h2 id="整数格上的莫比乌斯反演">整数格上的莫比乌斯反演</h2>
+<p>定义<span class="math inline"> \(\mu\)</span> 函数：</p>
+<p><span class="math display">\[
+\mu(n)=
+\begin{cases}
+1,&amp;n=1 \\
+(-1)^m,&amp;n=\prod_{i=1}^m p_i^{k_i},\prod_{i=1}^m k_i=1 \\
+0,&amp;otherwise\\
+\end{cases}
+\]</span></p>
+<p>函数有两个性质。</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> 是积性函数。</li>
+<li><span class="math inline">\(\sum_{i=1}^n\mu(i)= \begin{cases} 1,&amp;n=1 \\ 0,&amp;othewise\\ \end{cases}\)</span></li>
+</ul>
+<p>第一条性质说明<span class="math inline"> \(\mu\)</span> 可以<strong>线性筛</strong>；第二条性质提供了我们一个<strong>当且仅当</strong><span class="math inline"> \(n=1\)</span> 时计数的函数，因此在遇到求<span class="math inline"> \((i,j)=1\)</span> 的问题中通常会用到它。</p>
+<p>直接给出代码。</p>
+<figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>{</span><br><span class="line">    mu[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;N;i++){</span><br><span class="line">        <span class="keyword">if</span>(!notPri[i])pri[siz++]=i,mu[i]=<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;siz&amp;&amp;i*pri[j]&lt;N;j++){</span><br><span class="line">            <span class="keyword">int</span> nxt=i*pri[j];notPri[nxt]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%pri[j])mu[nxt]=-mu[i];</span><br><span class="line">            <span class="keyword">else</span> {mu[nxt]=<span class="number">0</span>;<span class="keyword">break</span>;}</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>当出现平方因子就退出筛法保证了每个数只会被最小的因子筛去，因此时间复杂度线性。<span class="math inline">\(\mu_i=0\)</span> 的情况是由最小因子筛掉的，而其他情况都是由<span class="math inline"> \(\mu_i=-\mu_j\)</span> 得到的。</p>
+<h2 id="反演">反演</h2>
+<p>想学习很多反演，但是太菜了只会这个.jpg</p>
+<p>以后可能会补吧。</p>
+<p>若函数<span class="math inline"> \(f(n),g(n)\)</span> 为数论函数，且满足<span class="math inline"> \(f(n)=\sum_{i|n}g(i)\)</span>，则有：</p>
+<p><span class="math display">\[g(n)=\sum_{i|n}f(n)\mu\left(\frac ni\right)=\sum_{i|n}f\left(\frac ni\right)\mu(i)\]</span></p>
+<p>若函数<span class="math inline"> \(f(n),g(n)\)</span> 为数论函数，且满足<span class="math inline"> \(f(i)=\sum_{d=1}^{\left\lfloor n/i \right\rfloor}g(i*d)\)</span>，则有：</p>
+<p><span class="math display">\[g(i)=\sum_{d=1}^{\left\lfloor n/i \right\rfloor}f(i\times d)\mu(d)\]</span></p>
+<p><a target="_blank" rel="noopener" href="https://blog.sengxian.com/algorithms/mobius-inversion-formula">证明</a>略去。事实上两种方法都可以比较方便地运用，一般第一种不需要构造函数，而第二种需要构造函数。</p>
+<h3 id="常用反演">常用反演</h3>
+<p>定义符号</p>
+<p><span class="math display">\[[exp]=
+\begin{cases}
+1,&amp;exp=true\\
+0,&amp;exp=false \\
+\end{cases}
+\]</span></p>
+<p>定义函数<span class="math inline"> \(e(n)=[n==1],id(n)=n\)</span>，则有：</p>
+<p><span class="math display">\[
+e=\mu \times 1 \\
+id=\phi \times 1
+\]</span></p>
+<p>乘法代表 Dirichlet 卷积。因此反演也可以表示为：</p>
+<p><span class="math display">\[f=g \times 1 \Leftrightarrow g=f \times \mu\]</span></p>
+<h2 id="应用">应用</h2>
+<h3 id="二维gcd计数前缀和">二维 GCD 计数前缀和</h3>
+<p>求<span class="math inline"> \(\sum_{i=1}^n \sum_{j=1}^m [(i,j)==k]\)</span> 且<span class="math inline"> \(n\leq m\)</span>。</p>
+<h4 id="不使用函数变换的方法">不使用函数变换的方法</h4>
+<p>不难发现：</p>
+<p><span class="math display">\[
+\begin {aligned}
+\sum_{i=1}^n \sum_{j=1}^m [(i,j)==k]
+=&amp;\sum_{i=1}^n \sum_{j=1}^m \left [\left (\frac ik,\frac jk\right)==1\right]  \\
+=&amp;\sum_{i=1}^n \sum_{j=1}^m e\left (\left (\frac ik,\frac jk\right)\right)  \\
+=&amp;\sum_{i=1}^n \sum_{j=1}^m \sum_{g|(i,j)} \mu (g)  \\
+=&amp;\sum_{i=1}^n \sum_{j=1}^m \sum_{g|i\text {且} g|j} \mu (g)  \\
+=&amp; \sum_{g=1}^n\sum_{i=1}^{\left\lfloor n/g\right\rfloor} \sum_{j=1}^{\left\lfloor m/g\right\rfloor} \mu (g)  \\
+=&amp; \sum_{g=1}^n \mu (g) \sum_{i=1}^{\left\lfloor n/g \right\rfloor} \sum_{j=1}^{\left\lfloor m/g\right\rfloor}   \\
+\end {aligned}
+\]</span></p>
+<p>而<span class="math inline"> \(\left\lfloor \dfrac ng\right\rfloor\)</span> 只有不超过<span class="math inline"> \(\sqrt{n}\)</span> 种取值，<span class="math inline">\(\left\lfloor \dfrac ng\right\rfloor\)</span> 和<span class="math inline"> \(\left\lfloor \dfrac mg\right\rfloor\)</span> 只有不超过<span class="math inline"> \(\sqrt{n}+\sqrt{m}\)</span> 种取值，因此可以将<span class="math inline"> \([1,n]\)</span> 分成<span class="math inline"> \(\sqrt{n}+\sqrt{m}\)</span> 块，每一块的<span class="math inline"> \(\left\lfloor \dfrac ng\right\rfloor\)</span> 和<span class="math inline"> \(\left\lfloor \dfrac mg\right\rfloor\)</span> 取值都不变，则我们预处理<span class="math inline"> \(\mu\)</span> 后可以对一块区间进行<span class="math inline"> \(\mathrm{O}(1)\)</span> 的统计，总时间复杂度为<span class="math inline"> \(\mathrm{O}(\sqrt{n}+\sqrt{m})\)</span>。</p>
+<h4 id="使用函数变换的方法">使用函数变换的方法</h4>
+<p>令<span class="math inline"> \(f(k)=\sum_{i=1}^n \sum_{j=1}^m [(i,j)==k]\)</span>，<span class="math inline">\(g(k)=\sum_{i=1}^n \sum_{j=1}^m [k|(i,j)]\)</span>，则<span class="math inline"> \(f(k)\)</span> 就是我们要求的答案。很明显<span class="math inline"> \(k|(i,j) \Leftrightarrow k|i\text {且} k|j\)</span>，因此<span class="math inline"> \(g(k)=\left\lfloor \dfrac nk \right\rfloor \left\lfloor \dfrac mk \right\rfloor\)</span>。</p>
+<p>发现<span class="math inline"> \(g(k)=\sum_{d=1}^{\left\lfloor n/k \right\rfloor}f(d \times k)\)</span>，因此有：</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(k)=&amp;\sum_{d=1}^{\left\lfloor n/k \right\rfloor}g(d \times k)\mu(d) \\
+=&amp;\sum_{d=1}^{\left\lfloor n/k \right\rfloor}\left\lfloor \dfrac n{dk} \right\rfloor \left\lfloor \dfrac m{dk} \right\rfloor\mu(d)
+\end{aligned}
+\]</span></p>
+<p>令<span class="math inline"> \(n'=\left\lfloor \dfrac nk \right\rfloor,m'=\left\lfloor \dfrac mk \right\rfloor\)</span>，则</p>
+<p><span class="math display">\[
+\begin{aligned}
+f(k)=&amp;\sum_{d=1}^{\left\lfloor n/k \right\rfloor}\left\lfloor \dfrac {n'}d \right\rfloor \left\lfloor \dfrac {m'}d \right\rfloor\mu(d)
+\end{aligned}
+\]</span></p>
+<p>类似上面可以证明<span class="math inline"> \(n',m'\)</span> 的取值个数，因此求解也是<span class="math inline"> \(\mathrm{O}(\sqrt{n}+\sqrt{m})\)</span> 的。</p>
+<p>好了，那求了一个区间后，怎么寻找下一个区间？假设我们当前区间开头为<span class="math inline"> \(i\)</span>，并假设下一个区间为<span class="math inline"> \(j\)</span>，则：</p>
+<p><span class="math display">\[
+\begin{aligned}
+\left\lfloor \dfrac {n'}i \right\rfloor &amp;\leq \left\lfloor \dfrac {n'}j  \right\rfloor \\
+\Rightarrow \left\lfloor \dfrac {n'}i  \right\rfloor &amp;\leq \dfrac {n'}j \\
+\Rightarrow j &amp;\leq \dfrac {n'}{\left\lfloor {n'}/i \right\rfloor} \\
+\Rightarrow j &amp;\leq \left\lfloor \dfrac {n'}{\left\lfloor {n'}/i \right\rfloor}\right\rfloor\\
+\end{aligned}
+\]</span></p>
+<p>同理可得<span class="math inline"> \(m\)</span>。因此<span class="math inline"> \(j=\min\left( \left\lfloor \dfrac {n'}{\left\lfloor {n'}/i \right\rfloor} \right\rfloor,\left\lfloor \dfrac {m'}{\left\lfloor {m'}/i \right\rfloor} \right\rfloor\right)\)</span>。这个技巧在很多莫比乌斯反演的题目都用得上。</p>
+<h3 id="求约数个数和">求约数个数和</h3>
+<p>直接给出结论：</p>
+<p>若<span class="math inline"> \(d(n)\)</span> 为<span class="math inline"> \(n\)</span> 的约数个数，则有：</p>
+<p><span class="math display">\[
+d(nm)=\sum_{i|n} \sum_{j|m} [(i,j)==1]
+\]</span></p>
+<p>证明不略。假设<span class="math inline"> \(nm=\prod_{i=1}p_i^{x_i},n=\prod_{i=1}p_i^{y_i}\)</span>，则<span class="math inline"> \(m=\prod_{i=1}p_i^{x_i-y_i}\)</span>。</p>
+<p>对于<span class="math inline"> \((i,j)=1\)</span>，考虑因子<span class="math inline"> \(p_k\)</span>，则<span class="math inline"> \(i\)</span> 和<span class="math inline"> \(j\)</span> 的<span class="math inline"> \(p_k\)</span> 项指数不能都不为<span class="math inline"> \(0\)</span>。当<span class="math inline"> \(i\)</span> 的<span class="math inline"> \(p_k\)</span> 为<span class="math inline"> \(0\)</span> 时，<span class="math inline">\(j\)</span> 有<span class="math inline"> \(x_k-y_k+1\)</span> 种取值；当<span class="math inline"> \(j\)</span> 的<span class="math inline"> \(p_k\)</span> 为<span class="math inline"> \(0\)</span> 时，<span class="math inline">\(i\)</span> 有<span class="math inline"> \(y_k+1\)</span> 种取值；<span class="math inline">\(i,j\)</span> 的<span class="math inline"> \(p_k\)</span> 项可以都取<span class="math inline"> \(0\)</span>。因此<span class="math inline"> \(i\)</span> 与<span class="math inline"> \(j\)</span> 的<span class="math inline"> \(p_k\)</span> 项有<span class="math inline"> \(x_k+1\)</span> 种二元组<span class="math inline"> \((i,j)\)</span> 的取值，总二元组方案数为<span class="math inline"> \(\prod_{i=1} x_i+1\)</span>，满足约数个数公式。</p>
+<p>然后还有个推广的神奇大结论：</p>
+<p><span class="math display">\[\sum_{x_1}^{y_1} \sum_{x_2}^{y_2} \cdots \sum_{x_k}^{y_k} d(x_1 x_2 \cdots x_k) = \sum_{x_1}^{y_1} \sum_{x_2}^{y_2} \cdots \sum_{x_k}^{y_k} \prod_{i=1}^{k} \left\lfloor \dfrac{y_i}{x_i} \right\rfloor \prod_{i &lt; j }  [(x_i, x_j)=1]\]</span></p>
+<p>太神奇，<a target="_blank" rel="noopener" href="http://www.cnblogs.com/iwtwiioi/p/4986325.html">证明</a>需要二重数学归纳，略过。</p>
+<h1 id="杜教筛">杜教筛</h1>
+<p>高端，不会。</p>
+<h1 id="min-25筛">min-25 筛</h1>
+<p>高端，不会。</p>
+<h1 id="练习">练习</h1>
+<p>莫比乌斯的题目通常能转化为<span class="math inline"> \((i,j)=1\)</span> 的计数问题，而转化为计数问题我们就容易通过分块求解了。</p>
+<h2 id="基础">基础</h2>
+<h3 id="poi2007-zap">POI2007 Zap</h3>
+<p>二维 GCD 计数前缀和。</p>
+<h3 id="haoi2011-problem-b">HAOI2011 Problem b</h3>
+<p><em>POI2007 Zap</em> 的加强版，容斥原理加加减减就好了。</p>
+<h3 id="bzoj2820-yy的gcd">BZOJ2820 YY 的 GCD</h3>
+<p>仍然是二维 GCD 计数前缀和，不过需要<span class="math inline"> \((i,j)\)</span> 为质数。只要预处理质数的<span class="math inline"> \(\mu\)</span> 前缀和就好了。</p>
+<h3 id="sdoi2008-仪仗队">SDOI2008 仪仗队</h3>
+<p>不被挡住即行列<span class="math inline"> \((i,j)=1\)</span>（从<span class="math inline"> \(0\)</span> 标号），因此答案为<span class="math inline"> \((\sum_{i=1}^n \sum_{i=1}^n [(i,j)==1])+2\)</span>（<span class="math inline">\(2\)</span> 个是<span class="math inline"> \((0,1),(1,0)\)</span>）。最终化为<span class="math inline"> \((\sum_{g=1}^n \mu(g)\left\lfloor \dfrac ng\right\rfloor ^2)+2\)</span>，分块求解。</p>
+<h2 id="进阶">进阶</h2>
+<h3 id="sdoi2015-约数个数和">SDOI2015 约数个数和</h3>
+<p>是道好题，然而需要结论。</p>
+<p>令<span class="math inline"> \(n'=\dfrac ng,m'=\dfrac mg\)</span>，则</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum_{i=1}^n \sum_{j=1}^m d(ij)
+=&amp;\sum_{i=1}^n \sum_{j=1}^m [(i,j)==1] \\
+=&amp;\sum_{i=1}^n \sum_{j=1}^m {\left\lfloor \dfrac ni\right\rfloor}{\left\lfloor \dfrac mj\right\rfloor} \sum_{g|(i,j)}\mu(g) \\
+=&amp;\sum_{g=1}^n\mu(g)\sum_{i=1}^{\left\lfloor n/g\right\rfloor} \sum_{j=1}^{\left\lfloor m/g\right\rfloor} \dfrac n{ig} \dfrac m{jg} \\
+=&amp;\sum_{g=1}^n\mu(g)\sum_{i=1}^{n'} \sum_{j=1}^{m'} \dfrac {n'}i \dfrac{m'}j \\
+=&amp;\sum_{g=1}^n\mu(g)\sum_{i=1}^{n'} \dfrac {n'}i\sum_{j=1}^{m'}  \dfrac{m'}j \\
+\end{aligned}
+\]</span></p>
+<p>然后就可以预处理<span class="math inline"> \(f(n)=\sum_{i=1}^n \dfrac ni​\)</span> 的值，每次询问就可以分块解决。之所以要预处理<span class="math inline"> \(f(n)​\)</span>，是因为在倒数第二步时如果采用直接计算<span class="math inline"> \(\sum_{i=1}^{n'} \sum_{j=1}^{m'} \dfrac {n'}i \dfrac{m'}j​\)</span> 开销是很大的。但如果我们能预处理，就能做到<span class="math inline"> \(\mathrm{O}(1)​\)</span> 计算。</p>
+<p>预处理时间复杂度<span class="math inline"> \(\mathrm{O}(n\sqrt{n})\)</span>，单次询问时间复杂度<span class="math inline"> \(\mathrm{O}(\sqrt{n})\)</span>。</p>
+<h3 id="hnmtc20155-lucas的数论">HNMTC2015#5 Lucas 的数论</h3>
+<p>发现是 <em>SDOI2015 约数个数和</em>的单询问加强版本，上面对<span class="math inline"> \(\mu\)</span> 前缀和的<span class="math inline"> \(\mathrm{O}(n)\)</span> 时间复杂度已经不能满足我们了。</p>
+<p>式子最终可以推成这样：</p>
+<p><span class="math display">\[\sum_{g=1}^n\mu(g) d(n')^2 \]</span></p>
+<p>单次<span class="math inline"> \(f(n')\)</span> 可以分块求。假设我们预处理好了 μ 的前缀和，时间复杂度就是<span class="math inline"> \(\mathrm{O}(\sqrt{n})\)</span> 的。这里就有个求<span class="math inline"> \(μ\)</span> 的前缀和<span class="math inline"> \(sum\)</span> 的奇技淫巧了：</p>
+<p><span class="math display">\[sum(n)=1-\sum_{i=2}^n sum(\left\lfloor \dfrac ni \right\rfloor)\]</span></p>
+<p>递归求解。注意这也是能分块的，因此一层的时间为<span class="math inline"> \(\mathrm{O}(\sqrt{n})\)</span>，据说没有记忆化搜索时计算一次的时间复杂度为<span class="math inline"> \(\mathrm{O}(n^{\frac 23})\)</span>。不过事实上我们可以记忆化搜索，或者线筛预处理出<span class="math inline"> \(n\leq 5000000\)</span>（测试得到这个效率比较高）的<span class="math inline"> \(\mu\)</span> 前缀和减少计算。</p>
+<p>总时间复杂度未知，不过测试极限数据还是挺极限的。</p>
+<h2 id="高级">高级</h2>
+<p>没做过什么高级的。</p>
+<h1 id="总结">总结</h1>
+<p>莫比乌斯反演基本上离不开 GCD 和两个累和符号，而且重点往往是把式子化成统计 GCD=1 个数的形式，并反演求解。求解一般通过<strong>分块</strong>和预处理<span class="math inline"> \(\mu\)</span> 前缀和的方式<span class="math inline"> \(\mathrm{O}(\sqrt{n})\)</span> 求和。</p>
+<ul>
+<li><p><span class="math inline">\(e=\mu \times 1,id=\phi \times 1\)</span></p></li>
+<li><p><span class="math inline">\(\mu\)</span> 函数的性质：</p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> 是积性函数。</li>
+<li>$_{i=1}^n(i)=
+<span class="math display">\[\begin{cases}
+  1,&amp;n=1 \\
+  0,&amp;othewise\\
+  \end{cases}\]</span>
+$</li>
+</ul></li>
+<li><p><span class="math inline">\(\mu\)</span> 的神奇前缀和计算：<span class="math inline">\(sum(n)=1-\sum_{i=2}^n sum(\left\lfloor \frac ni \right\rfloor)\)</span></p></li>
+<li><p> 当待分块函数（如<span class="math inline"> \(\mu\)</span>）可以单独提出<strong>预处理</strong>时，可以通过此降低时间复杂度。</p></li>
+<li><p>若多次询问中，分块区域下含有 GCD 的枚举值<span class="math inline"> \(g\)</span> 和<span class="math inline"> \(i\)</span> 或<span class="math inline"> \(j\)</span> 之一，可以通过枚举<span class="math inline"> \(ig\)</span> 或<span class="math inline"> \(jg\)</span>，再枚举<span class="math inline"> \(g\)</span> 加速。（说法很意识流，详见<a target="_blank" rel="noopener" href="https://blog.sengxian.com/algorithms/mobius-inversion-formula">莫比乌斯反演简要笔记 - GCD 的幂</a>）</p></li>
+<li><p>积性函数有时不好证明，可以打表观察。重点观察幂和质数的值。</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" rel="tag"># 莫比乌斯反演</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/summary/network-flow/" rel="prev" title="网络流总结">
+      <i class="fa fa-chevron-left"></i> 网络流总结
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/summary/matrix/" rel="next" title="矩阵总结">
+      矩阵总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="nav-number">1.</span> <span class="nav-text">莫比乌斯反演</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0%E6%A0%BC%E4%B8%8A%E7%9A%84%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="nav-number">1.1.</span> <span class="nav-text">整数格上的莫比乌斯反演</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%BC%94"><span class="nav-number">1.2.</span> <span class="nav-text">反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%8F%8D%E6%BC%94"><span class="nav-number">1.2.1.</span> <span class="nav-text">常用反演</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">1.3.</span> <span class="nav-text">应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4gcd%E8%AE%A1%E6%95%B0%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">1.3.1.</span> <span class="nav-text">二维 GCD 计数前缀和</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E5%8F%98%E6%8D%A2%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">不使用函数变换的方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%87%BD%E6%95%B0%E5%8F%98%E6%8D%A2%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">使用函数变换的方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B1%82%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C"><span class="nav-number">1.3.2.</span> <span class="nav-text">求约数个数和</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%9C%E6%95%99%E7%AD%9B"><span class="nav-number">2.</span> <span class="nav-text">杜教筛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#min-25%E7%AD%9B"><span class="nav-number">3.</span> <span class="nav-text">min-25 筛</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%83%E4%B9%A0"><span class="nav-number">4.</span> <span class="nav-text">练习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80"><span class="nav-number">4.1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#poi2007-zap"><span class="nav-number">4.1.1.</span> <span class="nav-text">POI2007 Zap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#haoi2011-problem-b"><span class="nav-number">4.1.2.</span> <span class="nav-text">HAOI2011 Problem b</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bzoj2820-yy%E7%9A%84gcd"><span class="nav-number">4.1.3.</span> <span class="nav-text">BZOJ2820 YY 的 GCD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sdoi2008-%E4%BB%AA%E4%BB%97%E9%98%9F"><span class="nav-number">4.1.4.</span> <span class="nav-text">SDOI2008 仪仗队</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-number">4.2.</span> <span class="nav-text">进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sdoi2015-%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C"><span class="nav-number">4.2.1.</span> <span class="nav-text">SDOI2015 约数个数和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hnmtc20155-lucas%E7%9A%84%E6%95%B0%E8%AE%BA"><span class="nav-number">4.2.2.</span> <span class="nav-text">HNMTC2015#5 Lucas 的数论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7"><span class="nav-number">4.3.</span> <span class="nav-text">高级</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nikkukun"
+      src="/images/avatar_tozuka_kotaro.jpg">
+  <p class="site-author-name" itemprop="name">nikkukun</p>
+  <div class="site-description" itemprop="description">是个蒟蒻，梦想不是造飞机。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:tyakennikku@163.com" title="E-Mail → mailto:tyakennikku@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" title="QQ → tencent:&#x2F;&#x2F;AddContact&#x2F;?fromId&#x3D;45&amp;fromSubId&#x3D;1&amp;subcmd&#x3D;all&amp;uin&#x3D;1113119882&amp;website&#x3D;www.oicqzone.com" rel="noopener" target="_blank"><i class="fa fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/SaltedHXJ/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;SaltedHXJ&#x2F;" rel="noopener" target="_blank">_ConveX</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://potassiumwings.github.io/" title="https:&#x2F;&#x2F;potassiumwings.github.io&#x2F;" rel="noopener" target="_blank">Potassium</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+</body>
+</html>

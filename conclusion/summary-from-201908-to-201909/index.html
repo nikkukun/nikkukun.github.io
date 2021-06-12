@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="花些时间整理最近做题时写的笔记，还是很有必要的一件事。 之前的内容索引：  常用小结论与技巧总结 神秘犯蠢备忘录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 年 8-9 月做题总结">
+<meta property="og:url" content="http://yoursite.com/conclusion/summary-from-201908-to-201909/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="花些时间整理最近做题时写的笔记，还是很有必要的一件事。 之前的内容索引：  常用小结论与技巧总结 神秘犯蠢备忘录">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-09-25T17:02:00.000Z">
+<meta property="article:modified_time" content="2021-06-12T14:16:05.940Z">
+<meta property="article:author" content="nikkukun">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/conclusion/summary-from-201908-to-201909/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2019 年 8-9 月做题总结 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Nikkukun's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/conclusion/summary-from-201908-to-201909/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2019 年 8-9 月做题总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-25 17:02:00" itemprop="dateCreated datePublished" datetime="2019-09-25T17:02:00+00:00">2019-09-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-12 14:16:05" itemprop="dateModified" datetime="2021-06-12T14:16:05+00:00">2021-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">总结</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>花些时间整理最近做题时写的笔记，还是很有必要的一件事。</p>
+<p>之前的内容索引：</p>
+<ol type="1">
+<li><a href="conclusion/some-conclusion/#more">常用小结论与技巧总结</a></li>
+<li><a href="conclusion/notes/#more">神秘犯蠢备忘录</a></li>
+</ol>
+<a id="more"></a>
+<h1 id="一图论">一、图论</h1>
+<h2 id="平面图">平面图</h2>
+<p>首先考虑平面图有什么好性质，它的边数不会很多！实际上（根据论文），大于等于 <span class="math inline">\(3\)</span> 个点的平面图边数不会超过 <span class="math inline">\(3n-6\)</span>，也就是说边数和点数是同阶的。</p>
+<h2 id="矩阵树定理">矩阵树定理</h2>
+<p>所有图允许重边，但不允许自环。</p>
+<h3 id="无向图形式">无向图形式</h3>
+<p><span class="math inline">\(L(G) = D(G) - A(G)\)</span></p>
+<h3 id="有向图形式">有向图形式</h3>
+<p>路径指向根节点<span class="math inline"> \(rt\)</span> 的树：</p>
+<p><span class="math display">\[L_{\mathrm{root}}(G, rt) = D_{\mathrm{out}}(G) - A(G)\]</span></p>
+<p>路径从根节点<span class="math inline"> \(rt\)</span> 指向叶节点的树：</p>
+<p><span class="math display">\[L_{\mathrm{leaf}}(G, rt) = D_{\mathrm{in}}(G) - A(G)\]</span></p>
+<p>注意上面两个都要求去除的是<span class="math inline"> \(rt\)</span> 的主子式。</p>
+<h3 id="best定理">BEST 定理</h3>
+<p><span class="math inline">\(G\)</span> 是有向欧拉图，则不同的欧拉回路总数为<span class="math inline"> \(ec(G)\)</span> 为</p>
+<p><span class="math display">\[
+ec(G) = \det L_{\mathrm{root}}(G, rt) \prod_{u \in V} (\deg(u) -1)!
+\]</span></p>
+<p>需要满足的性质：</p>
+<ol type="1">
+<li>欧拉图的所有节点有出度<span class="math inline"> \(=\)</span> 入度；</li>
+<li>任意两个节点<span class="math inline"> \(u, v\)</span> 有<span class="math inline"> \(L_{\mathrm{root}}(G, u) = L_{\mathrm{root}}(G, v)\)</span>。这个很显然，一个欧拉回路随便拆掉一条边都是一个生成树，所以随便选哪个点做根，根向生成树都应该相等。（我合理推测这个情况还有<span class="math inline"> \(L_{\mathrm{root}}(G, rt) = L_{\mathrm{leaf}}(G, rt)\)</span>）</li>
+</ol>
+<p>后面乘的这个东西相当于，在树上游走，随便选一条边走，这样一个点就贡献<span class="math inline"> \((\deg(u) -1)!\)</span> 种方案了。</p>
+<h2 id="欧拉回路">欧拉回路</h2>
+<p>判断条件：</p>
+<ol type="1">
+<li><span class="math inline">\(0\)</span> 个或<span class="math inline"> \(2\)</span> 个奇点</li>
+<li>整个图<strong>联通</strong></li>
+</ol>
+<p>不连通的话，啥都没有了</p>
+<p>输出需要倒序输出，不然会有错误。e.g.</p>
+<pre><code>1 2
+2 3
+3 4
+4 1
+4 5
+5 6
+6 4</code></pre>
+<p>从 <span class="math inline">\(1\)</span> 出发，就会发现还是得逆序……</p>
+<p>Q: 是不是只要从一个点出发就好啊</p>
+<h2 id="连通分量">连通分量</h2>
+<p>Tarjan 求 SCC 和求 BCC 是不一样的，后者并不能走来的边，所以需要记录 pa，前者可以走，所以不需要。</p>
+<h2 id="sat">2-SAT</h2>
+<p>一个妙妙 2-SAT 题目：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1215/problem/F">Radio Station</a>。</p>
+<p>有 <span class="math inline">\(n\)</span> 个电台，有一些电台对需要满足一些基础 2-SAT 条件。此外，每个电台都有一个波长范围 <span class="math inline">\([l, r]\)</span>，且 <span class="math inline">\(l, r \leq m\)</span>。你需要找一种方案，使得选出满足条件的电台，且这些电脑波长范围的交不为空（可以假定是 <span class="math inline">\(f\)</span>，且 <span class="math inline">\(\forall i,\ f \in [l_i, r_i]\)</span>）。</p>
+<p>建立一些 <span class="math inline">\(f \geq i\)</span> 形式的变量，则 <span class="math inline">\(f \leq i\)</span> 和 <span class="math inline">\(f \leq i+1\)</span> 之间的可以添加限制。对于每个电台，也只会和两个新变量之间有限制。这样就在添加线性个变量时解决了问题。</p>
+<p>这个题目妙妙点在于，是用 <span class="math inline">\(f \geq i\)</span> 的形式而非 <span class="math inline">\(f = i\)</span>。后者虽然也可以解决问题，但是对于新变量之间的限制是 <span class="math inline">\(\mathcal{O}(m^2)\)</span> 级别的 —— 两两变量之间不能同时都成立。同时，对于一个电台的 <span class="math inline">\([l, r]\)</span>，也需要和新变量一一添加约束，这样就爆了。</p>
+<p>总结：</p>
+<ul>
+<li>能使用 2-SAT 的限制实际上是：两个变量不能同时都满足某个条件，而其他情况都是合法的。</li>
+<li>对于区间类型的处理，改写成前缀和形式或许会有所帮助。在区间可并性很明显的题目中，这种处理方法很常见（比如区间求和），但是出成 2-SAT 形式就很容易忽略掉这种技巧了。</li>
+<li>如果在给一个树构图，且非常清楚每条边的父亲和儿子，那就可以只建一条边，变成一个有向树。</li>
+</ul>
+<h1 id="二数据结构">二、数据结构</h1>
+<p>一个我觉得需要记录的题目：https://codeforces.com/contest/1221/problem/F</p>
+<p>平面上有一些有权值的点，求以 <span class="math inline">\((l, l), (r, r)\)</span> 为顶点的正方形内权值和减去正方形边长的最大值。</p>
+<p>注意到一个点 <span class="math inline">\((x, y)\)</span> 能做贡献的 <span class="math inline">\((l, r)\)</span>，只有 <span class="math inline">\(l \leq \min(x, y) \leq \max(x, y) \leq r\)</span> 的区间。比较容易想到固定一个 <span class="math inline">\(l\)</span>，然后找最优的 <span class="math inline">\(r\)</span>。对于一个 <span class="math inline">\(l\)</span> 而言，点 <span class="math inline">\((x, y)\)</span> 能做贡献的 <span class="math inline">\(r\)</span> 是一个区间，可以线段树维护。但是随便枚举 <span class="math inline">\(l\)</span> 的话，就很不好维护这个东西，因为改变了 <span class="math inline">\(l\)</span>，一些点是否产生贡献的状态就会变化。</p>
+<p>化<strong>静态</strong>为<strong>动态</strong>，考虑从大到小枚举 <span class="math inline">\(l\)</span>，这样就相当于动态插入一些点，并且插入的点对后面的影响都是正确的。如果没想到这个东西，实现起来就会有一定困难。</p>
+<p>总结：</p>
+<ul>
+<li>无序且顺序不影响结果时，排排序可以让处理过程方便：比如 <a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/t/41420">Stone</a> 这个 DP 题目需要记录一下已选序列的最小值，且在无序时需要多一维来记录这个状态。如果改成有序，则就可以和 “枚举到的位置” 这维合并，保证复杂度正确。</li>
+<li>需要处理一些互相产生影响的东西时，可以考虑从无到有的方向处理。本题相当于从大到小插入点，保证了大的对小的影响统计是正确的。更通常的做法是化静态为动态，增量式地插入一般能有比较好的性质可以维护。</li>
+</ul>
+<h1 id="三树">三、树</h1>
+<h2 id="树上附近点统计">树上附近点统计</h2>
+<p>处理树上到一个点 <span class="math inline">\(u\)</span> 距离小于等于 <span class="math inline">\(k\)</span> （比较小）的所有点，可以考虑维护一个点，它子树向下 <span class="math inline">\(k\)</span> 层的节点信息，则最后答案可以为：</p>
+<p><span class="math display">\[
+f(v, k) + f(\mathrm{pa}(v), k-1) - f(v, k-2) + f(\mathrm{pa}(\mathrm{pa}(v)), k-2) - f(v, k-3) + \ldots
+\]</span></p>
+<p>维护子树信息，可以按照欧拉序在进出节点的时候统计差值，就可以轻松维护了。如果一个东西离线做很困难，可以考虑变成动态的：动态更新加点，然后把一个询问拆成两个时间节点的询问。比如 Mokia 和这题。</p>
+<h2 id="树分治化-dfs">树分治化 DFS</h2>
+<p>如果点对间路径统计问题能够挂到两点的 LCA 上，那么一般可以化成树上 DP，然后在 LCA 上统计所有和它相关的路径，感觉比点分治要好写。比如<a target="_blank" rel="noopener" href="https://www.luogu.org/problem/P2634">聪聪与可可</a>。</p>
+<h2 id="树上路径贡献转移到边">树上路径贡献转移到边</h2>
+<p>求树上点对总距离，考虑边的贡献 <span class="math inline">\(=\)</span> 两边点个数乘起来。e.g. CF1060E。即是说，如果答案满足线性性，那么可以分别考虑贡献。</p>
+<h1 id="四数论">四、数论</h1>
+<h2 id="皮萨诺周期">皮萨诺周期</h2>
+<p>计算斐波那契周期性质：http://webspace.ship.edu/msrenault/fibonacci/fibfactory.htm</p>
+<p>皮萨诺周期：模 <span class="math inline">\(p\)</span> 下的周期不超过 <span class="math inline">\(6n\)</span>，且只有在满足 <span class="math inline">\(p = 2 \cdot 5^k\)</span> 的形式时才取到等号。</p>
+<p>如果要对一个神秘数（比如 <span class="math inline">\(10^9\)</span>）取模，并且要求 <span class="math inline">\(F_i\)</span> 前缀和之类和区间有关的东西，可以分别在 <span class="math inline">\(2^9, 5^9\)</span> 下取模求循环节搞，这样循环节就很小了。</p>
+<p>除了 <span class="math inline">\(2\)</span> 以外，皮萨诺周期都是偶数。原因是转移矩阵 <span class="math inline">\(\det F = -1\)</span>，而 <span class="math inline">\(\det F^{\pi (n)} = 1\)</span>，因此 <span class="math inline">\(\pi (n)\)</span> 必为偶数。</p>
+<ul>
+<li>当且仅当 <span class="math inline">\(p\equiv 1 \pmod 5\)</span> 或 <span class="math inline">\(p\equiv 4 \pmod 5\)</span> 时，<span class="math inline">\(5\)</span> 是模 <span class="math inline">\(p\)</span> 意义下的<strong>二次剩余</strong>。</li>
+<li>当且仅当 <span class="math inline">\(p\equiv 2 \pmod 5\)</span> 或 <span class="math inline">\(p\equiv 3 \pmod 5\)</span> 时，<span class="math inline">\(5\)</span> 是模 <span class="math inline">\(p\)</span> 意义下的<strong>非二次剩余</strong>。</li>
+</ul>
+<p>下部分参考自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/yicongli/p/9800705.html">求解斐波那契数列模 p 意义下最短循环节 - yicongli</a>。</p>
+<p>质数 <span class="math inline">\(p\)</span> 的皮萨诺周期 <span class="math inline">\(P(p)\)</span> 满足：</p>
+<ul>
+<li><span class="math inline">\(P(p) | p-1\)</span>，其中 <span class="math inline">\(5\)</span> 是模 <span class="math inline">\(p\)</span> 意义下的二次剩余</li>
+<li><span class="math inline"> \(P(p) | 2p+2\)</span>，其中 <span class="math inline">\(5\)</span> 是模 <span class="math inline">\(p\)</span> 意义下的非二次剩余</li>
+<li><span class="math inline"> \(P(p^k) | P(p)\cdot p^{k-1}\)</span>，但是据作者说他并没有找到证明</li>
+<li>对于合数来说，给每个质数幂的 <span class="math inline">\(P(p^k)\)</span> 取 LCM 即可</li>
+</ul>
+<h2 id="欧拉降幂">欧拉降幂</h2>
+<p>欧拉降幂：需要特殊处理，因为 <span class="math inline">\(\varphi(n)\)</span> 前后是不一样的，不能先加 <span class="math inline">\(\varphi(n)\)</span> 再处理。</p>
+<h2 id="收敛性">收敛性</h2>
+<p>序列的前缀 GCD、OR、AND 具有吸收性，最多只有不超过 <span class="math inline">\(\mathcal{O}(\log n)\)</span> 种不同的值。</p>
+<h2 id="模运算">模运算</h2>
+<p>想要求 <span class="math inline">\(a\times b^{-1} \pmod p\)</span>，但是 <span class="math inline">\(b^{-1}\)</span> 可能在模 <span class="math inline">\(p\)</span> 下不存在，这个时候可以求 <span class="math inline">\(a \pmod {b\times p}\)</span>，这样左边就可以直接除以 <span class="math inline">\(b\)</span> 了。简单证明：</p>
+<p><span class="math display">\[
+a\times b^{-1} \equiv n \pmod p \\
+(a\times b^{-1})x + py = n  \\
+ax + (p\times b)y = n\times b   \\
+a \equiv n\times b \pmod {p \times b}   \\
+\]</span></p>
+<p>模 <span class="math inline">\(2^{64}\)</span>（用 <code>ull</code>）时，应该注意最后再向右移动位数，因为运算过程中并不能保证 <span class="math inline">\(2\)</span> 的逆存在，除以二可能并不是个整数。由于最后的运算结果一定是个整数，并且一定比答案多了 <span class="math inline">\(2^n\)</span>，因此最后是可以直接除掉的。</p>
+<h2 id="原根">原根</h2>
+<p><span class="math inline">\(n\)</span> 如果有原根，则原根个数：<span class="math inline">\(\varphi(\varphi(n))\)</span>。不会证明。</p>
+<h2 id="光速幂">光速幂</h2>
+<p>光速幂：<span class="math inline">\(a^{bx+c} = (a^x)^b \times a^c\)</span>，预处理 <span class="math inline">\(a^x\)</span> 和 <span class="math inline">\(a\)</span> 的 <span class="math inline">\([0, x)\)</span> 次幂即可。</p>
+<h2 id="gcd-的合并">GCD 的合并</h2>
+<p><span class="math display">\[
+(a, b) = (a, c) = 1 \Leftrightarrow (a, bc) = 1
+\]</span></p>
+<p>好像非常显然，但是我会犯蠢。</p>
+<h1 id="五筛法">五、筛法</h1>
+<h2 id="积性函数">积性函数</h2>
+<p>若 <span class="math inline">\(f, g\)</span> 都是积性函数，则以下函数也是积性函数：</p>
+<p><span class="math display">\[
+h(x) = f(x^p)   \\
+h(x) = f^p(x)   \\
+h(x) = f(x)g(x)     \\
+h = f \times g  \\
+\]</span></p>
+<p>狄利克雷卷积满足：</p>
+<ul>
+<li>交换律</li>
+<li>结合律</li>
+<li>分配律</li>
+<li>单位元</li>
+</ul>
+<p>取 <span class="math inline">\(g = 1\)</span>，则 <span class="math inline">\(h(n) = \sum _{d|n} f(d)\)</span> 也是个积性函数。但对一个不是积性函数的 <span class="math inline">\(a\)</span> 而言，<span class="math inline">\(b(n) = \sum _{d|n} a(d)\)</span> 可不一定是个积性函数……</p>
+<p><span class="math inline">\(f\)</span> 是积性函数，则 <span class="math inline">\(g(n) = nf(n)\)</span> 也是积性函数。</p>
+<h2 id="很水的反演过程">很水的反演过程</h2>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \varphi \times 1 = \mathrm{id}    \\
+\Rightarrow \ &amp; \varphi = \mathrm{id} \times \mu
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; \mu \times 1  \\
+\Rightarrow \ &amp; e = \mu \times \mu
+\end{aligned}
+\]</span></p>
+<h2 id="约数个数和">约数个数和</h2>
+<p>约数个数 <span class="math inline">\(d(n)\)</span> 和约数和 <span class="math inline">\(\sigma(n)\)</span> 也是积性函数，且</p>
+<p><span class="math display">\[
+\sum _{i=1} ^n d(n) = \sum _{i=1}^n \left\lfloor \frac ni \right\rfloor 
+\]</span></p>
+<p>分别考虑每个约数能贡献给谁即可。</p>
+<p><span class="math display">\[
+d(ij) = \sum _{x|i} \sum _{y|j} [(x, y) = 1]
+\]</span></p>
+<p>上式显然先决定 <span class="math inline">\(x\)</span> 的取值，再决定 <span class="math inline">\(y\)</span> 的取值。对于一个因子 <span class="math inline">\(p\)</span>，若 <span class="math inline">\(p^a | i,\ p^b | j\)</span>，且 <span class="math inline">\(p^{a+b} | ij\)</span>，则</p>
+<ul>
+<li><span class="math inline">\(p^0 | x\)</span>，则表示 <span class="math inline">\(y\)</span> 可以任意选 <span class="math inline">\(p^1, \ldots, p^b\)</span> 等因子，分别对应因数 <span class="math inline">\(d | p^{a+1}, d | p^{a+2}, \ldots, d | p^{a+b}\)</span></li>
+<li><span class="math inline">\(p^1 | x, p^2 | x, \ldots, p^a | x\)</span>，则表示 <span class="math inline">\(x\)</span> 可以任意选 <span class="math inline">\(p^1, \ldots, p^a\)</span> 等因子，分别对应因数 <span class="math inline">\(d | p^{1}, d | p^{2}, \ldots, d | p^{a}\)</span></li>
+<li><span class="math inline">\(x = 1, y = 0\)</span>，则表示因数 <span class="math inline">\(1\)</span>。</li>
+</ul>
+<p>综上，因子 <span class="math inline">\(p^0, p^1, \ldots, p^{a+b}\)</span> 都能被唯一地表示出来且一一对应（双射），因此等式成立。</p>
+<h2 id="一些奇怪的式子转化">一些奇怪的式子转化</h2>
+<h3 id="范围相同的互质对统计">范围相同的互质对统计</h3>
+<p><span class="math display">\[
+\sum _{i=1} ^n \sum _{j=1} ^n [(i, j)=1] = 2\sum _{i=1}^n \varphi(i) - 1
+\]</span></p>
+<p>两两互质个数减去 <span class="math inline">\((1, 1)\)</span> 的情况。也可以写成</p>
+<p><span class="math display">\[
+\sum _{i=1} ^n \sum _{j=1} ^n [(i, j)=1] = \sum _{d=1}^n \mu(d) \left\lfloor \frac nd \right\rfloor ^2
+\]</span></p>
+<h3 id="mu-的拆解"><span class="math inline">\(\mu\)</span> 的拆解</h3>
+<p><span class="math display">\[
+\mu(ab) = \mu(a) \mu(b) [(a, b) = 1]
+\]</span></p>
+<p>这个比较显然，因为存在平方因子就是 <span class="math inline">\(0\)</span> 了。</p>
+<h3 id="varphi-的拆解"><span class="math inline">\(\varphi\)</span> 的拆解</h3>
+<p>若 <span class="math inline">\((a, p) = 1\)</span>，则</p>
+<p><span class="math display">\[
+\varphi(ap^k) = \varphi(a) \cdot \varphi(p) \cdot p^{k-1}
+\]</span></p>
+<p>这说明对 <span class="math inline">\(k &gt; 1\)</span> 的质因数 <span class="math inline">\(p\)</span>，它都可以直接丢出来。换句话说，如果 <span class="math inline">\(n = \prod p_i^{k_i}\)</span>，令 <span class="math inline">\(x = \prod p_i,\ y = \prod p_i^{k_i-1}\)</span>，则</p>
+<p><span class="math display">\[
+\varphi(n) = \varphi(xy) = \varphi(x) \cdot y
+\]</span></p>
+<p>暂时不知道可以做什么。</p>
+<h2 id="min_25-筛">min_25 筛</h2>
+<p>min_25 筛中，分块的方案是这样的（令 <span class="math inline">\(n = 10\)</span>）：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">值</th>
+<th style="text-align: left;"> 1</th>
+<th style="text-align: left;">2</th>
+<th style="text-align: left;">3</th>
+<th style="text-align: left;">4</th>
+<th style="text-align: left;">5</th>
+<th style="text-align: left;">6</th>
+<th style="text-align: left;">7</th>
+<th style="text-align: left;">8</th>
+<th style="text-align: left;">9</th>
+<th style="text-align: left;">10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"> 向下取整</td>
+<td style="text-align: left;"> 10</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"> 分块点</td>
+<td style="text-align: left;">√</td>
+<td style="text-align: left;">√</td>
+<td style="text-align: left;">√</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">√</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">√</td>
+</tr>
+</tbody>
+</table>
+<p>即是说，分块点是向下取整的值相同时，能取到的最大值。所以在两个分块点 <span class="math inline">\((a, b]\)</span> 的部分就是一块，可以直接用 <span class="math inline">\(f(b) - f(a)\)</span> 当前缀和。</p>
+<h2 id="杜教筛">杜教筛</h2>
+<p>利用杜教筛的技巧可以求一些非积性函数的前缀和。若要求 <span class="math inline">\(f\)</span> 的前缀和，且满足：</p>
+<ol type="1">
+<li>某个函数 <span class="math inline">\(g\)</span> 的前缀和好求</li>
+<li><span class="math inline"> \(f \times g\)</span> 的前缀和好求</li>
+</ol>
+<p>那就有一定可能使用该技巧。一个例子（OEIS：A067824）：</p>
+<blockquote>
+<p>求 <span class="math inline">\(G(n) = 1 + \sum _{d|n,\ d&lt;n} G(d)\)</span> 的前缀和，其中 <span class="math inline">\(n \leq 10^9\)</span>。</p>
+</blockquote>
+<p>移项：</p>
+<p><span class="math display">\[
+2G(n) - 1 = \sum _{d|n} G(d)
+\]</span></p>
+<p>两边求前缀和：</p>
+<p><span class="math display">\[
+\begin{aligned}
+    2 \sum _{i=1}^n G(i) - n &amp;= \sum _{i=1}^n \sum _{d|i} G(d)      \\
+    &amp;= \sum _{d=1}^n \sum _{d|i} G\left(\frac id \right)        \\
+    &amp;= \sum _{d=1}^n \sum _{i=1}^{\lfloor n/d \rfloor} G(i)     \\
+    &amp;= \sum _{i=1}^n G(i) + \sum _{d=2}^n \sum _{i=1}^{\lfloor n/d \rfloor} G(i)        \\
+\end{aligned}
+\]</span></p>
+<p>记 <span class="math inline">\(S(n) = \sum _{i=1}^n G(i)\)</span>，整理上式得</p>
+<p><span class="math display">\[
+S(n) = n + \sum _{i=2}^n S \left( \left\lfloor \frac ni \right\rfloor \right)
+\]</span></p>
+<p>和积性函数的杜教筛区别在于没法线筛，所以预处理范围有限，递归过程可以近似看做是 <span class="math inline">\(\mathcal{O}(n^{3/4})\)</span> 的。</p>
+<h1 id="六fft">六、FFT</h1>
+<h2 id="fwt">FWT</h2>
+<p>FWT_OR:</p>
+<p><span class="math display">\[f(A) = (F(A_0),\ F(A_0) + F(A_1))\]</span></p>
+<p>FWT_AND:</p>
+<p><span class="math display">\[f(A) = (F(A_0) + F(A_1),\ F(A_1))\]</span></p>
+<p>FWT_XOR:</p>
+<p><span class="math display">\[f(A) = (F(A_0) + F(A_1),\ F(A_0) - F(A_1))\]</span></p>
+<h1 id="七多项式">七、多项式</h1>
+<h2 id="拉格朗日插值">拉格朗日插值</h2>
+<p><span class="math display">\[
+f(x) = \sum_{i=1}^n y_i \times (\prod_{j\neq i} \dfrac {x - x_j} {x_i - x_j})
+\]</span></p>
+<p>如果 <span class="math inline">\(x_i\)</span> 是 <span class="math inline">\([1, n]\)</span> 的连续下标，那可以通过预处理阶乘来达到 <span class="math inline">\(\mathcal{O}(n)\)</span> 的复杂度。</p>
+<h2 id="生成函数">生成函数</h2>
+<p>形式幂级数 <span class="math inline">\(\sum_{i = 0} ^ {\infty} a^i x^i = \frac 1 {1 - ax}\)</span> 并不太关注 <span class="math inline">\(x\)</span> 的取值是否使得式子收敛。给出一些常用生成函数的封闭形式：</p>
+<ol type="1">
+<li>完全背包生成函数</li>
+</ol>
+<p><span class="math display">\[
+\sum _{i=0} ^{\infty} x^{ai} = \frac 1{1-x^a}
+\]</span></p>
+<ol start="2" type="1">
+<li>不知道什么的生成函数</li>
+</ol>
+<p><span class="math display">\[
+\sum _{i=0} ^{\infty} a^i x^i = \frac 1{1-ax}
+\]</span></p>
+<ol start="3" type="1">
+<li>二项式形式的生成函数</li>
+</ol>
+<p><span class="math display">\[
+\sum _{i=0} ^{\infty} \binom ni x^i = (1+x)^n
+\]</span></p>
+<ol start="4" type="1">
+<li>广义二项式定理的生成函数</li>
+</ol>
+<p><span class="math display">\[
+\sum _{i=0} ^{\infty} \binom{n+i-1}{i}x^i = \frac {1}{(1-x)^n}
+\]</span></p>
+<p>令：扩展组合数为 <span class="math inline">\(\binom {-n}k = (-1)^k \binom {n+k-1}{k}\)</span>，这个展开就可以验证了。带入二项式定理中可以得到广义二项式定理（见上）。</p>
+<h3 id="生成函数与可逆背包">生成函数与可逆背包</h3>
+<p>一个非常棒的可逆背包题：2018 沈阳 ICPC 现场 M 题。</p>
+<p><span class="math display">\[
+\sum _{i=0} ^n x^{ai} = \frac {1-(x^a)^{n+1}}{1-x^a}
+\]</span></p>
+<p>上面是个负方案的 01 背包，下面是个完全背包，没了。</p>
+<h2 id="指数型生成函数">指数型生成函数</h2>
+<p><span class="math display">\[
+\sum _{i=0} ^{\infty} \frac {x^{2i}}{(2i)!} = \frac {e^x + e^{-x}}2
+\]</span></p>
+<p><span class="math display">\[
+\sum _{i=0} ^{\infty} \frac {x^{2i+1}}{(2i+1)!} = \frac {e^x - e^{-x}}2
+\]</span></p>
+<p>这个性质可以将生成函数化成封闭形式。反过来，也可以将封闭形式转化为级数形式：</p>
+<p><span class="math display">\[
+e^{ax} = \sum _{i=0} ^{\infty} \frac {a^i x^i}{i!}
+\]</span></p>
+<p>注意因为是求排列，所以一般最后要乘一个 <span class="math inline">\(n!\)</span>。</p>
+<h2 id="指数型生成函数与集合划分">指数型生成函数与集合划分</h2>
+<p>考虑一些具有性质 <span class="math inline">\(A\)</span> 的东西的指数型生成函数 <span class="math inline">\(F(x)\)</span>，现在把 <span class="math inline">\(A\)</span> 里面的东西当成基本元素，像选物品一样合在一起获得具有 <span class="math inline">\(B\)</span> 性质的东西（也就是 <span class="math inline">\(B\)</span> 是几个 <span class="math inline">\(A\)</span> 属性的东西拼成的），且 <span class="math inline">\(B\)</span> 的生成函数是 <span class="math inline">\(G(x)\)</span>，则</p>
+<p><span class="math display">\[
+G(x) = e^{F(x)}
+\]</span></p>
+<h3 id="例子">例子</h3>
+<ol type="1">
+<li><p>令 <span class="math inline">\(F(x)\)</span> 为 <span class="math inline">\(n\)</span> 个点的无向连通图个数，<span class="math inline">\(G(x)\)</span> 为 <span class="math inline">\(n\)</span> 个点的<strong>任意图</strong>数量（且显然 <span class="math inline">\(G(x) = \sum _{i=0}^{\infty} 2^{i(i-1)/2}x^i\)</span>），因此 <span class="math inline">\(F(x) = \ln G(x)\)</span>。</p></li>
+<li><p>令 <span class="math inline">\(F(x)\)</span> 为 <span class="math inline">\(n\)</span> 个点的连通 DAG 个数，<span class="math inline">\(G(x)\)</span> 为<strong>不要求连通</strong>的 <span class="math inline">\(n\)</span> 个点的 DAG 个数，显然这也同样满足集合划分要求。</p></li>
+</ol>
+<p>考虑一个小证明：</p>
+<p><span class="math inline">\(G(x)\)</span> 是 <span class="math inline">\(F(x)\)</span> 的一个划分，因此对 <span class="math inline">\(G(x)\)</span> 枚举它由几个 <span class="math inline">\(F(x)\)</span> 构成：</p>
+<p><span class="math display">\[
+\begin{aligned}
+G(x) &amp;= \sum _{i=0} ^{\infty} \frac {F^i(x)}{i!}        \\
+&amp;= e^{F(x)}
+\end{aligned}
+\]</span></p>
+<p>利用该性质可以极大化简某些过程。</p>
+<h1 id="八字符串">八、字符串</h1>
+<h2 id="询问总串长与不同长度的数量">询问总串长与不同长度的数量</h2>
+<p>多次询问字符串，且字符串总和不超过 <span class="math inline">\(m\)</span>，则不同长度的字符串是 <span class="math inline">\(\mathcal{O}(\sqrt{m})\)</span> 级别的。证明也很简单，最坏情况是<span class="math inline"> \(1 + 2 + 3 + \ldots + p\)</span>，这个东西显然长度只有 <span class="math inline">\(\mathcal{O}(\sqrt{m})\)</span>。因此如果询问某个长度的字符串可以同时处理，那么时间复杂度很可能就有保证。</p>
+<h2 id="统计本质不同的子序列">统计本质不同的子序列</h2>
+<p>CF1183E 计算本质不同的子序列个数中，如果令 <span class="math inline">\(f(i, j, c)\)</span> 为第 <span class="math inline">\(i\)</span> 位以及之前，长度为 <span class="math inline">\(j\)</span> 且结尾为 <span class="math inline">\(c\)</span> 的子序列个数，则转移中可能出现的情况是，前面出现一个字符 <span class="math inline">\(c\)</span>，后面又出现一个字符 <span class="math inline">\(c\)</span>，后面的字符能够统计前面的字符的<strong>所有</strong>子序列，这个时候会造成重复。因此最好的办法是，把以 <span class="math inline">\(c\)</span> 结尾的子序列贡献都移动到最后一次出现的字符上，而不计算更前面的字符，这样就是不重不漏的了。</p>
+<h1 id="犯蠢备忘录">犯蠢备忘录</h1>
+<ul>
+<li><p>变量记得加 <code>static</code> 或者初始化。</p></li>
+<li><p>min_25 筛和杜教筛，想清楚 <span class="math inline">\(n\)</span> 代表的是值还是离散化后的值。我默认都是离散化后的值。</p></li>
+<li><p>如果用 <code>lazy[o]</code> 标志表示区间 Add 次数，则更新时应该乘上 <code>lazy[o]</code>。e.g.</p>
+<blockquote>
+<p>区间加 1，询问区间和</p>
+</blockquote>
+<p></p><figure class="highlight c++"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s[o] = (R-L+<span class="number">1</span>) * lazy[o]</span><br></pre></td></tr></tbody></table></figure><p></p></li>
+<li><p>快速幂 <code>ret</code> 开始为 <span class="math inline">\(1\)</span> 而不是 <span class="math inline">\(0\)</span>。</p></li>
+<li><p>写优先队列的时候注意是 <code>.front()</code> 还是 <code>.back()</code>。</p></li>
+<li><p>写交互题目记得 <code>cout.flush()</code>！</p></li>
+<li><p>不要写 <code>memset(dis, 0x3f, sizeof(0x3f))</code> 这种蠢蠢错误了。</p></li>
+<li><p>写线性筛的时候注意是 <code>i % p</code> 还是 <code>p % i</code>。</p></li>
+</ul>
+<h1 id="杂项">杂项</h1>
+<ul>
+<li><p>如果给定了串的长度，说明可能是个空串，要特殊处理。</p></li>
+<li><p>构造题就往构造题的方向想就好了。</p></li>
+<li><p>编译器会说话就多说点</p>
+<ul>
+<li><code>-Wshadow</code>：局部变量覆盖</li>
+<li><code>-Wconversion</code>：类型转换，但是如果转换过程不改变符号就不会提示。比如 <code>unsigned int</code> 转 <code>bool</code> 没提示，也不知道怎么让它提醒。</li>
+</ul></li>
+<li><p>CF1144E 想到了康托展开，但是没有发现是个 26 进制下的求平均值……</p></li>
+<li><p> 两个 <code>int</code> 的 <code>pair</code> 搞映射，可以合成一个 <code>ll</code> 丢进去，这样就可以用 <code>unordered_map</code> 加速了。</p></li>
+<li><p>CF1204D 妙妙构造趣题</p></li>
+<li><p> arithmetic progression：等差数列</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/summary/quadratic-residue/" rel="prev" title="二次剩余学习笔记">
+      <i class="fa fa-chevron-left"></i> 二次剩余学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/conclusion/summary-from-201910-to-202002/" rel="next" title="2019 年 10 月 - 2020 年 2 月做题总结">
+      2019 年 10 月 - 2020 年 2 月做题总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E5%9B%BE%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">一、图论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B3%E9%9D%A2%E5%9B%BE"><span class="nav-number">1.1.</span> <span class="nav-text">平面图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E6%A0%91%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.</span> <span class="nav-text">矩阵树定理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E5%90%91%E5%9B%BE%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">无向图形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE%E5%BD%A2%E5%BC%8F"><span class="nav-number">1.2.2.</span> <span class="nav-text">有向图形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#best%E5%AE%9A%E7%90%86"><span class="nav-number">1.2.3.</span> <span class="nav-text">BEST 定理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF"><span class="nav-number">1.3.</span> <span class="nav-text">欧拉回路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">连通分量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sat"><span class="nav-number">1.5.</span> <span class="nav-text">2-SAT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">二、数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E6%A0%91"><span class="nav-number">3.</span> <span class="nav-text">三、树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E4%B8%8A%E9%99%84%E8%BF%91%E7%82%B9%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.1.</span> <span class="nav-text">树上附近点统计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E5%88%86%E6%B2%BB%E5%8C%96-dfs"><span class="nav-number">3.2.</span> <span class="nav-text">树分治化 DFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E4%B8%8A%E8%B7%AF%E5%BE%84%E8%B4%A1%E7%8C%AE%E8%BD%AC%E7%A7%BB%E5%88%B0%E8%BE%B9"><span class="nav-number">3.3.</span> <span class="nav-text">树上路径贡献转移到边</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E6%95%B0%E8%AE%BA"><span class="nav-number">4.</span> <span class="nav-text">四、数论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9A%AE%E8%90%A8%E8%AF%BA%E5%91%A8%E6%9C%9F"><span class="nav-number">4.1.</span> <span class="nav-text">皮萨诺周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AC%A7%E6%8B%89%E9%99%8D%E5%B9%82"><span class="nav-number">4.2.</span> <span class="nav-text">欧拉降幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7"><span class="nav-number">4.3.</span> <span class="nav-text">收敛性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="nav-number">4.4.</span> <span class="nav-text">模运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%A0%B9"><span class="nav-number">4.5.</span> <span class="nav-text">原根</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%89%E9%80%9F%E5%B9%82"><span class="nav-number">4.6.</span> <span class="nav-text">光速幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gcd-%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-number">4.7.</span> <span class="nav-text">GCD 的合并</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E7%AD%9B%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">五、筛法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">5.1.</span> <span class="nav-text">积性函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%88%E6%B0%B4%E7%9A%84%E5%8F%8D%E6%BC%94%E8%BF%87%E7%A8%8B"><span class="nav-number">5.2.</span> <span class="nav-text">很水的反演过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C"><span class="nav-number">5.3.</span> <span class="nav-text">约数个数和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%A5%87%E6%80%AA%E7%9A%84%E5%BC%8F%E5%AD%90%E8%BD%AC%E5%8C%96"><span class="nav-number">5.4.</span> <span class="nav-text">一些奇怪的式子转化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8C%83%E5%9B%B4%E7%9B%B8%E5%90%8C%E7%9A%84%E4%BA%92%E8%B4%A8%E5%AF%B9%E7%BB%9F%E8%AE%A1"><span class="nav-number">5.4.1.</span> <span class="nav-text">范围相同的互质对统计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mu-%E7%9A%84%E6%8B%86%E8%A7%A3"><span class="nav-number">5.4.2.</span> <span class="nav-text">\(\mu\) 的拆解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#varphi-%E7%9A%84%E6%8B%86%E8%A7%A3"><span class="nav-number">5.4.3.</span> <span class="nav-text">\(\varphi\) 的拆解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#min_25-%E7%AD%9B"><span class="nav-number">5.5.</span> <span class="nav-text">min_25 筛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%9C%E6%95%99%E7%AD%9B"><span class="nav-number">5.6.</span> <span class="nav-text">杜教筛</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%ADfft"><span class="nav-number">6.</span> <span class="nav-text">六、FFT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fwt"><span class="nav-number">6.1.</span> <span class="nav-text">FWT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="nav-number">7.</span> <span class="nav-text">七、多项式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC"><span class="nav-number">7.1.</span> <span class="nav-text">拉格朗日插值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="nav-number">7.2.</span> <span class="nav-text">生成函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8F%AF%E9%80%86%E8%83%8C%E5%8C%85"><span class="nav-number">7.2.1.</span> <span class="nav-text">生成函数与可逆背包</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%9E%8B%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0"><span class="nav-number">7.3.</span> <span class="nav-text">指数型生成函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E5%9E%8B%E7%94%9F%E6%88%90%E5%87%BD%E6%95%B0%E4%B8%8E%E9%9B%86%E5%90%88%E5%88%92%E5%88%86"><span class="nav-number">7.4.</span> <span class="nav-text">指数型生成函数与集合划分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">7.4.1.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">8.</span> <span class="nav-text">八、字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%A2%E9%97%AE%E6%80%BB%E4%B8%B2%E9%95%BF%E4%B8%8E%E4%B8%8D%E5%90%8C%E9%95%BF%E5%BA%A6%E7%9A%84%E6%95%B0%E9%87%8F"><span class="nav-number">8.1.</span> <span class="nav-text">询问总串长与不同长度的数量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%9C%AC%E8%B4%A8%E4%B8%8D%E5%90%8C%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97"><span class="nav-number">8.2.</span> <span class="nav-text">统计本质不同的子序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8A%AF%E8%A0%A2%E5%A4%87%E5%BF%98%E5%BD%95"><span class="nav-number">9.</span> <span class="nav-text">犯蠢备忘录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="nav-number">10.</span> <span class="nav-text">杂项</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nikkukun"
+      src="/images/avatar_tozuka_kotaro.jpg">
+  <p class="site-author-name" itemprop="name">nikkukun</p>
+  <div class="site-description" itemprop="description">是个蒟蒻，梦想不是造飞机。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:tyakennikku@163.com" title="E-Mail → mailto:tyakennikku@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" title="QQ → tencent:&#x2F;&#x2F;AddContact&#x2F;?fromId&#x3D;45&amp;fromSubId&#x3D;1&amp;subcmd&#x3D;all&amp;uin&#x3D;1113119882&amp;website&#x3D;www.oicqzone.com" rel="noopener" target="_blank"><i class="fa fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/SaltedHXJ/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;SaltedHXJ&#x2F;" rel="noopener" target="_blank">_ConveX</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://potassiumwings.github.io/" title="https:&#x2F;&#x2F;potassiumwings.github.io&#x2F;" rel="noopener" target="_blank">Potassium</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+</body>
+</html>

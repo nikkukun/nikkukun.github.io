@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="比赛链接 过题状态 代码查看     点我跳转 点我跳转 点我跳转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 牛客暑期多校训练营（第八场）">
+<meta property="og:url" content="http://yoursite.com/nowcoder-multi-university-2019/nowcoder-8/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="比赛链接 过题状态 代码查看     点我跳转 点我跳转 点我跳转">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-08-12T11:43:00.000Z">
+<meta property="article:modified_time" content="2021-06-12T14:16:05.940Z">
+<meta property="article:author" content="nikkukun">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/nowcoder-multi-university-2019/nowcoder-8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>2019 牛客暑期多校训练营（第八场） | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Nikkukun's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/nowcoder-multi-university-2019/nowcoder-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2019 牛客暑期多校训练营（第八场）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-12 11:43:00" itemprop="dateCreated datePublished" datetime="2019-08-12T11:43:00+00:00">2019-08-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-12 14:16:05" itemprop="dateModified" datetime="2021-06-12T14:16:05+00:00">2021-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%94%E8%B5%9B/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index"><span itemprop="name">训练</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">比赛链接</th>
+<th style="text-align: center;">过题状态</th>
+<th style="text-align: center;">代码查看</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/888#question">点我跳转</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://buaaacm.github.io/training.html?year=2019#id=03">点我跳转</a></td>
+<td style="text-align: center;"><a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/888#submit/%7B%22statusTypeFilter%22%3A%225%22%2C%22searchUserName%22%3A%22%E6%89%93%E4%B8%8D%E8%B5%A2%E7%94%B5%E8%84%91%22%7D">点我跳转</a></td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="a---all-one-matrices">A - All-one Matrices</h2>
+<blockquote>
+<p>Solved by Chielo.</p>
+</blockquote>
+<p>统计极大子矩阵个数就好了。</p>
+<h2 id="b---beauty-values">B - Beauty Values</h2>
+<blockquote>
+<p>Solved by Chielo.</p>
+</blockquote>
+<p>考虑每个点对答案的贡献，并且规定它能贡献的区间中，它是这个数出现最早的位置，这样就能不重不漏地统计了。</p>
+<h2 id="c---cdma">C - CDMA</h2>
+<blockquote>
+<p>Solved by prime21 &amp; nikkukun.</p>
+</blockquote>
+假设我们已经知道某个合法矩阵<span class="math inline">\(A\)</span>，则只需要递归构造 $
+<span class="math display">\[\begin{bmatrix}
+    A   &amp;A  \\
+    A   &amp;-A \\
+\end{bmatrix}\]</span>
+<p>$ 就好啦。</p>
+<h2 id="d---distance">D - Distance</h2>
+<blockquote>
+<p>Upsolved by nikkukun.</p>
+</blockquote>
+<p>有一个很 naive 的想法是将绝对值拆成取<span class="math inline"> \(\mathrm{max}\)</span> 的形式，最后再取<span class="math inline"> \(\mathrm{min}\)</span>，但是这个做法并不能很好地维护，因为取最大最小的顺序是不能交换的（反之，如果这题是维护最远点对，则这个方法可行）。</p>
+<p>考虑如何去掉绝对值：只要保证两个坐标每一维的差都不小于<span class="math inline"> \(0\)</span> 就好啦！所以有一个非常暴力的方法：维护<span class="math inline"> \(8\)</span> 个卦限的坐标正负情况，每次加入和查询时维护<span class="math inline"> \(8\)</span> 个卦限里的极值，实现去掉绝对值的目的。</p>
+<p>三维树状数组常数非常小。</p>
+<h2 id="g---gemstones">G - Gemstones</h2>
+<blockquote>
+<p>Solved by Chielo.</p>
+</blockquote>
+<p>我队：暴力</p>
+<p>正解：栈维护</p>
+<p>那 我 没 了</p>
+<h2 id="i---inner-world">I - Inner World</h2>
+<blockquote>
+<p>Upsolved by nikkukun.</p>
+</blockquote>
+<p>有意思的题目。如果能够注意到子树是 DFS 上一段连续的序列，那么添加一个节点就相当于在一个二维矩阵中，在 DFS 序对应行的<span class="math inline"> \([L,R]\)</span> 区间整体<span class="math inline"> \(+1\)</span>，而查询一个节点就相当于查询一个二维矩阵和。</p>
+<p>因此把所有操作都建到一棵树上，处理出 DFS 序，用线段树维护二维矩阵和即可。注意统计二维矩阵和的套路，用扫描线法进行降维（类似树状数组统计逆序对的方法）。</p>
+<h2 id="j---just-jump">J - Just Jump</h2>
+<blockquote>
+<p>Solved by nikkukun.</p>
+</blockquote>
+<p>题目可以转化成：计算在<span class="math inline"> \([0,L]\)</span> 插一些板子，且第<span class="math inline"> \(t_i\)</span> 块板不能插在<span class="math inline"> \(p_i\)</span> 处，两块板距离<span class="math inline"> \(\geq d\)</span> 的方案数。</p>
+<p>先考虑没有限制的情况，这相当于给一个长度<span class="math inline"> \(L\)</span> 的东西插板，然后每块板距离大于等于<span class="math inline"> \(d\)</span>，先假设这个插法是<span class="math inline"> \(F(L)\)</span>，可以 DP 预处理。然后不合法的方案就是，第<span class="math inline"> \(t_i\)</span> 块板不能插在<span class="math inline"> \(p_i\)</span> 处。那就可以考虑一个东西<span class="math inline"> \(G(j)\)</span>，表示插完了前<span class="math inline"> \(j\)</span> 个板子，且板子<span class="math inline"> \(j\)</span> 恰好插在<span class="math inline"> \(p_j\)</span> 的位置，<strong>后面部分</strong>合法的方案数（前面合法不合法无所谓）。假设有一个第<span class="math inline"> \(0\)</span> 块板子在位置<span class="math inline"> \(0\)</span>，则答案就是<span class="math inline"> \(G(0)\)</span></p>
+<p>用容斥，考虑位置<span class="math inline"> \(p_j\)</span> 之后的不合法情况，那么能插入的板子要满足板子编号<span class="math inline"> \(t_i\)</span> 和插入位置<span class="math inline"> \(p_i\)</span> 都比<span class="math inline"> \(j\)</span> 的要大。枚举这样的<span class="math inline"> \(i\)</span>，并且规定<span class="math inline"> \([p_j,p_i]\)</span> 之间的板子随便插，但是从<span class="math inline"> \(p_i\)</span> 之后就得是合法的插法，也就是<span class="math inline"> \(i\)</span> 是<strong>最后一个不满足要求</strong>的板子，这样能不重不漏地枚举所有不满足条件的情况。</p>
+<p>于是<span class="math inline"> \(G (j) = p_j \text {以后没有限制的放法总数} - ( [p_j,p_i]\text {随便放的方案数} \times G (i) )\)</span>。</p>
+<p>上式中：</p>
+<ul>
+<li><p><span class="math inline">\(p_j\)</span> 以后没有限制的放法总数 <span class="math inline">\(= F(L-p_j+1)\)</span>；</p></li>
+<li><p><span class="math inline">\([p_j,p_i]\)</span> 随便放的方案数 <span class="math inline">\(=\)</span> 某个神秘组合数；</p></li>
+<li><p>某个神秘组合数 <span class="math inline">\(=\)</span> 在 <span class="math inline">\([p_j,p_i]\)</span> 之间插 <span class="math inline">\(t_i-t_j+1\)</span> 个板子（端点各有一个板子），且满足任意两板距离<span class="math inline"> \(\geq d\)</span> 的方案数；</p></li>
+</ul>
+<p>然后就可以记忆化搜索了。时间复杂度<span class="math inline"> \(\mathcal{O} (m^2+n)\)</span></p>
+<hr>
+<h2 id="总结">总结</h2>
+<ul>
+<li><p>有一些构造题是递归构造，如本次的 C 题和<a target="_blank" rel="noopener" href="http://www.matrix67.com/blog/archives/6221">构造补图和原图相同的图</a>，都是利用已经有的结果进行扩展，这个时候就要观察小规模结果是否具有良好的推广性。</p></li>
+<li><p>和一段连续消除相关的东西可以看做是出栈入栈。</p></li>
+<li><p>把序列看成不断增量插入，有时候会有很简便的解法。如本次 G 题和 <a target="_blank" rel="noopener" href="https://codeforces.com/contest/1200/problem/E">CF1200E</a>，后者可以看做增量更新 Hash 值。</p></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/conclusion/notes/" rel="prev" title="神秘犯蠢备忘录">
+      <i class="fa fa-chevron-left"></i> 神秘犯蠢备忘录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/summary/quadratic-residue/" rel="next" title="二次剩余学习笔记">
+      二次剩余学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a---all-one-matrices"><span class="nav-number">1.</span> <span class="nav-text">A - All-one Matrices</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b---beauty-values"><span class="nav-number">2.</span> <span class="nav-text">B - Beauty Values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c---cdma"><span class="nav-number">3.</span> <span class="nav-text">C - CDMA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d---distance"><span class="nav-number">4.</span> <span class="nav-text">D - Distance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g---gemstones"><span class="nav-number">5.</span> <span class="nav-text">G - Gemstones</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#i---inner-world"><span class="nav-number">6.</span> <span class="nav-text">I - Inner World</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#j---just-jump"><span class="nav-number">7.</span> <span class="nav-text">J - Just Jump</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nikkukun"
+      src="/images/avatar_tozuka_kotaro.jpg">
+  <p class="site-author-name" itemprop="name">nikkukun</p>
+  <div class="site-description" itemprop="description">是个蒟蒻，梦想不是造飞机。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:tyakennikku@163.com" title="E-Mail → mailto:tyakennikku@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" title="QQ → tencent:&#x2F;&#x2F;AddContact&#x2F;?fromId&#x3D;45&amp;fromSubId&#x3D;1&amp;subcmd&#x3D;all&amp;uin&#x3D;1113119882&amp;website&#x3D;www.oicqzone.com" rel="noopener" target="_blank"><i class="fa fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/SaltedHXJ/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;SaltedHXJ&#x2F;" rel="noopener" target="_blank">_ConveX</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://potassiumwings.github.io/" title="https:&#x2F;&#x2F;potassiumwings.github.io&#x2F;" rel="noopener" target="_blank">Potassium</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+</body>
+</html>

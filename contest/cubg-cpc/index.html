@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="入学以来参加的第一次线下比赛竟然是在其他学校参加的而我校校赛的鸽子们能不能出成题都是个问题。 一点钟到达地大。迎接的志愿者小姐姐很可爱！问的问题也都回答得很详细！她说我们可能是来得最早的学校，其他学校都是一点半才来的。不过这样我们就有了很多时间可以调机子。 初步调了配置，一开始问题是挺多的，比如没有 Linux，比如 Dev 的调试功能不能使用。这个问题很大，需要慌。不过最后总算搞好 gdb 和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CUGB Campus Programming Contest 2018">
+<meta property="og:url" content="http://yoursite.com/contest/cubg-cpc/index.html">
+<meta property="og:site_name" content="Nikkukun&#39;s Blog">
+<meta property="og:description" content="入学以来参加的第一次线下比赛竟然是在其他学校参加的而我校校赛的鸽子们能不能出成题都是个问题。 一点钟到达地大。迎接的志愿者小姐姐很可爱！问的问题也都回答得很详细！她说我们可能是来得最早的学校，其他学校都是一点半才来的。不过这样我们就有了很多时间可以调机子。 初步调了配置，一开始问题是挺多的，比如没有 Linux，比如 Dev 的调试功能不能使用。这个问题很大，需要慌。不过最后总算搞好 gdb 和">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-12-09T00:00:00.000Z">
+<meta property="article:modified_time" content="2021-06-12T14:16:05.940Z">
+<meta property="article:author" content="nikkukun">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/contest/cubg-cpc/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>CUGB Campus Programming Contest 2018 | Nikkukun's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Nikkukun's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/contest/cubg-cpc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar_tozuka_kotaro.jpg">
+      <meta itemprop="name" content="nikkukun">
+      <meta itemprop="description" content="是个蒟蒻，梦想不是造飞机。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nikkukun's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CUGB Campus Programming Contest 2018
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-09T00:00:00+00:00">2018-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-12 14:16:05" itemprop="dateModified" datetime="2021-06-12T14:16:05+00:00">2021-06-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>入学以来参加的第一次线下比赛竟然是在其他学校参加的<del>而我校校赛的鸽子们能不能出成题都是个问题</del>。</p>
+<p>一点钟到达地大。迎接的志愿者小姐姐很可爱！问的问题也都回答得很详细！她说我们可能是来得最早的学校，其他学校都是一点半才来的。不过这样我们就有了很多时间可以调机子。</p>
+<p>初步调了配置，一开始问题是挺多的，比如没有 Linux，比如 Dev 的调试功能不能使用。这个问题很大，需要慌。不过最后总算搞好 gdb 和 VSCode 了，坐在屏幕前等比赛开始。</p>
+<a id="more"></a>
+<h1 id="a">A</h1>
+<p>一个字符串中的字母可以大写也可以小写，求给定字符串的写法的方案数。</p>
+<h2 id="题解">题解</h2>
+<p>签到题，答案是<span class="math inline"> \(2^{字母个数}\)</span>。</p>
+<h1 id="b">B</h1>
+<p>判断一个字符串数组的每一个串是否含有特定子串。</p>
+<h2 id="题解-1">题解</h2>
+<p><code>substr</code> 一下就好了。注意参数是 <code>substr(begin,length)</code>。</p>
+<h1 id="c">C</h1>
+<p>给定两个长度为<span class="math inline"> \(n(\leq 10^6)\)</span> 的数组<span class="math inline"> \(a_i,b_i(\leq 10^6)\)</span>，问能否找到<span class="math inline"> \(a_i+b_j=m(\leq 10^6)\)</span> 的两个数。</p>
+<h2 id="题解-2">题解</h2>
+<p>先预处理<span class="math inline"> \(a_i\)</span>，再判断是否有<span class="math inline"> \(a_j=m-b_i\)</span> 即可。</p>
+<h1 id="d">D</h1>
+<p>给定四个长度为<span class="math inline"> \(n(\leq 1000)\)</span> 的数组<span class="math inline"> \(a_i,b_i,c_i,d_i(\leq 10^9)\)</span>，问找到<span class="math inline"> \(a_i+b_j+c_k+d_l=m(\leq 10^9)\)</span> 的概率（最简分数）。</p>
+<h2 id="题解-3">题解</h2>
+<p>像 C 一样用 <code>map</code> 预处理<span class="math inline"> \(a_i+b_j\)</span>，然后判断是否有<span class="math inline"> \(c_k+d_l=m-a_i+b_j\)</span> 即可。</p>
+<p>如果答案是 0 或 1，需要直接输出 0 和 1。<del>数论只会 GCD</del></p>
+<p>（我觉得这波操作很正确，但是不知为何 WA 了）</p>
+<h1 id="e">E</h1>
+<p>让你根据格式输出一个沙漏。</p>
+<h2 id="题解-4">题解</h2>
+<p>签到题 + 题意题。</p>
+<h1 id="f">F</h1>
+<p><span class="math inline">\(n(\leq 10)\)</span> 个城市的完全图中，求从起点 1 出发，随机走<span class="math inline"> \(m(\leq 10)\)</span> 步回到起点 1 的方案。</p>
+<h2 id="题解-5">题解</h2>
+<p>看这个范围可以爆搜？</p>
+<p>其实就是求一个相邻元素不同的环的个数。可以容斥一下：<span class="math inline">\(f(m)=(n-1)^{m-1}-f(m-1)\)</span>。</p>
+<h1 id="g">G</h1>
+<p>给一个图（<span class="math inline">\(n\times n(n\leq 50)\)</span>，有障碍），36 次询问是否能<span class="math inline"> \(k_i(\leq 200)\)</span> 步从起点走到终点（可以重复走）。</p>
+<h2 id="题解-6">题解</h2>
+<p>std 是用最短路奇偶性判断，因为多出来的路可以在最短路上来回走动增加偶数次。</p>
+<p>不过其实也可以搞<span class="math inline"> \(O(\max{k_i}\times n^2)\)</span> 的 dp（BFS？）。</p>
+<h1 id="h">H</h1>
+<p>你需要过一个长度为<span class="math inline"> \(T(\leq 10)\)</span> 的马路，其中有 8 种亲亲操作，每做一种操作可以前进<span class="math inline"> \(k_i\)</span> 步，然而做了某些操作就会产生后效性。</p>
+<p>求过马路的方案数。</p>
+<h2 id="题解-7">题解</h2>
+<p>这题太沙雕了吧…… 这个操作太多了，完全不会 DP 啊。（一起参赛的同学：这不是手推就可以打表了吗？）</p>
+<p>然后又写了一遍 DFS，还是不会。</p>
+<p>结果 std 写的就是 DFS。看来得找一点大爆搜题目练练了。</p>
+<h1 id="i">I</h1>
+<p>有<span class="math inline"> \(n(\leq 5000)\)</span> 个物品，其中第<span class="math inline"> \(i\)</span> 个物品有<span class="math inline"> \(a_i\)</span> 种，求选出<span class="math inline"> \(m(\leq 500)\)</span> 个不同物品的方案数。</p>
+<p>空间限制 65536KB。</p>
+<h2 id="题解-8">题解</h2>
+<p>显然有方程<span class="math inline"> \(f_{i,j}=f_{i-1,j}+f_{i-1,j-1}*a_i\)</span>，答案是<span class="math inline"> \(f_{n,m}\)</span>。</p>
+<p>需要滚动数组。</p>
+<h1 id="j">J</h1>
+<p>在线多次区间 XOR，求最后的序列。</p>
+<h2 id="题解-9">题解</h2>
+<p>显然只要前缀 XOR 即可。</p>
+<p>但是为什么考场时我写了个树状数组？？（没有反应过来只查询了一次）</p>
+<p>学 DS 学傻系列。</p>
+<h1 id="k">K</h1>
+<p>给一个<span class="math inline"> \(n(\leq 100)\)</span> 个节点的图，<span class="math inline">\(q(\leq 10^5)\)</span> 次询问从<span class="math inline"> \(i\)</span> 能否<span class="math inline"> \(k\)</span> 步走到<span class="math inline"> \(j\)</span>。</p>
+<h2 id="题解-10">题解</h2>
+<p>有个很显然的做法是矩阵快速幂，时间复杂度<span class="math inline"> \(O(n^3\log k+q)\)</span>。</p>
+<p>但是在这个数据范围下还有一个也很显然的做法，就是 G 题的 dp 做法，时间复杂度<span class="math inline"> \(O(kn^2+q)\)</span>。</p>
+<h1 id="l">L</h1>
+<p>给一个无自环无重边的、有<span class="math inline"> \(n(\leq m)\)</span> 个节点<span class="math inline"> \(m(\leq 10^5)\)</span> 条边的无向图和一个点集<span class="math inline"> \(S(|S|\leq n)\)</span>，求每个<span class="math inline"> \(a_i\in S\)</span> 最近的、在<span class="math inline"> \(S\)</span> 中的点的距离（不包括<span class="math inline"> \(a_i\)</span>）。</p>
+<h2 id="题解-11">题解</h2>
+<p>据说这是一道防 AK 题（事实上确实达到了这个效果），感觉比去年的 Polya 裸题难处理一些。</p>
+<p>有点意思的题目，需要魔改最短路算法。</p>
+<p>首先建立个超级源点，以<span class="math inline"> \(S\)</span> 里的所有点当做源点跑 Dijkstra，并且记录每个新的点是由哪个源点更新的。如果一由源点<span class="math inline"> \(u\)</span> 扩展的点第一次到达了由源点<span class="math inline"> \(v\)</span> 扩展的点<span class="math inline"> \(w\)</span>，那么显然<span class="math inline"> \(dis_{u,w}+dis_{w,v}\)</span> 就是<span class="math inline"> \((u,v)\)</span> 的答案（因为在此之后<span class="math inline"> \((u,v)\)</span> 最短路的其他交点<span class="math inline"> \(dis_{u,w‘}\)</span> 和<span class="math inline"> \(dis_{w,v’}\)</span> 都不会比原来小），故<span class="math inline"> \(u\)</span> 可以不用继续在<span class="math inline"> \(w\)</span> 之后的点扩展了。</p>
+<p>由于每个点只会在 Dijkstra 过程被最多一个源点 “占据”，且其他源点不会经过被 “占据” 的点，所以整个过程访问的点数是<span class="math inline"> \(O(n)\)</span> 的，故总时间复杂度为<span class="math inline"> \(O((n+m)\log n)\)</span>。</p>
+<hr>
+<h1 id="总结">总结</h1>
+<p>最后还是被北理和北师大的同学打压了…… 题目还行，但是题目本质重复率略高，并且数据范围都开得很迷。</p>
+<p>虽然最后也没有得多少气球，但是果然还是打比赛最让人振奋啊。</p>
+<p><del>所以我们学校的校赛呢？？？</del></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/codechef/nov-lunchtime-2018/" rel="prev" title="Codechef November Lunchtime 2018">
+      <i class="fa fa-chevron-left"></i> Codechef November Lunchtime 2018
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/contest/bcpc2018/" rel="next" title="BUAA Campus Programming Contest 2018 预赛">
+      BUAA Campus Programming Contest 2018 预赛 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#a"><span class="nav-number">1.</span> <span class="nav-text">A</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#b"><span class="nav-number">2.</span> <span class="nav-text">B</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="nav-number">2.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c"><span class="nav-number">3.</span> <span class="nav-text">C</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="nav-number">3.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#d"><span class="nav-number">4.</span> <span class="nav-text">D</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="nav-number">4.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#e"><span class="nav-number">5.</span> <span class="nav-text">E</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-4"><span class="nav-number">5.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#f"><span class="nav-number">6.</span> <span class="nav-text">F</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-5"><span class="nav-number">6.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#g"><span class="nav-number">7.</span> <span class="nav-text">G</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-6"><span class="nav-number">7.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#h"><span class="nav-number">8.</span> <span class="nav-text">H</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-7"><span class="nav-number">8.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i"><span class="nav-number">9.</span> <span class="nav-text">I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-8"><span class="nav-number">9.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#j"><span class="nav-number">10.</span> <span class="nav-text">J</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-9"><span class="nav-number">10.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#k"><span class="nav-number">11.</span> <span class="nav-text">K</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-10"><span class="nav-number">11.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#l"><span class="nav-number">12.</span> <span class="nav-text">L</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-11"><span class="nav-number">12.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">13.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="nikkukun"
+      src="/images/avatar_tozuka_kotaro.jpg">
+  <p class="site-author-name" itemprop="name">nikkukun</p>
+  <div class="site-description" itemprop="description">是个蒟蒻，梦想不是造飞机。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="mailto:tyakennikku@163.com" title="E-Mail → mailto:tyakennikku@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1113119882&website=www.oicqzone.com" title="QQ → tencent:&#x2F;&#x2F;AddContact&#x2F;?fromId&#x3D;45&amp;fromSubId&#x3D;1&amp;subcmd&#x3D;all&amp;uin&#x3D;1113119882&amp;website&#x3D;www.oicqzone.com" rel="noopener" target="_blank"><i class="fa fa-qq fa-fw"></i>QQ</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/SaltedHXJ/" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;SaltedHXJ&#x2F;" rel="noopener" target="_blank">_ConveX</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://potassiumwings.github.io/" title="https:&#x2F;&#x2F;potassiumwings.github.io&#x2F;" rel="noopener" target="_blank">Potassium</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">nikkukun</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<script type="text/javascript" src="/js/fold_action.js"></script>
+</body>
+</html>
